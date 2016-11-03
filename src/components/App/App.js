@@ -112,7 +112,7 @@ class App extends Component {
             <div className="__main_language">
               {chrome.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
             </div>
-            <Setting {...setting} switchSetting={switchSettingDispatch}></Setting>
+            <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage}></Setting>
           </div>
       </div>
     )

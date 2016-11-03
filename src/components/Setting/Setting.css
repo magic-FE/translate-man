@@ -12,6 +12,10 @@
     vertical-align: middle;
 }
 
+.__Setting .__list.hide {
+    display: none;
+}
+
 .__Setting .__ios-checkbox {
     vertical-align: middle;
     float: right;

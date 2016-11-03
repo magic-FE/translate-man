@@ -3,15 +3,19 @@ import Switch from '../Switch/Switch';
 import './Setting.css';
 import Relect from '../Relect/Relect';
 import ReactTooltip from 'react-tooltip';
+import classNames from 'classnames';
+import {getUILanguage} from '../../helpers/tools';
 
 class Setting extends Component {
 
   static defaultProps = {
+    hl: '',
     data: [],
     switchSetting: () => {},
   };
 
   static propTypes = {
+    hl: PropTypes.string,
     data: PropTypes.array,
     switchSetting: PropTypes.func,
   };
@@ -21,11 +25,15 @@ class Setting extends Component {
         <div className="__Setting">
           {
             this.props.data.map((value, key) => {
+              let shouldHide = false;
+              if(value.name === 'icibaFanyi' && (this.props.hl !== 'zh-CN' && getUILanguage() !== 'zh-CN')) {
+                shouldHide = true;
+              }
               return (
                 <div key={key} 
                      data-tip={value.tip}
                      data-delay-show="100"
-                     className="__list">{value.text} <Switch onChange={() => {this.props.switchSetting(key)}} checked={value.checked}/></div>
+                     className={classNames('__list', {'hide': shouldHide})}>{value.text} <Switch onChange={() => {this.props.switchSetting(key)}} checked={value.checked}/></div>
               )
             })
           }

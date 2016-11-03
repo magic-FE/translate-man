@@ -50,3 +50,9 @@ chrome.runtime.onInstalled.addListener((detail) => {
         }
     }
 });
+
+// when update available
+chrome.runtime.onUpdateAvailable.addListener((detail) => {
+    console.log(`Have a new version:${detail.version}`);
+    chrome.runtime.reload();  // install new version soon
+});

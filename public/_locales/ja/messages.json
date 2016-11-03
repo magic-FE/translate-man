@@ -1,0 +1,74 @@
+{
+    "app_name": {
+        "message": "翻訳夏（マンを翻訳）",
+        "description": "插件的名称"
+    },
+    "app_description": {
+        "message": "ゾーン型単語翻訳、言語を自動的に識別し、翻訳された意味は、ユーザーフレンドリーなインターフェイス、国内のユーザーは、Googleの翻訳インターフェースを使用して最適化するために、具体的にするために、数百の言語をサポートしています",
+        "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
+    },
+    "search_placeholder": {
+        "message": "テキストを入力します",
+        "description": "输入文字"
+    },
+    "translating_text": {
+        "message": "翻訳...",
+        "description": "正在翻译"
+    },
+    "my_main_language": {
+        "message": "私の主な言語",
+        "description": "我的主语言"
+    },
+    "current_choice": {
+        "message": "現在選択言語:",
+        "description": "当前选择语言:"
+    },
+    "dblclick_translate": {
+        "message": "翻訳をダブルクリックします",
+        "description": "双击单词翻译"
+    },
+    "dblclick_translate_tip": {
+        "message": "テキストのページをダブルクリックすると、選択したテキストを翻訳することができます",
+        "description": "页面中双击文字,即可翻译选中文本"
+    },
+    "select_translate": {
+        "message": "指定された単語は自動的に翻訳された後、",
+        "description": "划词后自动翻译"
+    },
+    "select_translate_tip": {
+        "message": "指定されたワードマウス後は、自動的に選択されたテキストを翻訳することができます",
+        "description": "鼠标划词后,即可自动翻译选中文本"
+    },
+    "ctrl_translate": {
+        "message": "あなたのマウスを押すCTRLキー単語翻訳を指します",
+        "description": "鼠标指向单词 按下ctrl键翻译"
+    },
+    "ctrl_translate_tip": {
+        "message": "ウルトラポータブルモード!(強くお勧めします)<br/>* 任意の単語の上にマウス、プレスCTRLは、単語を翻訳します <br/>* 限り、選択したテキスト内のページがあるので、プレスCTRLは、選択したテキストを翻訳します<br/>* Ctrlキーを押しながら、どこに移動するには、マウスを保持し、どこに翻訳",
+        "description": "超便捷模式"
+    },
+    "icon_model": {
+        "message": "アイコンモード（表示は、翻訳のアイコンをオン）",
+        "description": "图标模式(开启后显示翻译图标)"
+    },
+    "icon_model_tip": {
+        "message": "結果は直接爆弾ボックスがポップアップ翻訳、しかしポップアイコンはありません",
+        "description": "不直接弹出小图标"
+    },
+    "iciba_fanyi": {
+        "message": "優先順位Kingsoftの翻訳",
+        "description": "优先金山翻译"
+    },
+    "iciba_fanyi_tip": {
+        "message": "Kingsoftの翻訳は、国内のユーザーに優先オープンをお勧めします）<br/> *最初、何の結果は自動的にGoogleによって翻訳されていないKingsoftの変換を試してみて、翻訳速度を向上させる:(",
+        "description": "推荐国内用户开启,先采用金山翻译,无结果会自动用谷歌翻译,提高翻译速度"
+    },
+    "icon_hover_tips": {
+        "message": "翻訳]をクリックします",
+        "description": "点击翻译"
+    },
+    "languages": {
+        "message": "[{ \"text\": \"自動検出\", \"value\": \"auto\" },{ \"text\": \"英語\", \"value\": \"en\" },{ \"text\": \"中国語\", \"value\": \"zh-CN\" },{ \"text\": \"日本語\", \"value\": \"ja\" },{ \"text\": \"韓国語\", \"value\": \"ko\" },{ \"text\": \"フランス語\", \"value\": \"fr\" },{ \"text\": \"アフリカーンス語\", \"value\": \"af\" },{ \"text\": \"アルバニア語\", \"value\": \"sq\" },{ \"text\": \"アムハラ語\", \"value\": \"am\" },{ \"text\": \"アラビア語\", \"value\": \"ar\" },{ \"text\": \"アルメニア語\", \"value\": \"hy\" },{ \"text\": \"アゼルバイジャン語\", \"value\": \"az\" },{ \"text\": \"バスク語\", \"value\": \"eu\" },{ \"text\": \"ベラルーシ語\", \"value\": \"be\" },{ \"text\": \"ベンガル語\", \"value\": \"bn\" },{ \"text\": \"ボスニア語\", \"value\": \"bs\" },{ \"text\": \"ブルガリア語\", \"value\": \"bg\" },{ \"text\": \"カザフ語\", \"value\": \"ca\" },{ \"text\": \"セブアノ語\", \"value\": \"ceb\" },{ \"text\": \"チェワ語\", \"value\": \"ny\" },{ \"text\": \"中国語\", \"value\": \"zh-CN\" },{ \"text\": \"コルシカ語\", \"value\": \"co\" },{ \"text\": \"クロアチア語\", \"value\": \"hr\" },{ \"text\": \"チェコ語\", \"value\": \"cs\" },{ \"text\": \"デンマーク語\", \"value\": \"da\" },{ \"text\": \"オランダ語\", \"value\": \"nl\" },{ \"text\": \"英語\", \"value\": \"en\" },{ \"text\": \"エスペラント語\", \"value\": \"eo\" },{ \"text\": \"エストニア語\", \"value\": \"et\" },{ \"text\": \"タガログ語\", \"value\": \"tl\" },{ \"text\": \"フィンランド語\", \"value\": \"fi\" },{ \"text\": \"フランス語\", \"value\": \"fr\" },{ \"text\": \"フリジア語\", \"value\": \"fy\" },{ \"text\": \"ガリシア語\", \"value\": \"gl\" },{ \"text\": \"ジョージア(グルジア)語\", \"value\": \"ka\" },{ \"text\": \"ドイツ語\", \"value\": \"de\" },{ \"text\": \"ギリシャ語\", \"value\": \"el\" },{ \"text\": \"グジャラト語\", \"value\": \"gu\" },{ \"text\": \"ハイチ語\", \"value\": \"ht\" },{ \"text\": \"ハウサ語\", \"value\": \"ha\" },{ \"text\": \"ハワイ語\", \"value\": \"haw\" },{ \"text\": \"ヘブライ語\", \"value\": \"iw\" },{ \"text\": \"ヒンディー語\", \"value\": \"hi\" },{ \"text\": \"モン語\", \"value\": \"hmn\" },{ \"text\": \"ハンガリー語\", \"value\": \"hu\" },{ \"text\": \"アイスランド語\", \"value\": \"is\" },{ \"text\": \"イボ語\", \"value\": \"ig\" },{ \"text\": \"インドネシア語\", \"value\": \"id\" },{ \"text\": \"アイルランド語\", \"value\": \"ga\" },{ \"text\": \"イタリア語\", \"value\": \"it\" },{ \"text\": \"日本語\", \"value\": \"ja\" },{ \"text\": \"ジャワ語\", \"value\": \"jw\" },{ \"text\": \"カンナダ語\", \"value\": \"kn\" },{ \"text\": \"カザフ語\", \"value\": \"kk\" },{ \"text\": \"クメール語\", \"value\": \"km\" },{ \"text\": \"韓国語\", \"value\": \"ko\" },{ \"text\": \"クルド語\", \"value\": \"ku\" },{ \"text\": \"キルギス語\", \"value\": \"ky\" },{ \"text\": \"ラオ語\", \"value\": \"lo\" },{ \"text\": \"ラテン語\", \"value\": \"la\" },{ \"text\": \"ラトビア語\", \"value\": \"lv\" },{ \"text\": \"リトアニア語\", \"value\": \"lt\" },{ \"text\": \"ルクセンブルク語\", \"value\": \"lb\" },{ \"text\": \"マケドニア語\", \"value\": \"mk\" },{ \"text\": \"マラガシ語\", \"value\": \"mg\" },{ \"text\": \"マレー語\", \"value\": \"ms\" },{ \"text\": \"マラヤーラム語\", \"value\": \"ml\" },{ \"text\": \"マルタ語\", \"value\": \"mt\" },{ \"text\": \"マオリ語\", \"value\": \"mi\" },{ \"text\": \"マラーティー語\", \"value\": \"mr\" },{ \"text\": \"モンゴル語\", \"value\": \"mn\" },{ \"text\": \"ミャンマー語\", \"value\": \"my\" },{ \"text\": \"ネパール語\", \"value\": \"ne\" },{ \"text\": \"ノルウェー語\", \"value\": \"no\" },{ \"text\": \"パシュト語\", \"value\": \"ps\" },{ \"text\": \"ペルシャ語\", \"value\": \"fa\" },{ \"text\": \"ポーランド語\", \"value\": \"pl\" },{ \"text\": \"ポルトガル語\", \"value\": \"pt\" },{ \"text\": \"パンジャブ語\", \"value\": \"pa\" },{ \"text\": \"ルーマニア語\", \"value\": \"ro\" },{ \"text\": \"ロシア語\", \"value\": \"ru\" },{ \"text\": \"サモア語\", \"value\": \"sm\" },{ \"text\": \"スコットランド ゲール語\", \"value\": \"gd\" },{ \"text\": \"セルビア語\", \"value\": \"sr\" },{ \"text\": \"ソト語\", \"value\": \"st\" },{ \"text\": \"ショナ語\", \"value\": \"sn\" },{ \"text\": \"シンド語\", \"value\": \"sd\" },{ \"text\": \"シンハラ語\", \"value\": \"si\" },{ \"text\": \"スロバキア語\", \"value\": \"sk\" },{ \"text\": \"スロベニア語\", \"value\": \"sl\" },{ \"text\": \"ソマリ語\", \"value\": \"so\" },{ \"text\": \"スペイン語\", \"value\": \"es\" },{ \"text\": \"スンダ語\", \"value\": \"su\" },{ \"text\": \"スワヒリ語\", \"value\": \"sw\" },{ \"text\": \"スウェーデン語\", \"value\": \"sv\" },{ \"text\": \"タジク語\", \"value\": \"tg\" },{ \"text\": \"タミル語\", \"value\": \"ta\" },{ \"text\": \"テルグ語\", \"value\": \"te\" },{ \"text\": \"タイ語\", \"value\": \"th\" },{ \"text\": \"トルコ語\", \"value\": \"tr\" },{ \"text\": \"ウクライナ語\", \"value\": \"uk\" },{ \"text\": \"ウルドゥ語\", \"value\": \"ur\" },{ \"text\": \"ウズベク語\", \"value\": \"uz\" },{ \"text\": \"ベトナム語\", \"value\": \"vi\" },{ \"text\": \"ウェールズ語\", \"value\": \"cy\" },{ \"text\": \"コーサ語\", \"value\": \"xh\" },{ \"text\": \"イディッシュ語\", \"value\": \"yi\" },{ \"text\": \"ヨルバ語\", \"value\": \"yo\" },{ \"text\": \"ズールー語\", \"value\": \"zu\" }]",
+        "description": "语言种类"
+    }
+}
