@@ -1,0 +1,140 @@
+#__fanyixia_content {
+    display: none;
+    text-align: left;
+    word-break: break-all;
+    font-size: 14px;
+    font-family: Arial, Helvetica, '微软雅黑', '宋体', sans-serif;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    opacity: 0.98;
+}
+
+#__fanyixia_content .__main {
+    border-radius: 2px;
+    min-width: 100px;
+    max-width: 300px;
+    min-height: 100px;
+    max-height: 600px;
+    box-shadow: 0 0 2px rgba(144, 144, 144, 0.72), 0 1px 1px rgba(173, 173, 173, 0.3);
+}
+
+#__fanyixia_content .__icon {
+    cursor: pointer;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+#__fanyixia_content .__icon img {
+    display: block;
+}
+
+.__clearfix::after {
+    content: '';
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.__container {
+    position: relative;
+    font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
+    width: 300px;
+    word-break: break-all;
+    padding: 15px;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+    background-color: #4CAAF5;
+}
+
+.__container img {
+    vertical-align: middle;
+}
+
+.__container input {
+    outline: none;
+}
+
+.__container .__header {
+    position: relative;
+    text-align: center;
+}
+
+.__container .__header .__setting_btn {
+    transition: all 0.4s 0s ease-in;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.__container .__header .__setting_btn:hover {
+    transform: rotate(90deg);
+}
+
+.__container .__language {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.__container .__language img {
+    padding: 0 3px;
+}
+
+.__container .__language .__Relect {
+    vertical-align: middle;
+}
+
+.__container .__search {
+    position: relative;
+    color: #ffffff;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.__container .__search input {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    border: 0;
+    color: currentcolor;
+    border-bottom: 2px solid #1a86de;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 5px 30px 5px 2px;
+}
+
+.__container .__search input::-webkit-input-placeholder {
+    color: currentcolor;
+}
+
+.__container .__search_btn {
+    position: relative;
+    cursor: pointer;
+    height: 30px;
+    float: right;
+    z-index: 1;
+}
+
+.__container .__setting_hidden {
+    display: none;
+}
+
+.__container .__main_language {
+    font-size: 12px;
+    color: #e8f5ff;
+    padding: 10px;
+    height: 16px;
+    background-color: #2290e8;
+    vertical-align: middle;
+    margin: 15px 0 5px 0;
+}
+
+.__container .__main_language .__Relect {
+    float: right;
+}

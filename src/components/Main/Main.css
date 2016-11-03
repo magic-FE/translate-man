@@ -1,0 +1,45 @@
+.__main {
+    display: block;
+    padding: 10px;
+    color: #1f1f1f;
+    background-color: #fdfefe;
+    text-shadow: 0 1px 1px #ffffff;
+}
+
+.__main .__keyword {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.__main .__mid {
+    margin: 2px 0 10px;
+}
+
+.__main .__mid span {
+    vertical-align: middle;
+}
+
+.__main .__mid img {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.__main .__phonetic {
+    margin-right: 10px;
+}
+
+.__main .__bot .__li {
+    display: flex;
+    margin: 5px 0;
+}
+
+.__main .__bot .__li .__prop {
+    color: #958d79;
+    min-width: 25px;
+    margin-right: 5px;
+}
+
+.__main .__bot .__translation {
+    flex: 1;
+}

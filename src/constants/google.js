@@ -1,0 +1,1 @@
+export const host = ['https://translate.google.com', 'https://translate.google.cn'];

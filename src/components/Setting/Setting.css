@@ -1,0 +1,18 @@
+.__Setting {
+    display: block;
+}
+
+.__Setting .__list {
+    font-size: 12px;
+    color: #e8f5ff;
+    padding: 10px;
+    height: 16px;
+    background-color: #2290e8;
+    margin: 5px 0;
+    vertical-align: middle;
+}
+
+.__Setting .__ios-checkbox {
+    vertical-align: middle;
+    float: right;
+}
