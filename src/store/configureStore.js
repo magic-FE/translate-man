@@ -13,10 +13,12 @@ function configureStore(initState) {
   const store = finalCreateStore(reducers, initState);
 
   //only for development
-  /*store.subscribe(() => {
-      console.log('state', store.getState());
-      chrome.storage.local.get(null, (storage) => {console.log('storage', storage)});
-  });*/
+  if(process.env.NODE_ENV === 'development') {
+    store.subscribe(() => {
+        console.log('state', store.getState());
+        chrome.storage.local.get(null, (storage) => {console.log('storage', storage)});
+    });
+  }
 
   return store;
 }

@@ -3,6 +3,16 @@
 ## 开发
 ```shell
 npm install
+
+npm start
+特殊说明: (build目录下的文件,只有static文件夹和index.html是动态产生的.其他的是源文件)
+此命令将
+入口: src/index.js 打包到build/static目录下.
+入口: src/index.html 打包到build/index.html下.
+```
+
+## 发布
+```shell
 npm run build
 ```
 

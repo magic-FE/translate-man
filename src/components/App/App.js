@@ -63,7 +63,9 @@ class App extends Component {
 
   render() {
 
-    const {loading,
+    const {
+      error,
+      loading,
       word,
       showSetting,
       SLanguage,
@@ -79,7 +81,8 @@ class App extends Component {
       clickSettingDispatch,
       searchWordDispatch,
       playVoiceDispatch,
-      switchSettingDispatch} = this.props;
+      switchSettingDispatch
+    } = this.props;
     
     if(!POPENV) {
       if(iconModelFlag) {
@@ -107,7 +110,7 @@ class App extends Component {
               <input type="text" ref="searchInput" placeholder={' ' + chrome.i18n.getMessage('search_placeholder')} value={word} onChange={(e) => {bindDataDispatch({word: e.target.value})}}/>
               <div className="__search_btn" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(searchURL)} alt="search" /></div>
           </div>
-          <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading}}></Main>
+          <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error}}></Main>
           <div className={classNames({"__setting_hidden": !showSetting})}>
             <div className="__main_language">
               {chrome.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
@@ -121,6 +124,7 @@ class App extends Component {
 
 App = connect((state) => {
   return {
+    error: state.error,
     loading: state.loading,
     word: state.word,
     showSetting: state.showSetting,

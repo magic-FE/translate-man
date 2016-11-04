@@ -10,6 +10,7 @@ class Main extends Component {
   static defaultProps = {
     loading: false,
     loadingText: chrome.i18n.getMessage('translating_text'),
+    errorText: chrome.i18n.getMessage('error_text'),
     voicePlaying: false,
     playVoice: () => {},
   };
@@ -36,7 +37,11 @@ class Main extends Component {
   render() {
 
     if(this.props.loading) {
-      return (<div className="__main">{this.props.loadingText}...</div>);
+      return (<div className="__main">{this.props.loadingText}</div>);
+    }
+
+    if(this.props.error) {
+      return (<div className="__main" dangerouslySetInnerHTML={{__html: this.props.errorText + this.props.error}}></div>);
     }
 
     if(!this.props.data) {

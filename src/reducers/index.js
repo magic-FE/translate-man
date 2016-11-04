@@ -2,6 +2,7 @@ import * as actionTypes from '../constants/actionTypes';
 import {setUserDataAndSendMessage, getUILanguage} from '../helpers/tools';
 
 const initState = {
+    error: false,
     loading: false,
     word: '',
     translateResult: null,
@@ -51,14 +52,13 @@ const actionMaps = {
     [actionTypes.searchWord](state, action) {
         switch (action.status) {
             case 'emptyText':
-                return Object.assign({}, state, { iconModelFlag: false, loading: false, voiceFirst: true, showSetting: false, translateResult: null });
+                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: null });
             case 'fetching':
-                return Object.assign({}, state, { iconModelFlag: false, loading: true, voiceFirst: true, showSetting: false });
+                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false });
             case 'success':
-                return Object.assign({}, state, { iconModelFlag: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2], translateResult: action.data, position: action.position});
+                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2], translateResult: action.data, position: action.position});
             case 'error':
-                console.log('fetching google translate data error:', action.error);
-                return Object.assign({}, state, { iconModelFlag: false, loading: false, voiceFirst: true, showSetting: false});
+                return Object.assign({}, state, { iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false});
             default:false
                 return state;
         }

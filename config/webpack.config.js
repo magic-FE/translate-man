@@ -35,7 +35,8 @@ var publicPath = ensureSlash(homepagePathname, true);
 var publicUrl = ensureSlash(homepagePathname, false);
 // Get enrivonment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
-
+// Dev variables
+var dev = process.env.NODE_ENV === 'development';
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
@@ -44,7 +45,7 @@ module.exports = {
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  // devtool: 'source-map',
+  devtool: dev ? 'cheap-module-source-map' : "",
   // In production, we only want to load the polyfills and the app code.
   entry: {
     main: [
@@ -179,7 +180,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
-      minify: {
+      minify: dev ? {} : {
         removeComments: true,
         collapseWhitespace: true,
         removeRedundantAttributes: true,
@@ -202,7 +203,7 @@ module.exports = {
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
-    new webpack.optimize.UglifyJsPlugin({
+    ...(dev ? [] : [new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false
@@ -214,7 +215,7 @@ module.exports = {
         comments: false,
         screw_ie8: true
       }
-    }),
+    })]),
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin('static/css/[name].css')
   ],

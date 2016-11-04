@@ -84,7 +84,10 @@ export const searchWordAC = (dispatch) => {
             translate({ from: sourceLanguage, to: translateLanguage, q: text, hl: hostLanguage, firstIciba:  firstIciba}, dispatch).then((data) => {
                 dispatch({ type: actionTypes.searchWord, status: 'success', data: data, position: position });
             }).catch((error) => {
-                dispatch({ type: actionTypes.searchWord, status: 'error', error: error });
+                console.log('fetching translate data error:', error);
+                if(POPENV) {
+                    dispatch({ type: actionTypes.searchWord, status: 'error', error: error });
+                }
             });
 
         });
