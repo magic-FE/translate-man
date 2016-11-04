@@ -56,7 +56,7 @@ const actionMaps = {
             case 'fetching':
                 return Object.assign({}, state, { iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false });
             case 'success':
-                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2], translateResult: action.data, position: action.position});
+                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2] || state.SLanguageAuto, translateResult: action.data, position: action.position});
             case 'error':
                 return Object.assign({}, state, { iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false});
             default:false

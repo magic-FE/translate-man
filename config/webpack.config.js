@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var url = require('url');
 var paths = require('./paths');
 var getClientEnvironment = require('./env');
@@ -42,10 +43,10 @@ var dev = process.env.NODE_ENV === 'development';
 // The development configuration is different and lives in a separate file.
 module.exports = {
   // Don't attempt to continue if there are any errors.
-  bail: true,
+  bail: !dev,
   // We generate sourcemaps in production. This is slow but gives good results.
   // You can exclude the *.map files from the build during deployment.
-  devtool: dev ? 'cheap-module-source-map' : "",
+  [dev && 'devtool']: 'cheap-module-source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: {
     main: [
@@ -200,6 +201,11 @@ module.exports = {
     new webpack.DefinePlugin(env),
     // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurrenceOrderPlugin(),
+    // If you require a missing module and then `npm install` it, you still have
+    // to restart the development server for Webpack to discover it. This plugin
+    // makes the discovery automatic so you don't have to restart.
+    // See https://github.com/facebookincubator/create-react-app/issues/186
+    ...(dev ? [new WatchMissingNodeModulesPlugin(paths.appNodeModules)] : []),
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
     // Minify the code.

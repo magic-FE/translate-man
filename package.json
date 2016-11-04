@@ -2,6 +2,10 @@
   "name": "fanyixia",
   "version": "2.1.5",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magic-FE/translate-man"
+  },
   "devDependencies": {
     "autoprefixer": "6.4.1",
     "babel-core": "6.14.0",

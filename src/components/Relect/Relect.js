@@ -65,7 +65,7 @@ class Relect extends Component {
             )
         });
 
-        arr.splice(6, 0, <div className="__line"></div>);
+        arr.splice(6, 0, <div key="line" className="__line"></div>);
 
         return (
             <span className="__Relect">
