@@ -20,6 +20,7 @@
     "css-loader": "0.24.0",
     "detect-port": "1.0.0",
     "dotenv": "2.0.0",
+    "enzyme": "2.5.1",
     "eslint": "3.5.0",
     "eslint-config-react-app": "^0.2.1",
     "eslint-loader": "1.5.0",
@@ -42,6 +43,7 @@
     "path-exists": "2.1.0",
     "postcss-loader": "0.13.0",
     "promise": "7.1.1",
+    "react-addons-test-utils": "15.3.2",
     "react-dev-utils": "^0.2.1",
     "recursive-readdir": "2.1.0",
     "rimraf": "2.5.4",
@@ -63,7 +65,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js"
+    "build": "node scripts/build.js",
+    "test": "jest"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -81,7 +84,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
   },
   "babel": {

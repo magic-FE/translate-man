@@ -30,15 +30,15 @@ const initState = {
 
 const actionMaps = {
     [actionTypes.syncUserData](state, action) {
-        return Object.assign({}, state, action.data);
+        return {...state, ...action.data};
     },
 
     [actionTypes.clickSetting](state, action) {
-        return Object.assign({}, state, { showSetting: !state.showSetting });
+        return {...state, showSetting: !state.showSetting };
     },
 
     [actionTypes.showIcon](state, action) {
-        return Object.assign({}, state, { word: action.data.word, position: action.data.position, iconModelFlag: true});
+        return {...state, word: action.data.word, position: action.data.position, iconModelFlag: true };
     },
 
     [actionTypes.bindData](state, action) {
@@ -46,19 +46,19 @@ const actionMaps = {
             // sync chrome local storage
             setUserDataAndSendMessage(action.data, action.data.HLanguage);
         }
-        return Object.assign({}, state, action.data);
+        return {...state, ...action.data};
     },
 
     [actionTypes.searchWord](state, action) {
         switch (action.status) {
             case 'emptyText':
-                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: null });
+                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: null };
             case 'fetching':
-                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false });
+                return {...state, iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false };
             case 'success':
-                return Object.assign({}, state, { iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2] || state.SLanguageAuto, translateResult: action.data, position: action.position});
+                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2] || state.SLanguageAuto, translateResult: action.data, position: action.position};
             case 'error':
-                return Object.assign({}, state, { iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false});
+                return {...state, iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false};
             default:false
                 return state;
         }
@@ -66,15 +66,15 @@ const actionMaps = {
 
     [actionTypes.playVoice](state, action) {
         if(action.status === 'playing') {
-            return Object.assign({}, state, { voiceFirst: false, voicePlaying: true, position: null });
+            return {...state, voiceFirst: false, voicePlaying: true, position: null };
         }
-        return Object.assign({}, state, { voiceFirst: false, voicePlaying: false, position: null });
+        return {...state, voiceFirst: false, voicePlaying: false, position: null };
     },
 
     [actionTypes.getSourceLanguage](state, action) {
         let nextState = state.translateResult.slice();
         nextState[2] = action.data;
-        return Object.assign({}, state, { SLanguageAuto: action.data, translateResult: nextState, position: null});
+        return {...state, SLanguageAuto: action.data, translateResult: nextState, position: null};
     },
 
     [actionTypes.switchSetting](state, action) {
@@ -90,7 +90,7 @@ const actionMaps = {
         // sync chrome local storage
         setUserDataAndSendMessage(nextState, true);
 
-        return Object.assign({}, state, nextState);
+        return {...state, ...nextState};
 
     }
 }
