@@ -1,4 +1,6 @@
 # 翻译侠(translate man)
+打开插件后,自动发送https://translate.google.com 和 https://trnaslate.google.cn.以此来确定那个网站可以访问.
+
 
 ## 开发
 ```shell

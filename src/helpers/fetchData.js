@@ -5,10 +5,10 @@ function fetchData(option) {
     return new Promise((resolve, reject) => {
 
         chrome.runtime.sendMessage(option, (response) => {
-            if(response) {
-                resolve(response);
+            if(response.error) {
+                reject(response.error);
             } else {
-                reject('no data response');
+                resolve(response);
             }
         });
 

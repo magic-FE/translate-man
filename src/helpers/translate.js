@@ -40,6 +40,7 @@ function translate(option, dispatch) {
 				getSourceLanguageAC(dispatch)(response[2]);
 				reslove(response);
 			}).catch((error) => {
+				errorNum++;
 				if(errorNum === 2) {
 					reject(error);
 				}

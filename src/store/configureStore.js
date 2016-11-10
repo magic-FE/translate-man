@@ -4,21 +4,26 @@ import reducers from '../reducers';
 
 function configureStore(initState) {
 
-  const finalCreateStore = compose(
-      applyMiddleware(
-        thunk,
-      ),
-    )(createStore);
+  let finalCreateStore;
+
+  // in development log action info
+  if(process.env.NODE_ENV === 'development') {
+  	const createLogger = require('redux-logger');
+  	finalCreateStore = compose(
+  	    applyMiddleware(
+  	      thunk,
+  	      createLogger(),
+  	    ),
+  	  )(createStore);
+  } else {
+  	finalCreateStore = compose(
+  	    applyMiddleware(
+  	      thunk,
+  	    ),
+  	  )(createStore);
+  }
 
   const store = finalCreateStore(reducers, initState);
-
-  //only for development
-  if(process.env.NODE_ENV === 'development') {
-    store.subscribe(() => {
-        console.log('state', store.getState());
-        chrome.storage.local.get(null, (storage) => {console.log('storage', storage)});
-    });
-  }
 
   return store;
 }

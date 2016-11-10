@@ -27,7 +27,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 }
                 return response;
             })
-            .then((response) => { sendResponse(response) });
+            .then((response) => { sendResponse(response) })
+            .catch((error) => { sendResponse({error: error}) });
         return true;
     }
 });
