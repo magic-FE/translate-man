@@ -1,3 +1,10 @@
+/**
+ * Setting组件
+ * 属性
+ * - hl                 host语言
+ * - data               列表设置数据
+ * - switchSetting      设置回调函数
+ */
 import React, { Component, PropTypes } from 'react';
 import Switch from '../Switch/Switch';
 import './Setting.css';

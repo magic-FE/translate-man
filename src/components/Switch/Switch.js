@@ -3,8 +3,7 @@
  * 属性:
  * - id               组件的id
  * - checked          组件是否打开
- * - size             组件尺寸
- * - onChange         组件改变回调事件,返回false则不刷新组件
+ * - onChange         组件回调事件
  */
 import React, {Component, PropTypes} from 'react';
 import './Switch.css';

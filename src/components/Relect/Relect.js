@@ -1,3 +1,11 @@
+/**
+ * Relect组件(语言选择器)
+ * 属性
+ * - autoResult        自动检测语言结果
+ * - options           语言数据列表
+ * - value             选择的值
+ * - onChange          选择后回调函数
+ */
 import React, {Component, PropTypes} from 'react';
 import './relect.css';
 import classNames from 'classnames';
