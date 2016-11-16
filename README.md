@@ -1,5 +1,6 @@
 # 翻译侠(translate man)
-打开插件后,自动发送https://translate.google.com 和 https://trnaslate.google.cn.以此来确定那个网站可以访问.
+打开插件后,自动发送https://translate.google.com 和 https://trnaslate.google.cn 以此来确定那个网站可以访问.
+在主语言或者UI界面是中文的情况下,选择优先金山翻译.将会采用金山翻译(提高翻译速度),其他情况会采用谷歌翻译.
 
 
 ## 开发
