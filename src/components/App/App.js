@@ -7,11 +7,11 @@ import './App.css';
 import Main from '../Main/Main';
 import Relect from '../Relect/Relect';
 import Setting from '../Setting/Setting';
-import logoURL from './logo.png';
-import settingURL from './setting.png';
-import searchURL from './search.png';
-import rightURL from './right.png';
-import iconURL from './icon.png';
+import logoURL from './logo.svg';
+import settingURL from './setting.svg';
+import searchURL from './search.svg';
+import rightURL from './right.svg';
+import iconURL from './icon.svg';
 
 class App extends Component {
 
@@ -87,7 +87,7 @@ class App extends Component {
     if(!POPENV) {
       if(iconModelFlag) {
         return (
-          <div className="__icon" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(iconURL)} alt="icon" /></div>
+          <div className="__icon" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
         );
       }
       return (
@@ -98,17 +98,17 @@ class App extends Component {
     return (
       <div className="__container">
           <div className="__header">
-              <img src={getAbsoluteURL(logoURL)} alt="logo" className="__logo" onClick={this.onClickFetch}/>
-              <img src={getAbsoluteURL(settingURL)} alt="setting" className="__setting_btn" onClick={clickSettingDispatch}/>
+              <img src={getAbsoluteURL(logoURL)} alt="logo" className="__logo" width="50" height="50" onClick={this.onClickFetch}/>
+              <img src={getAbsoluteURL(settingURL)} alt="setting" width="20" height="20" className="__setting_btn" onClick={clickSettingDispatch}/>
           </div>
           <div className="__language">
             <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => {bindDataDispatch({SLanguage: value})}} />
-            <img src={getAbsoluteURL(rightURL)} alt="right" /> 
+            <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/> 
             <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({TLanguage: value})}} />
           </div>
           <div className="__search __clearfix">
               <input type="text" ref="searchInput" placeholder={' ' + chrome.i18n.getMessage('search_placeholder')} value={word} onChange={(e) => {bindDataDispatch({word: e.target.value})}}/>
-              <div className="__search_btn" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(searchURL)} alt="search" /></div>
+              <div className="__search_btn" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(searchURL)} alt="search" width="24" height="24"/></div>
           </div>
           <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error}}></Main>
           <div className={classNames({"__setting_hidden": !showSetting})}>

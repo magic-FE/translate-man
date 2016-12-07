@@ -9,7 +9,7 @@
 import React, {Component, PropTypes} from 'react';
 import './relect.css';
 import classNames from 'classnames';
-import back from './back.png';
+import back from './back.svg';
 import {getAbsoluteURL} from '../../helpers/tools';
 
 class Relect extends Component {
@@ -79,7 +79,7 @@ class Relect extends Component {
             <span className="__Relect">
                 <span className={classNames('__Relect_text', {special: this.state.isSelect})} onClick={this.onClick.bind(this)}>{currentValue === 'auto' ? (autoText ? currentText + '(' + autoText + ')' : currentText): currentText}</span>
                 <div className={classNames('__Relect_wrap', {show: this.state.isSelect})}>
-                    <div className="__Relect_current">{chrome.i18n.getMessage('current_choice')} {currentText} <img src={getAbsoluteURL(back)} alt="back" onClick={this.onBack.bind(this)}/></div>
+                    <div className="__Relect_current">{chrome.i18n.getMessage('current_choice')} {currentText} <img src={getAbsoluteURL(back)} alt="back" width="18" height="18" onClick={this.onBack.bind(this)}/></div>
                     <div className="__Relect_container" onClick={this.onChange.bind(this)}>
                         {arr}
                     </div>
