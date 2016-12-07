@@ -1,5 +1,5 @@
 import * as actionTypes from '../constants/actionTypes';
-import {searchWordAC, syncUserDataAC, showIconAC} from './index';
+import {searchWordAC, syncUserDataAC, showIconAC, bindDataAC} from './index';
 import { getWordFromPoint, getRangeFromPoint } from '../helpers/tools';
 
 /**
@@ -23,6 +23,7 @@ function bindContentScriptEvent(dispatch, getState) {
     let oldWordTimeHandler = null;
     let searchTimeHandler = null;
     let isMouseDown = false;
+    let mainLanguage = '';
     let isSelectWord = false;
     let selectStartTimer = null;
     let userOption = {};
@@ -36,6 +37,7 @@ function bindContentScriptEvent(dispatch, getState) {
         if(request.type === 'reload') {
             chrome.storage.local.get('userData', (storage) => {
                 parseOption(storage.userData, userOption);
+                mainLanguage = storage.userData.HLanguage;
             });
         }
     });
@@ -125,7 +127,7 @@ function bindContentScriptEvent(dispatch, getState) {
             return false;
         }
 
-        searchWordAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi);
+        searchWordAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi, mainLanguage);
     }
 
     function hidePlane() {

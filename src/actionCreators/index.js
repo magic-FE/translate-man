@@ -56,7 +56,7 @@ export const showIconAC = (dispatch) => {
 
 // search word from google translate website
 export const searchWordAC = (dispatch) => {
-    return (word, position, firstIciba) => {
+    return (word, position, firstIciba, mainLanguage) => {
         dispatch((dispatch, getState) => {
             position = position || getState().position;
             firstIciba = typeof firstIciba === 'undefined' ? getState().setting.data[4].checked : firstIciba;
@@ -77,12 +77,12 @@ export const searchWordAC = (dispatch) => {
                 hostLanguage = getState().HLanguage;
             } else {
                 sourceLanguage = 'auto';
-                translateLanguage = getState().HLanguage;
-                hostLanguage = getState().HLanguage;
+                translateLanguage = mainLanguage || getState().HLanguage;
+                hostLanguage = mainLanguage || getState().HLanguage;
             }
 
             translate({ from: sourceLanguage, to: translateLanguage, q: text, hl: hostLanguage, firstIciba:  firstIciba}, dispatch).then((data) => {
-                dispatch({ type: actionTypes.searchWord, status: 'success', data: data, position: position });
+                dispatch({ type: actionTypes.searchWord, status: 'success', data: data, position: position});
             }).catch((error) => {
                 console.log('fetching translate data error:', error);
                 if(POPENV) {
