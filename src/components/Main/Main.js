@@ -12,7 +12,9 @@ class Main extends Component {
     loadingText: chrome.i18n.getMessage('translating_text'),
     errorText: chrome.i18n.getMessage('error_text'),
     voicePlaying: false,
+    autoVoice: false,
     playVoice: () => {},
+    autoVoiceClick: () => {},
   };
 
   static propTypes = {
@@ -20,7 +22,9 @@ class Main extends Component {
     loadingText: PropTypes.string,
     data: PropTypes.array,
     voicePlaying: PropTypes.bool,
+    autoVoice: PropTypes.bool,
     playVoice: PropTypes.func,
+    autoVoiceClick: PropTypes.func,
   };
 
   onMouseOver(e) {
@@ -76,7 +80,9 @@ class Main extends Component {
             <img src={this.props.voicePlaying ? getAbsoluteURL(voicePlayingImageURL) : getAbsoluteURL(voiceImageURL)}
                  onMouseOver={this.onMouseOver.bind(this)}
                  onMouseLeave={this.onMouseLeave.bind(this)}
-                 alt="voice" onClick={this.props.playVoice}/>
+                 alt="voice" 
+                 onClick={this.props.playVoice}/>
+            <span className="__autoVoice" onClick={this.props.autoVoiceClick}>{this.props.autoVoice ? chrome.i18n.getMessage('auto_voice_on') : chrome.i18n.getMessage('auto_voice') }</span>
           </div>
           <div className="__bot">
             <div className="__simple">{simple}</div>

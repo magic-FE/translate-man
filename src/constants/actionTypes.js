@@ -10,6 +10,8 @@ export const searchWord = 'searchWord';
 
 export const playVoice = 'playVoice';
 
+export const autoVoice = 'autoVoice';
+
 export const getSourceLanguage = 'getSourceLanguage';
 
 export const switchSetting = 'switchSetting';

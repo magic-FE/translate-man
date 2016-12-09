@@ -7,6 +7,14 @@
         "message": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面",
         "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
     },
+    "auto_voice": {
+        "message": "手动",
+        "description": "手动发音"
+    },
+    "auto_voice_on": {
+        "message": "自动",
+        "description": "自动发音"
+    },
     "search_placeholder": {
         "message": "输入文字",
         "description": "输入文字"

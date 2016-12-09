@@ -11,6 +11,8 @@ const initState = {
     TLanguage: getUILanguage(),
     HLanguage: getUILanguage(),
     showSetting: false,
+    autoVoice: false,
+    autoVoiceContent: false,
     voiceFirst: true,
     voicePlaying: false,
     iconModelFlag: true,
@@ -69,6 +71,17 @@ const actionMaps = {
             return {...state, voiceFirst: false, voicePlaying: true, position: null };
         }
         return {...state, voiceFirst: false, voicePlaying: false, position: null };
+    },
+
+    [actionTypes.autoVoice](state, action) {
+        if(action.status === 'pop') {
+            // sync chrome local storage
+            setUserDataAndSendMessage({autoVoice: action.data}, false);
+            return {...state, autoVoice: action.data};
+        }
+        // sync chrome local storage
+        setUserDataAndSendMessage({autoVoiceContent: action.data}, false);
+        return {...state, autoVoiceContent: action.data};
     },
 
     [actionTypes.getSourceLanguage](state, action) {

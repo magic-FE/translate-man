@@ -4,4 +4,4 @@
 3. 其余参看react-app编码规范
 
 # 额外说明
-1. ajax库采用fetch, fetch已全局打包
+1. ajax请求采用fetch

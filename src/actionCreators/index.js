@@ -54,6 +54,24 @@ export const showIconAC = (dispatch) => {
     }
 }
 
+// play the google translate voice, the current word voice
+export const getSourceLanguageAC = (dispatch) => {
+    return (data) => {
+        dispatch((dispatch, getState) => {
+            dispatch({type: actionTypes.getSourceLanguage, data: data});
+            if(POPENV) {
+                if(getState().autoVoice) {
+                    playVoiceAC(dispatch)();
+                }
+            } else {
+                if(getState().autoVoiceContent) {
+                    playVoiceAC(dispatch)();
+                }
+            }
+        });
+    }
+}
+
 // search word from google translate website
 export const searchWordAC = (dispatch) => {
     return (word, position, firstIciba, mainLanguage) => {
@@ -83,6 +101,7 @@ export const searchWordAC = (dispatch) => {
 
             translate({ from: sourceLanguage, to: translateLanguage, q: text, hl: hostLanguage, firstIciba:  firstIciba}, dispatch).then((data) => {
                 dispatch({ type: actionTypes.searchWord, status: 'success', data: data, position: position});
+                getSourceLanguageAC(dispatch)(data[2]);
             }).catch((error) => {
                 console.log('fetching translate data error:', error);
                 if(POPENV) {
@@ -108,10 +127,26 @@ export const playVoiceAC = (dispatch) => {
     }
 }
 
-// play the google translate voice, the current word voice
-export const getSourceLanguageAC = (dispatch) => {
-    return (data) => {
-        dispatch({type: actionTypes.getSourceLanguage, data: data});
+// auto play word voice when get search result
+export const autoVoiceAC = (dispatch) => {
+    return () => {
+       if(POPENV) {
+            dispatch((dispatch, getState) => {
+                const autoVoice = !getState().autoVoice;
+                dispatch({ type: actionTypes.autoVoice, status: 'pop', data: autoVoice});
+                if(autoVoice) {
+                    playVoiceAC(dispatch)();
+                }
+            });
+        } else {
+           dispatch((dispatch, getState) => {
+                const autoVoice = !getState().autoVoiceContent;
+                dispatch({ type: actionTypes.autoVoice, status: 'contentScript', data: autoVoice});
+                if(autoVoice) {
+                    playVoiceAC(dispatch)();
+                }
+            });
+        }
     }
 }
 

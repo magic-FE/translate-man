@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "minimum_chrome_version": "42",
     "name": "__MSG_app_name__",
-    "version": "2.1.10",
+    "version": "2.2.0",
     "author": "marchen",
     "description": "__MSG_app_description__",
     "default_locale": "en",
@@ -34,9 +34,7 @@
         "tabs",
         "storage",
         "http://fy.iciba.com/",
-        "http://translate.google.com/",
         "https://translate.google.com/",
-        "http://translate.google.cn/",
         "https://translate.google.cn/"
     ],
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",

@@ -29,6 +29,21 @@
     margin-right: 10px;
 }
 
+.__main .__autoVoice {
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0px 3px;
+    border: 1px solid #bdbcbc;
+    border-radius: 3px;
+    margin-left: 8px;
+    color: #bdbcbc;
+}
+
+.__main .__autoVoice:hover {
+    border: 1px solid #4caaf5;
+    color: #4caaf5;
+}
+
 .__main .__bot .__li {
     display: flex;
     margin: 5px 0;
