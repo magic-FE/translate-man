@@ -27,8 +27,13 @@ export const syncUserDataAC = (dispatch) => {
             chrome.storage.local.get('userData', (storage) => {
                 // put text to setting
                 if(storage.userData && storage.userData.setting) {
-                    storage.userData.setting.data.forEach((set) => {
-                        set.text = chrome.i18n.getMessage(replaceSettingName(set.name));
+                    getState().setting.data.forEach((oldSet) => {
+                        storage.userData.setting.data.forEach((newSet) => {
+                            newSet.text = chrome.i18n.getMessage(replaceSettingName(newSet.name));
+                            if(oldSet.name === newSet.name) {
+                                oldSet = newSet;
+                            }
+                        });
                     });
                 }
                 dispatch({ type: actionTypes.syncUserData, data: storage.userData });
@@ -56,16 +61,16 @@ export const showIconAC = (dispatch) => {
 
 // play the google translate voice, the current word voice
 export const getSourceLanguageAC = (dispatch) => {
-    return (data) => {
+    return (data, word, autoVoice) => {
         dispatch((dispatch, getState) => {
-            dispatch({type: actionTypes.getSourceLanguage, data: data});
-            if(POPENV) {
-                if(getState().autoVoice) {
+            dispatch({type: actionTypes.getSourceLanguage, data: data, word: word});
+            if(data[2] !== getState().HLanguage) {
+                if(POPENV && getState().setting.data[5].checked) {
                     playVoiceAC(dispatch)();
-                }
-            } else {
-                if(getState().autoVoiceContent) {
-                    playVoiceAC(dispatch)();
+                } else {
+                    if(autoVoice) {
+                        playVoiceAC(dispatch)();
+                    }
                 }
             }
         });
@@ -74,7 +79,7 @@ export const getSourceLanguageAC = (dispatch) => {
 
 // search word from google translate website
 export const searchWordAC = (dispatch) => {
-    return (word, position, firstIciba, mainLanguage) => {
+    return (word, position, firstIciba, mainLanguage, autoVoice) => {
         dispatch((dispatch, getState) => {
             position = position || getState().position;
             firstIciba = typeof firstIciba === 'undefined' ? getState().setting.data[4].checked : firstIciba;
@@ -99,9 +104,8 @@ export const searchWordAC = (dispatch) => {
                 hostLanguage = mainLanguage || getState().HLanguage;
             }
 
-            translate({ from: sourceLanguage, to: translateLanguage, q: text, hl: hostLanguage, firstIciba:  firstIciba}, dispatch).then((data) => {
+            translate({ from: sourceLanguage, to: translateLanguage, q: text, hl: hostLanguage, firstIciba:  firstIciba}, dispatch, autoVoice).then((data) => {
                 dispatch({ type: actionTypes.searchWord, status: 'success', data: data, position: position});
-                getSourceLanguageAC(dispatch)(data[2]);
             }).catch((error) => {
                 console.log('fetching translate data error:', error);
                 if(POPENV) {
@@ -117,7 +121,7 @@ export const searchWordAC = (dispatch) => {
 export const playVoiceAC = (dispatch) => {
     return (event) => {
         dispatch((dispatch, getState) => {
-            googleSpeech({ tl: getState().translateResult[2], q: getState().translateResult[0][0][1], first: getState().voiceFirst }).then(() => {
+            googleSpeech({ tl: getState().translateResult[2], q: getState().word, first: getState().voiceFirst }).then(() => {
                 dispatch({ type: actionTypes.playVoice, status: 'playing' });
                 setTimeout(function() {
                     dispatch({ type: actionTypes.playVoice});
@@ -127,28 +131,6 @@ export const playVoiceAC = (dispatch) => {
     }
 }
 
-// auto play word voice when get search result
-export const autoVoiceAC = (dispatch) => {
-    return () => {
-       if(POPENV) {
-            dispatch((dispatch, getState) => {
-                const autoVoice = !getState().autoVoice;
-                dispatch({ type: actionTypes.autoVoice, status: 'pop', data: autoVoice});
-                if(autoVoice) {
-                    playVoiceAC(dispatch)();
-                }
-            });
-        } else {
-           dispatch((dispatch, getState) => {
-                const autoVoice = !getState().autoVoiceContent;
-                dispatch({ type: actionTypes.autoVoice, status: 'contentScript', data: autoVoice});
-                if(autoVoice) {
-                    playVoiceAC(dispatch)();
-                }
-            });
-        }
-    }
-}
 
 // switch setting when click switch button
 export const switchSettingAC = (dispatch) => {

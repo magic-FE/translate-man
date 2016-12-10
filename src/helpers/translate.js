@@ -18,7 +18,7 @@ function shouldUseIciba(option) {
 	return false;
 }
 
-function translate(option, dispatch) {
+function translate(option, dispatch, autoVoice) {
 	/**
 	 * 只有当主语言是中文简体的时候,开启金山翻译才会有用.
 	 * 如果开启金山翻译,会同时请求金山和谷歌的接口.那个返回快,用那个的数据.空数据算为拒绝.
@@ -37,7 +37,7 @@ function translate(option, dispatch) {
 				}
 			});
 			googleTranslate(option).then((response) => {
-				getSourceLanguageAC(dispatch)(response[2]);
+				getSourceLanguageAC(dispatch)(response, option.q ,autoVoice);
 				reslove(response);
 			}).catch((error) => {
 				errorNum++;
@@ -47,7 +47,14 @@ function translate(option, dispatch) {
 			});
 		});
 	} else {
-		return googleTranslate(option);
+		return new Promise((reslove, reject) => {
+			googleTranslate(option).then((response) => {
+				getSourceLanguageAC(dispatch)(response, option.q, autoVoice);
+				reslove(response);
+			}).catch((error) => {
+				reject(error);
+			});
+		});
 	}
 }
 

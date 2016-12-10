@@ -7,14 +7,6 @@
         "message": "Mouse pointer translation, selected translation, support any languages, google translate api, human interface, love it",
         "description": "插件的简介描述"
     },
-    "auto_voice": {
-        "message": "manual",
-        "description": "手动发音"
-    },
-    "auto_voice_on": {
-        "message": "auto",
-        "description": "自动发音"
-    },
     "search_placeholder": {
         "message": "Enter text",
         "description": "搜索框placeholder文字,提示输入单词或者句子"
@@ -74,6 +66,14 @@
     "iciba_fanyi_tip": {
         "message": "(use iciba first)If you are in China, it is recommended to open, otherwise close",
         "description": "优先金山翻译"
+    },
+    "auto_voice": {
+        "message": "Automatic pronunciation",
+        "description": "自动发音"
+    },
+    "auto_voice_tip": {
+        "message": "Automatic pronunciation after translate",
+        "description": "翻译后自动发音"
     },
     "icon_hover_tips": {
         "message": "Click translate",

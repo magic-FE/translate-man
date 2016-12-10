@@ -11,10 +11,10 @@ class Main extends Component {
     loading: false,
     loadingText: chrome.i18n.getMessage('translating_text'),
     errorText: chrome.i18n.getMessage('error_text'),
+    data: [],
     voicePlaying: false,
     autoVoice: false,
     playVoice: () => {},
-    autoVoiceClick: () => {},
   };
 
   static propTypes = {
@@ -24,7 +24,6 @@ class Main extends Component {
     voicePlaying: PropTypes.bool,
     autoVoice: PropTypes.bool,
     playVoice: PropTypes.func,
-    autoVoiceClick: PropTypes.func,
   };
 
   onMouseOver(e) {
@@ -48,7 +47,7 @@ class Main extends Component {
       return (<div className="__main" dangerouslySetInnerHTML={{__html: this.props.errorText + this.props.error}}></div>);
     }
 
-    if(!this.props.data) {
+    if(!this.props.data.length) {
       return (<div></div>);
     }
 
@@ -82,7 +81,6 @@ class Main extends Component {
                  onMouseLeave={this.onMouseLeave.bind(this)}
                  alt="voice" 
                  onClick={this.props.playVoice}/>
-            <span className="__autoVoice" onClick={this.props.autoVoiceClick}>{this.props.autoVoice ? chrome.i18n.getMessage('auto_voice_on') : chrome.i18n.getMessage('auto_voice') }</span>
           </div>
           <div className="__bot">
             <div className="__simple">{simple}</div>

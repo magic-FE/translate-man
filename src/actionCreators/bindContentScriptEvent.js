@@ -127,7 +127,7 @@ function bindContentScriptEvent(dispatch, getState) {
             return false;
         }
 
-        searchWordAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi, mainLanguage);
+        searchWordAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi, mainLanguage, userOption.autoVoice);
     }
 
     function hidePlane() {

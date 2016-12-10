@@ -7,14 +7,6 @@
         "message": "ゾーン型単語翻訳、言語を自動的に識別し、翻訳された意味は、ユーザーフレンドリーなインターフェイス、国内のユーザーは、Googleの翻訳インターフェースを使用して最適化するために、具体的にするために、数百の言語をサポートしています",
         "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
     },
-    "auto_voice": {
-        "message": "手動",
-        "description": "手动发音"
-    },
-    "auto_voice_on": {
-        "message": "自動",
-        "description": "自动发音"
-    },
     "search_placeholder": {
         "message": "テキストを入力します",
         "description": "输入文字"
@@ -74,6 +66,14 @@
     "iciba_fanyi_tip": {
         "message": "Kingsoftの翻訳は、国内のユーザーに優先オープンをお勧めします）<br/> *最初、何の結果は自動的にGoogleによって翻訳されていないKingsoftの変換を試してみて、翻訳速度を向上させる:(",
         "description": "推荐国内用户开启,先采用金山翻译,无结果会自动用谷歌翻译,提高翻译速度"
+    },
+    "auto_voice": {
+        "message": "自動発音",
+        "description": "自动发音"
+    },
+    "auto_voice_tip": {
+        "message": "自動翻訳の発音の後",
+        "description": "翻译后自动发音"
     },
     "icon_hover_tips": {
         "message": "翻訳]をクリックします",

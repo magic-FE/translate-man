@@ -5,14 +5,12 @@ const initState = {
     error: false,
     loading: false,
     word: '',
-    translateResult: null,
+    translateResult: [],
     SLanguage: 'auto',
     SLanguageAuto: '',
     TLanguage: getUILanguage(),
     HLanguage: getUILanguage(),
     showSetting: false,
-    autoVoice: false,
-    autoVoiceContent: false,
     voiceFirst: true,
     voicePlaying: false,
     iconModelFlag: true,
@@ -26,6 +24,7 @@ const initState = {
             { text: chrome.i18n.getMessage('ctrl_translate'), tip: chrome.i18n.getMessage('ctrl_translate_tip'), checked: true, name: "ctrlTranslate"},
             { text: chrome.i18n.getMessage('icon_model'), tip: chrome.i18n.getMessage('icon_model_tip'), checked: false, name: "iconModel" },
             { text: chrome.i18n.getMessage('iciba_fanyi'), tip: chrome.i18n.getMessage('iciba_fanyi_tip'), checked: getUILanguage() === 'zh-CN' ? true : false, name: "icibaFanyi"},
+            { text: chrome.i18n.getMessage('auto_voice'), tip: chrome.i18n.getMessage('auto_voice_tip'), checked: false, name: "autoVoice"},
         ]
     },
 }
@@ -54,7 +53,7 @@ const actionMaps = {
     [actionTypes.searchWord](state, action) {
         switch (action.status) {
             case 'emptyText':
-                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: null };
+                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: [] };
             case 'fetching':
                 return {...state, iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false };
             case 'success':
@@ -73,21 +72,10 @@ const actionMaps = {
         return {...state, voiceFirst: false, voicePlaying: false, position: null };
     },
 
-    [actionTypes.autoVoice](state, action) {
-        if(action.status === 'pop') {
-            // sync chrome local storage
-            setUserDataAndSendMessage({autoVoice: action.data}, false);
-            return {...state, autoVoice: action.data};
-        }
-        // sync chrome local storage
-        setUserDataAndSendMessage({autoVoiceContent: action.data}, false);
-        return {...state, autoVoiceContent: action.data};
-    },
-
     [actionTypes.getSourceLanguage](state, action) {
         let nextState = state.translateResult.slice();
-        nextState[2] = action.data;
-        return {...state, SLanguageAuto: action.data, translateResult: nextState, position: null};
+        nextState[2] = action.data[2];
+        return {...state, word: action.word, SLanguageAuto: action.data[2], translateResult: nextState, position: null};
     },
 
     [actionTypes.switchSetting](state, action) {

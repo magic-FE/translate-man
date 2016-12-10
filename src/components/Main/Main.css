@@ -29,17 +29,6 @@
     margin-right: 10px;
 }
 
-.__main .__autoVoice {
-    cursor: pointer;
-    font-size: 12px;
-    color: #bdbcbc;
-    vertical-align: top !important;
-}
-
-.__main .__autoVoice:hover {
-    color: #484747;
-}
-
 .__main .__bot .__li {
     display: flex;
     margin: 5px 0;

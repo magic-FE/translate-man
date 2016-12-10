@@ -74,8 +74,6 @@ class App extends Component {
       HLanguage,
       translateResult,
       voicePlaying,
-      autoVoice,
-      autoVoiceContent,
       relectData,
       setting,
       iconModelFlag,
@@ -83,17 +81,16 @@ class App extends Component {
       clickSettingDispatch,
       searchWordDispatch,
       playVoiceDispatch,
-      autoVoiceDispatch,
       switchSettingDispatch
     } = this.props;
     if(!POPENV) {
       if(iconModelFlag) {
         return (
-          <div className="__icon" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
+          <div className="__icon" onClick={() => {searchWordDispatch()}} title={chrome.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
         );
       }
       return (
-        <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, autoVoice: autoVoiceContent, autoVoiceClick: autoVoiceDispatch}}></Main>
+        <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch}}></Main>
       );
     }
 
@@ -112,7 +109,7 @@ class App extends Component {
               <input type="text" ref="searchInput" placeholder={' ' + chrome.i18n.getMessage('search_placeholder')} value={word} onChange={(e) => {bindDataDispatch({word: e.target.value})}}/>
               <div className="__search_btn" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(searchURL)} alt="search" width="24" height="24"/></div>
           </div>
-          <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error, autoVoice: autoVoice, autoVoiceClick: autoVoiceDispatch}}></Main>
+          <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error}}></Main>
           <div className={classNames({"__setting_hidden": !showSetting})}>
             <div className="__main_language">
               {chrome.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
@@ -135,9 +132,7 @@ App = connect((state) => {
     TLanguage: state.TLanguage,
     HLanguage: state.HLanguage,
     translateResult: state.translateResult,
-    voicePlaying: state.voicePlaying,
-    autoVoice: state.autoVoice,
-    autoVoiceContent: state.autoVoiceContent,
+    voicePlaying: state.voicePlaying,   
     iconModelFlag: state.iconModelFlag,
     relectData: state.relectData,
     setting: state.setting,
@@ -149,7 +144,6 @@ App = connect((state) => {
     'bindDataDispatch': actionCreators.bindDataAC(dispatch),
     'searchWordDispatch': actionCreators.searchWordAC(dispatch),
     'playVoiceDispatch': actionCreators.playVoiceAC(dispatch),
-    'autoVoiceDispatch': actionCreators.autoVoiceAC(dispatch),
     'switchSettingDispatch': actionCreators.switchSettingAC(dispatch),
   }
 })(App);
