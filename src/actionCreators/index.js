@@ -28,12 +28,17 @@ export const syncUserDataAC = (dispatch) => {
                 // put text to setting
                 if(storage.userData && storage.userData.setting) {
                     getState().setting.data.forEach((oldSet) => {
+                        let has = false;
                         storage.userData.setting.data.forEach((newSet) => {
                             newSet.text = chrome.i18n.getMessage(replaceSettingName(newSet.name));
+                            newSet.tip = chrome.i18n.getMessage(replaceSettingName(newSet.name) + '_tip');
                             if(oldSet.name === newSet.name) {
-                                oldSet = newSet;
+                                has = true;
                             }
                         });
+                        if(!has) {
+                            storage.userData.setting.data.push(oldSet);
+                        }
                     });
                 }
                 dispatch({ type: actionTypes.syncUserData, data: storage.userData });

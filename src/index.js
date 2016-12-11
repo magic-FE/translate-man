@@ -6,6 +6,9 @@ import configureStore from './store/configureStore';
 import {syncUserDataAC} from './actionCreators';
 import {POPENV} from './helpers/tools';
 
+// 模拟用户升级
+// chrome.storage.local.set({'userData': {setting: {data: [{hecked:false, name: "dblclickTranslate", text: "双击单词翻译", tip: "页面中双击文字,即可翻译选中文本"}]}}});
+
 const store = configureStore();
 
 syncUserDataAC(store.dispatch)();

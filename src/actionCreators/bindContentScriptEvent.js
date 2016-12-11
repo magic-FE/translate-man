@@ -2,11 +2,6 @@ import * as actionTypes from '../constants/actionTypes';
 import {searchWordAC, syncUserDataAC, showIconAC, bindDataAC} from './index';
 import { getWordFromPoint, getRangeFromPoint } from '../helpers/tools';
 
-/**
- * 使用下面的代码模拟用户首次安装
- * chrome.storage.local.clear()
- */
-
 function parseOption(userData, userOption) {
     userData.setting.data.forEach(function(value, index) {
         userOption[value.name] = value.checked;
