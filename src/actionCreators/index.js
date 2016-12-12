@@ -12,7 +12,7 @@ export const bindDataAC = (dispatch) => {
     }
 }
 
-// get user option from chrome storage and put it on state
+// get user option from browser storage and put it on state
 // only run once
 function replaceSettingName(name) {
     return name.replace(/([A-Z])/g, (res) => {
@@ -23,15 +23,15 @@ export const syncUserDataAC = (dispatch) => {
     return () => {
         googleTranslateTk('');  // init google token when open the extension
         dispatch((dispatch, getState) => {
-            // get chrome storage
-            chrome.storage.local.get('userData', (storage) => {
+            // get browser storage
+            browser.storage.local.get('userData', (storage) => {
                 // put text to setting
                 if(storage.userData && storage.userData.setting) {
                     getState().setting.data.forEach((oldSet) => {
                         let has = false;
                         storage.userData.setting.data.forEach((newSet) => {
-                            newSet.text = chrome.i18n.getMessage(replaceSettingName(newSet.name));
-                            newSet.tip = chrome.i18n.getMessage(replaceSettingName(newSet.name) + '_tip');
+                            newSet.text = browser.i18n.getMessage(replaceSettingName(newSet.name));
+                            newSet.tip = browser.i18n.getMessage(replaceSettingName(newSet.name) + '_tip');
                             if(oldSet.name === newSet.name) {
                                 has = true;
                             }
@@ -88,7 +88,7 @@ export const searchWordAC = (dispatch) => {
         dispatch((dispatch, getState) => {
             position = position || getState().position;
             firstIciba = typeof firstIciba === 'undefined' ? getState().setting.data[4].checked : firstIciba;
-            let text = word || getState().word;
+            let text = word;
             if (!text) {
                 dispatch({ type: actionTypes.searchWord, status: 'emptyText' });
                 return;

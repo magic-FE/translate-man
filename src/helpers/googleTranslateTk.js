@@ -71,9 +71,9 @@ function sM(a) {
 }
 
 function getStore(callback) {
-    if (window.chrome) { // chrome extension
+    if (window.browser) { // browser extension
         try {
-            chrome.storage.local.get(null, function(storage) {
+            browser.storage.local.get(null, function(storage) {
                 callback(storage);
             });
         } catch (e) {
@@ -85,11 +85,11 @@ function getStore(callback) {
 }
 
 function setStore(TKK, host) {
-    if (window.chrome) { // chrome extension
+    if (window.browser) { // browser extension
         try {
             var expires = new Date();
             expires.setHours(expires.getMinutes() + 1);  // token 失效时间
-            chrome.storage.local.set({ TKK: TKK, expiresTKK: expires.getTime(), googleHost: host});
+            browser.storage.local.set({ TKK: TKK, expiresTKK: expires.getTime(), googleHost: host});
         } catch (e) {
             // who cases?
         }

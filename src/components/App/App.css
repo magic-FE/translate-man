@@ -1,3 +1,7 @@
+#__fanyixia_container {
+    overflow: hidden;
+}
+
 #__fanyixia_content {
     display: none;
     text-align: left;
@@ -13,10 +17,8 @@
 
 #__fanyixia_content .__main {
     border-radius: 2px;
-    min-width: 100px;
+    min-width: 0;
     max-width: 300px;
-    min-height: 100px;
-    max-height: 600px;
     box-shadow: 0 0 2px rgba(144, 144, 144, 0.72), 0 1px 1px rgba(173, 173, 173, 0.3);
 }
 
@@ -48,6 +50,7 @@
     font-size: 14px;
     text-align: left;
     background-color: #4CAAF5;
+    overflow: hidden;
 }
 
 .__container img {

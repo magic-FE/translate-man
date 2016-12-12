@@ -28,9 +28,9 @@ function bindContentScriptEvent(dispatch, getState) {
     parseOption(getState(), userOption);
 
     // get message from extension and reload page
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
         if(request.type === 'reload') {
-            chrome.storage.local.get('userData', (storage) => {
+            browser.storage.local.get('userData', (storage) => {
                 parseOption(storage.userData, userOption);
                 mainLanguage = storage.userData.HLanguage;
             });

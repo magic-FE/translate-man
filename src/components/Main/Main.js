@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 import './Main.css';
 import {getAbsoluteURL} from '../../helpers/tools';
 import voiceImageURL from './voice.png';
@@ -9,8 +10,8 @@ class Main extends Component {
 
   static defaultProps = {
     loading: false,
-    loadingText: chrome.i18n.getMessage('translating_text'),
-    errorText: chrome.i18n.getMessage('error_text'),
+    loadingText: browser.i18n.getMessage('translating_text'),
+    errorText: browser.i18n.getMessage('error_text'),
     data: [],
     voicePlaying: false,
     autoVoice: false,
@@ -70,32 +71,32 @@ class Main extends Component {
     }
 
     return (
-        <div className="__main">
-          <div className="__top">
-            <span className="__keyword">{keyword}</span>
-          </div>
-          <div className="__mid">
-            {phoneticDom}
-            <img src={this.props.voicePlaying ? getAbsoluteURL(voicePlayingImageURL) : getAbsoluteURL(voiceImageURL)}
-                 onMouseOver={this.onMouseOver.bind(this)}
-                 onMouseLeave={this.onMouseLeave.bind(this)}
-                 alt="voice" 
-                 onClick={this.props.playVoice}/>
-          </div>
-          <div className="__bot">
-            <div className="__simple">{simple}</div>
-            {
-              this.props.data[1] ? this.props.data[1].map(function(value, key) {
-                return (
-                  <div className="__li" key={key}>
-                    <div className="__prop">{value[0]}</div>
-                    <div className="__translation">{value[1].join('; ')}</div>
-                  </div>
-                )
-              }) : []
-            }
-          </div>
+      <div className="__main">
+        <div className="__top">
+          <span className="__keyword">{keyword}</span>
         </div>
+        <div className="__mid">
+          {phoneticDom}
+          <img src={this.props.voicePlaying ? getAbsoluteURL(voicePlayingImageURL) : getAbsoluteURL(voiceImageURL)}
+               onMouseOver={this.onMouseOver.bind(this)}
+               onMouseLeave={this.onMouseLeave.bind(this)}
+               alt="voice" 
+               onClick={this.props.playVoice}/>
+        </div>
+        <div className="__bot">
+          <div className="__simple">{simple}</div>
+          {
+            this.props.data[1] ? this.props.data[1].map(function(value, key) {
+              return (
+                <div className="__li" key={key}>
+                  <div className="__prop">{value[0]}</div>
+                  <div className="__translation">{value[1].join('; ')}</div>
+                </div>
+              )
+            }) : []
+          }
+        </div>
+      </div>
     )
   }
 }

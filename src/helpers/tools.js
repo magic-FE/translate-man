@@ -1,30 +1,33 @@
-export const POPENV = (window.location.protocol === "chrome-extension:" ? true : false);
+window.browser = typeof browser !== 'undefined' ? browser : chrome;
+
+export const POPENV = (browser.windows ? true : false);
 
 export const getUILanguage = function() {
-    let language = chrome.i18n.getUILanguage() || 'en';
+    let language = browser.i18n.getUILanguage() || 'en';
     if (language.slice(0, 2) === 'en') {
         language = 'en';
     }
+    language = language.replace(/_/g, '-');
     return language;
 }
 
 export const getAbsoluteURL = function(url) {
-    return chrome.extension.getURL(url);
+    return browser.extension.getURL(url);
 }
 
 export const setUserDataAndSendMessage = function(value, flag) { // value: storage value, flag: is sendMessage to contentScript
-    // sync chrome local storage
-    chrome.storage.local.get('userData', (storage) => {
+    // sync browser local storage
+    browser.storage.local.get('userData', (storage) => {
         let { userData } = storage;
         let putStorage = {
             userData: Object.assign({}, userData, value),
         }
-        chrome.storage.local.set(Object.assign({}, storage, putStorage), () => {
+        browser.storage.local.set(Object.assign({}, storage, putStorage), () => {
             if (flag) {
                 // send message to tabs and reload page
-                chrome.tabs.query({}, (tabs) => {
+                browser.tabs.query({}, (tabs) => {
                     tabs.forEach((tab) => {
-                        chrome.tabs.sendMessage(tab.id, { type: 'reload' });
+                        browser.tabs.sendMessage(tab.id, { type: 'reload' });
                     });
                 });
             }

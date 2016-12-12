@@ -15,16 +15,16 @@ const initState = {
     voicePlaying: false,
     iconModelFlag: true,
     relectData: {
-        options: JSON.parse(chrome.i18n.getMessage("languages")),
+        options: JSON.parse(browser.i18n.getMessage("languages")),
     },
     setting: {
         data: [
-            { text: chrome.i18n.getMessage('dblclick_translate'), tip: chrome.i18n.getMessage('dblclick_translate_tip'), checked: true, name: "dblclickTranslate"},
-            { text: chrome.i18n.getMessage('select_translate'), tip: chrome.i18n.getMessage('select_translate_tip'), checked: true, name: "selectTranslate" },
-            { text: chrome.i18n.getMessage('ctrl_translate'), tip: chrome.i18n.getMessage('ctrl_translate_tip'), checked: true, name: "ctrlTranslate"},
-            { text: chrome.i18n.getMessage('icon_model'), tip: chrome.i18n.getMessage('icon_model_tip'), checked: false, name: "iconModel" },
-            { text: chrome.i18n.getMessage('iciba_fanyi'), tip: chrome.i18n.getMessage('iciba_fanyi_tip'), checked: getUILanguage() === 'zh-CN' ? true : false, name: "icibaFanyi"},
-            { text: chrome.i18n.getMessage('auto_voice'), tip: chrome.i18n.getMessage('auto_voice_tip'), checked: false, name: "autoVoice"},
+            { text: browser.i18n.getMessage('dblclick_translate'), tip: browser.i18n.getMessage('dblclick_translate_tip'), checked: true, name: "dblclickTranslate"},
+            { text: browser.i18n.getMessage('select_translate'), tip: browser.i18n.getMessage('select_translate_tip'), checked: true, name: "selectTranslate" },
+            { text: browser.i18n.getMessage('ctrl_translate'), tip: browser.i18n.getMessage('ctrl_translate_tip'), checked: true, name: "ctrlTranslate"},
+            { text: browser.i18n.getMessage('icon_model'), tip: browser.i18n.getMessage('icon_model_tip'), checked: false, name: "iconModel" },
+            { text: browser.i18n.getMessage('iciba_fanyi'), tip: browser.i18n.getMessage('iciba_fanyi_tip'), checked: getUILanguage() === 'zh-CN' ? true : false, name: "icibaFanyi"},
+            { text: browser.i18n.getMessage('auto_voice'), tip: browser.i18n.getMessage('auto_voice_tip'), checked: false, name: "autoVoice"},
         ]
     },
 }
@@ -44,7 +44,7 @@ const actionMaps = {
 
     [actionTypes.bindData](state, action) {
         if(action.data.SLanguage || action.data.TLanguage || action.data.HLanguage) {
-            // sync chrome local storage
+            // sync browser local storage
             setUserDataAndSendMessage(action.data, action.data.HLanguage);
         }
         return {...state, ...action.data};
@@ -88,7 +88,7 @@ const actionMaps = {
 
         nextState.setting.data[action.data].checked = !nextState.setting.data[action.data].checked;
 
-        // sync chrome local storage
+        // sync browser local storage
         setUserDataAndSendMessage(nextState, true);
 
         return {...state, ...nextState};

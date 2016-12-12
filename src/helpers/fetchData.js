@@ -4,7 +4,7 @@ function fetchData(option) {
     }
     return new Promise((resolve, reject) => {
 
-        chrome.runtime.sendMessage(option, (response) => {
+        browser.runtime.sendMessage(option, (response) => {
             if(response.error) {
                 reject(response.error);
             } else {

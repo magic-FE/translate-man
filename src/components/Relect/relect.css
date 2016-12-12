@@ -20,7 +20,7 @@
     color: #353535;
     padding: 10px;
     text-align: left;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
@@ -61,19 +61,21 @@
     color: white;
 }
 
+.__Relect .__Relect_scroll_container {
+    position: fixed;
+    top: 52px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 .__Relect .__Relect_container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items:flex-start;
     align-content: flex-start;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 52px;
-    bottom: 0;
     padding: 0 10px;
-    overflow-y: scroll;
 }
 
 .__Relect .__Relect_current {

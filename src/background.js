@@ -2,8 +2,9 @@
  * background script
  * main function is fetch data
  */
+import {POPENV} from './helpers/tools';
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     let url = request.url;
     let type = request.type || 'text';
     let params = request.params || {};
@@ -44,16 +45,16 @@ function checkStatus(response) {
 }
 
 // when install or update new version fired
-chrome.runtime.onInstalled.addListener((detail) => {
+browser.runtime.onInstalled && browser.runtime.onInstalled.addListener((detail) => {
     if(detail.reason === 'update') {
         if(parseInt(detail.previousVersion.replace(/\./g, '')) < 213) { // 更新此版本(v2.1.3)需要清除用户设置
-            chrome.storage.local.clear();
+            browser.storage.local.clear();
         }
     }
 });
 
 // when update available
-chrome.runtime.onUpdateAvailable.addListener((detail) => {
+browser.runtime.onUpdateAvailable && browser.runtime.onUpdateAvailable.addListener((detail) => {
     console.log(`Have a new version:${detail.version}`);
-    chrome.runtime.reload();  // install new version soon
+    browser.runtime.reload();  // install new version soon
 });

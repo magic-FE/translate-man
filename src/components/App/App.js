@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
+import { Scrollbars } from 'react-custom-scrollbars';
 import * as actionCreators from '../../actionCreators';
 import {POPENV, getAbsoluteURL, getUILanguage} from '../../helpers/tools';
 import './App.css';
@@ -25,9 +26,23 @@ class App extends Component {
     if(POPENV) {
       this.refs.searchInput.focus();
       const {searchWordDispatch} = this.props;
+      let locked = false;
       document.addEventListener('keydown', (event) => {
         if(event.which === 13) { //enter key down
-          searchWordDispatch();
+          if(~location.href.indexOf('moz')) {
+            // 火狐插件如果快速连续搜索同一个词语,会让程序锁死
+            // issue https://github.com/facebook/react/issues/6324
+            // 解决方案,锁定时间
+            if(!locked) {
+              searchWordDispatch(this.refs.searchInput.value);
+              setTimeout(() => {
+                locked = false;
+              }, 1000);
+              locked = true;
+            }            
+          } else {
+              searchWordDispatch(this.refs.searchInput.value);
+          }
         }
       }, false);
     }
@@ -86,7 +101,7 @@ class App extends Component {
     if(!POPENV) {
       if(iconModelFlag) {
         return (
-          <div className="__icon" onClick={() => {searchWordDispatch()}} title={chrome.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
+          <div className="__icon" onClick={() => {searchWordDispatch()}} title={browser.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
         );
       }
       return (
@@ -95,28 +110,30 @@ class App extends Component {
     }
 
     return (
-      <div className="__container">
-          <div className="__header">
-              <img src={getAbsoluteURL(logoURL)} alt="logo" className="__logo" width="50" height="50" onClick={this.onClickFetch}/>
-              <img src={getAbsoluteURL(settingURL)} alt="setting" width="20" height="20" className="__setting_btn" onClick={clickSettingDispatch}/>
-          </div>
-          <div className="__language">
-            <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => {bindDataDispatch({SLanguage: value})}} />
-            <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/> 
-            <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({TLanguage: value})}} />
-          </div>
-          <div className="__search __clearfix">
-              <input type="text" ref="searchInput" placeholder={' ' + chrome.i18n.getMessage('search_placeholder')} value={word} onChange={(e) => {bindDataDispatch({word: e.target.value})}}/>
-              <div className="__search_btn" onClick={() => {searchWordDispatch()}}><img src={getAbsoluteURL(searchURL)} alt="search" width="24" height="24"/></div>
-          </div>
-          <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error}}></Main>
-          <div className={classNames({"__setting_hidden": !showSetting})}>
-            <div className="__main_language">
-              {chrome.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
+      <Scrollbars autoHide autoHeight autoHeightMax={600}>
+        <div className="__container">
+            <div className="__header">
+                <img src={getAbsoluteURL(logoURL)} alt="logo" className="__logo" width="50" height="50" onClick={this.onClickFetch}/>
+                <img src={getAbsoluteURL(settingURL)} alt="setting" width="20" height="20" className="__setting_btn" onClick={clickSettingDispatch}/>
             </div>
-            <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage}></Setting>
-          </div>
-      </div>
+            <div className="__language">
+              <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => {bindDataDispatch({SLanguage: value})}} />
+              <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/> 
+              <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({TLanguage: value})}} />
+            </div>
+            <div className="__search __clearfix">
+                <input type="text" ref="searchInput" placeholder={' ' + browser.i18n.getMessage('search_placeholder')} />
+                <div className="__search_btn" onClick={() => {searchWordDispatch(this.refs.searchInput.value)}}><img src={getAbsoluteURL(searchURL)} alt="search" width="24" height="24"/></div>
+            </div>
+            <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch, loading: loading, error: error}}></Main>
+            <div className={classNames({"__setting_hidden": !showSetting})}>
+              <div className="__main_language">
+                {browser.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
+              </div>
+              <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage}></Setting>
+            </div>
+        </div>
+      </Scrollbars>
     )
   }
 }
