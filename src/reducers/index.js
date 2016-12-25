@@ -39,7 +39,7 @@ const actionMaps = {
     },
 
     [actionTypes.showIcon](state, action) {
-        return {...state, word: action.data.word, position: action.data.position, iconModelFlag: true };
+        return {...state, ...action.data, iconModelFlag: true };
     },
 
     [actionTypes.bindData](state, action) {

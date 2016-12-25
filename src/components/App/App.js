@@ -15,7 +15,7 @@ import rightURL from './right.svg';
 import iconURL from './icon.svg';
 
 class App extends Component {
-  
+
   static defaultProps = {};
 
   static propTypes = {
@@ -39,7 +39,7 @@ class App extends Component {
                 locked = false;
               }, 1000);
               locked = true;
-            }            
+            }
           } else {
               searchWordDispatch(this.refs.searchInput.value);
           }
@@ -82,6 +82,9 @@ class App extends Component {
       error,
       loading,
       word,
+      firstIciba,
+      mainLanguage,
+      autoVoice,
       showSetting,
       SLanguage,
       SLanguageAuto,
@@ -101,7 +104,7 @@ class App extends Component {
     if(!POPENV) {
       if(iconModelFlag) {
         return (
-          <div className="__icon" onClick={() => {searchWordDispatch()}} title={browser.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
+          <div className="__icon" onClick={() => {searchWordDispatch(word, undefined, firstIciba, mainLanguage, autoVoice)}} title={browser.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
         );
       }
       return (
@@ -118,7 +121,7 @@ class App extends Component {
             </div>
             <div className="__language">
               <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => {bindDataDispatch({SLanguage: value})}} />
-              <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/> 
+              <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/>
               <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({TLanguage: value})}} />
             </div>
             <div className="__search __clearfix">
@@ -143,13 +146,16 @@ App = connect((state) => {
     error: state.error,
     loading: state.loading,
     word: state.word,
+    firstIciba: state.firstIciba,
+    mainLanguage: state.mainLanguage,
+    autoVoice: state.autoVoice,
     showSetting: state.showSetting,
     SLanguage: state.SLanguage,
     SLanguageAuto: state.SLanguageAuto,
     TLanguage: state.TLanguage,
     HLanguage: state.HLanguage,
     translateResult: state.translateResult,
-    voicePlaying: state.voicePlaying,   
+    voicePlaying: state.voicePlaying,
     iconModelFlag: state.iconModelFlag,
     relectData: state.relectData,
     setting: state.setting,

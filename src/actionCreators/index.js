@@ -59,8 +59,8 @@ export const clickSettingAC = (dispatch) => {
 
 // show icon
 export const showIconAC = (dispatch) => {
-    return (word, position) => {
-        dispatch({ type: actionTypes.showIcon , data: {word:word, position: position}});
+    return (word, position, firstIciba, mainLanguage, autoVoice) => {
+        dispatch({ type: actionTypes.showIcon , data: {word:word, position: position, firstIciba: firstIciba, mainLanguage: mainLanguage, autoVoice: autoVoice}});
     }
 }
 

@@ -24,7 +24,7 @@ function bindContentScriptEvent(dispatch, getState) {
     let userOption = {};
 
     const containerWrap = document.querySelector('#__fanyixia_content');
-    
+
     parseOption(getState(), userOption);
 
     // get message from extension and reload page
@@ -104,7 +104,7 @@ function bindContentScriptEvent(dispatch, getState) {
     containerWrap.addEventListener('mouseup', function(e) { e.stopPropagation(); }, false);
     containerWrap.addEventListener('dblclick', function(e) { e.stopPropagation(); }, false);
     containerWrap.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
-    
+
 
     function search(word) {
         if (word === '' || !word.match(/\S/) || word === oldWord) {
@@ -118,7 +118,7 @@ function bindContentScriptEvent(dispatch, getState) {
         }, 3000);
 
         if (userOption.iconModel) {
-            showIconAC(dispatch)(word, {pageX: pageX, pageY: pageY});
+            showIconAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi, mainLanguage, userOption.autoVoice);
             return false;
         }
 
