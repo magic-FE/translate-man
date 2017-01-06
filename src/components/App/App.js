@@ -13,6 +13,7 @@ import settingURL from './setting.svg';
 import searchURL from './search.svg';
 import rightURL from './right.svg';
 import iconURL from './icon.svg';
+import githubURL from './github.svg';
 
 class App extends Component {
 
@@ -76,6 +77,10 @@ class App extends Component {
     }
   }
 
+  handleGithub() {
+    browser.tabs.create({url: 'https://github.com/magic-FE/translate-man'});
+  }
+
   render() {
 
     const {
@@ -134,6 +139,9 @@ class App extends Component {
                 {browser.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
               </div>
               <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage}></Setting>
+              <div className="__footer">
+                <a className="__github" title="star me on github" onClick={this.handleGithub}><img src={getAbsoluteURL(githubURL)} alt="github" width="16" height="16" /></a>
+              </div>
             </div>
         </div>
       </Scrollbars>

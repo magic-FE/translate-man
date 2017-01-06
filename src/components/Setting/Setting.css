@@ -8,8 +8,8 @@
     padding: 10px;
     height: 16px;
     background-color: #2290e8;
-    margin: 5px 0;
     vertical-align: middle;
+    border-top: 1px solid rgb(9, 136, 238);
 }
 
 .__Setting .__list.hide {

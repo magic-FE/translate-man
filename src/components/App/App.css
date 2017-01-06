@@ -135,7 +135,16 @@
     height: 16px;
     background-color: #2290e8;
     vertical-align: middle;
-    margin: 15px 0 5px 0;
+    margin: 15px 0 0 0;
+}
+
+.__container .__footer {
+  margin-top: 10px;
+}
+
+.__container .__footer .__github {
+  cursor: pointer;
+  float: right;
 }
 
 .__container .__main_language .__Relect {

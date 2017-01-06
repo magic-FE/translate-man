@@ -37,7 +37,7 @@ class Setting extends Component {
                 shouldHide = true;
               }
               return (
-                <div key={key} 
+                <div key={key}
                      data-tip={value.tip}
                      data-delay-show="100"
                      className={classNames('__list', {'hide': shouldHide})}>{value.text} <Switch onChange={() => {this.props.switchSetting(key)}} checked={value.checked}/></div>
