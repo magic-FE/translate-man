@@ -60,7 +60,7 @@ export const getRangeFromPoint = function(clientX, clientY) {
 }
 
 /**
- * getWordFromPoint 
+ * getWordFromPoint
  * get a word depend on the point, if the pointer has no word or space will return empty string
  * @param  {int} clientX [x pointer]
  * @param  {int} clientY [y pointer]

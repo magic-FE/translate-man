@@ -21,6 +21,7 @@ function bindContentScriptEvent(dispatch, getState) {
     let mainLanguage = '';
     let isSelectWord = false;
     let selectStartTimer = null;
+    let ctrlKey = 'Control';
     let userOption = {};
 
     const containerWrap = document.querySelector('#__fanyixia_content');
@@ -32,7 +33,12 @@ function bindContentScriptEvent(dispatch, getState) {
         if(request.type === 'reload') {
             browser.storage.local.get('userData', (storage) => {
                 parseOption(storage.userData, userOption);
-                mainLanguage = storage.userData.HLanguage;
+                if (storage.userData.HLanguage) {
+                  mainLanguage = storage.userData.HLanguage;
+                }
+                if (storage.userData.ctrlKey) {
+                  ctrlKey = storage.userData.ctrlKey;
+                }
             });
         }
     });
@@ -52,7 +58,7 @@ function bindContentScriptEvent(dispatch, getState) {
 
     // only key down ctrl event
     window.addEventListener('keydown', function(e) {
-        if (userOption.ctrlTranslate && e.ctrlKey && e.which === 17) {
+        if (userOption.ctrlTranslate && e.key === ctrlKey) {
             // 如果选择了文字,按下ctrl即翻译选中文本,否则翻译鼠标指向的单词
             let selection = window.getSelection().toString();
             let word;

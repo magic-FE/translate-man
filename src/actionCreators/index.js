@@ -60,7 +60,14 @@ export const clickSettingAC = (dispatch) => {
 // show icon
 export const showIconAC = (dispatch) => {
     return (word, position, firstIciba, mainLanguage, autoVoice) => {
-        dispatch({ type: actionTypes.showIcon , data: {word:word, position: position, firstIciba: firstIciba, mainLanguage: mainLanguage, autoVoice: autoVoice}});
+        dispatch({ type: actionTypes.showIcon, data: {word:word, position: position, firstIciba: firstIciba, mainLanguage: mainLanguage, autoVoice: autoVoice}});
+    }
+}
+
+// set ctrl key
+export const setCtrlKeyAC = (dispatch) => {
+    return (key) => {
+        dispatch({ type: actionTypes.setCtrlKey, data: {ctrlKey: key} });
     }
 }
 

@@ -20,3 +20,17 @@
     vertical-align: middle;
     float: right;
 }
+
+.__Setting .__ctrl-key {
+  color: #f5e04c;
+  float: right;
+  margin-right: 10px;
+  margin-top: 2px;
+  width: 50px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 12px;
+  text-align: right;
+}

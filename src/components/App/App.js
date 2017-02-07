@@ -98,13 +98,15 @@ class App extends Component {
       translateResult,
       voicePlaying,
       relectData,
+      ctrlKey,
       setting,
       iconModelFlag,
       bindDataDispatch,
       clickSettingDispatch,
       searchWordDispatch,
       playVoiceDispatch,
-      switchSettingDispatch
+      switchSettingDispatch,
+      setCtrlKeyDispatch,
     } = this.props;
     if(!POPENV) {
       if(iconModelFlag) {
@@ -138,7 +140,7 @@ class App extends Component {
               <div className="__main_language">
                 {browser.i18n.getMessage('my_main_language')}<Relect {...relectData} value={HLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({HLanguage: value})}} />
               </div>
-              <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage}></Setting>
+              <Setting {...setting} switchSetting={switchSettingDispatch} hl={HLanguage} ctrlKey={ctrlKey} setCtrlKey={setCtrlKeyDispatch}></Setting>
               <div className="__footer">
                 <a className="__github" title="star me on github" onClick={this.handleGithub}><img src={getAbsoluteURL(githubURL)} alt="github" width="16" height="16" /></a>
               </div>
@@ -168,6 +170,7 @@ App = connect((state) => {
     relectData: state.relectData,
     setting: state.setting,
     position: state.position,
+    ctrlKey: state.ctrlKey,
   }
 }, (dispatch) => {
   return {
@@ -176,6 +179,7 @@ App = connect((state) => {
     'searchWordDispatch': actionCreators.searchWordAC(dispatch),
     'playVoiceDispatch': actionCreators.playVoiceAC(dispatch),
     'switchSettingDispatch': actionCreators.switchSettingAC(dispatch),
+    'setCtrlKeyDispatch': actionCreators.setCtrlKeyAC(dispatch),
   }
 })(App);
 

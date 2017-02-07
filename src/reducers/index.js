@@ -14,6 +14,7 @@ const initState = {
     voiceFirst: true,
     voicePlaying: false,
     iconModelFlag: true,
+    ctrlKey: 'Control',
     relectData: {
         options: JSON.parse(browser.i18n.getMessage("languages")),
     },
@@ -93,7 +94,17 @@ const actionMaps = {
 
         return {...state, ...nextState};
 
-    }
+    },
+
+    [actionTypes.setCtrlKey](state, action) {
+
+        // sync browser local storage
+        setUserDataAndSendMessage(action.data, true);
+
+        return {...state, ...action.data};
+
+    },
+
 }
 
 export default function(state = initState, action) {

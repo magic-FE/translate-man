@@ -13,3 +13,5 @@ export const playVoice = 'playVoice';
 export const getSourceLanguage = 'getSourceLanguage';
 
 export const switchSetting = 'switchSetting';
+
+export const setCtrlKey = 'setCtrlKey';
