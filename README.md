@@ -1,5 +1,6 @@
 <img src="https://cdn.rawgit.com/magic-FE/translate-man/master/src/components/App/icon.svg" alt="logo" width="80" height="80">
 # 翻译侠(translate man)
+插件地址: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
 这是一款浏览器插件(采用webExtension开发,兼容chrome和firefox),实现上百种语言的翻译,调用谷歌和金山翻译接口.注重用户体验和速度(
 国内用户调用谷歌翻译不用翻墙)
 
