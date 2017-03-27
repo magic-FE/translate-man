@@ -72,6 +72,20 @@ export const setCtrlKeyAC = (dispatch) => {
 }
 
 // play the google translate voice, the current word voice
+export const playVoiceAC = (dispatch) => {
+  return (event) => {
+    dispatch((dispatch, getState) => {
+      googleSpeech({ tl: getState().translateResult[2], q: getState().word, first: getState().voiceFirst }).then(() => {
+        dispatch({ type: actionTypes.playVoice, status: 'playing' });
+        setTimeout(function () {
+          dispatch({ type: actionTypes.playVoice });
+        }, 1500);
+      });
+    });
+  }
+}
+
+// play the google translate voice, the current word voice
 export const getSourceLanguageAC = (dispatch) => {
     return (data, word, autoVoice) => {
         dispatch((dispatch, getState) => {
@@ -125,20 +139,6 @@ export const searchWordAC = (dispatch) => {
                 }
             });
 
-        });
-    }
-}
-
-// play the google translate voice, the current word voice
-export const playVoiceAC = (dispatch) => {
-    return (event) => {
-        dispatch((dispatch, getState) => {
-            googleSpeech({ tl: getState().translateResult[2], q: getState().word, first: getState().voiceFirst }).then(() => {
-                dispatch({ type: actionTypes.playVoice, status: 'playing' });
-                setTimeout(function() {
-                    dispatch({ type: actionTypes.playVoice});
-                }, 1500);
-            });
         });
     }
 }

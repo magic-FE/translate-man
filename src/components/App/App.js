@@ -109,11 +109,17 @@ class App extends Component {
       setCtrlKeyDispatch,
     } = this.props;
     if(!POPENV) {
-      if(iconModelFlag) {
+      if (iconModelFlag) {
         return (
           <div className="__icon" onClick={() => {searchWordDispatch(word, undefined, firstIciba, mainLanguage, autoVoice)}} title={browser.i18n.getMessage('icon_hover_tips')}><img src={getAbsoluteURL(iconURL)} alt="icon" width="16" height="16"/></div>
         );
       }
+
+      // issue https://github.com/magic-FE/translate-man/issues/6
+      if (SLanguageAuto === HLanguage) {
+        return <div />;
+      }
+
       return (
         <Main {...{data: translateResult, voicePlaying, playVoice: playVoiceDispatch}}></Main>
       );
