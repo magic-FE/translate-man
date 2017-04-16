@@ -1,6 +1,5 @@
-import * as actionTypes from '../constants/actionTypes';
-import {searchWordAC, syncUserDataAC, showIconAC, bindDataAC} from './index';
-import { getWordFromPoint, getRangeFromPoint } from '../helpers/tools';
+import { searchWordAC, showIconAC } from './index';
+import { getWordFromPoint } from '../helpers/tools';
 
 function parseOption(userData, userOption) {
     userData.setting.data.forEach(function(value, index) {

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -11,7 +12,7 @@ import Setting from '../Setting/Setting';
 import logoURL from './logo.svg';
 import settingURL from './setting.svg';
 import searchURL from './search.svg';
-import rightURL from './right.svg';
+import exchnageRUL from './exchange.svg';
 import iconURL from './icon.svg';
 import githubURL from './github.svg';
 
@@ -107,6 +108,7 @@ class App extends Component {
       playVoiceDispatch,
       switchSettingDispatch,
       setCtrlKeyDispatch,
+      exchangeLanguageDispatch,
     } = this.props;
     if(!POPENV) {
       if (iconModelFlag) {
@@ -133,9 +135,9 @@ class App extends Component {
                 <img src={getAbsoluteURL(settingURL)} alt="setting" width="20" height="20" className="__setting_btn" onClick={clickSettingDispatch}/>
             </div>
             <div className="__language">
-              <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => {bindDataDispatch({SLanguage: value})}} />
-              <img src={getAbsoluteURL(rightURL)} alt="right" width="16" height="16"/>
-              <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => {bindDataDispatch({TLanguage: value})}} />
+              <Relect {...relectData} value={SLanguage} autoResult={SLanguageAuto} onChange={(value) => { bindDataDispatch({ SLanguage: value }); searchWordDispatch(this.refs.searchInput.value) }} />
+              <img style={{ margin: '0 10px', cursor: 'pointer' }} src={getAbsoluteURL(exchnageRUL)} onClick={() => { exchangeLanguageDispatch(); searchWordDispatch(this.refs.searchInput.value) }} alt="exchange" width="16" height="16"/>
+              <Relect {...relectData} value={TLanguage} autoResult={getUILanguage()} onChange={(value) => { bindDataDispatch({ TLanguage: value }); searchWordDispatch(this.refs.searchInput.value) }} />
             </div>
             <div className="__search __clearfix">
                 <input type="text" ref="searchInput" placeholder={' ' + browser.i18n.getMessage('search_placeholder')} />
@@ -186,6 +188,7 @@ App = connect((state) => {
     'playVoiceDispatch': actionCreators.playVoiceAC(dispatch),
     'switchSettingDispatch': actionCreators.switchSettingAC(dispatch),
     'setCtrlKeyDispatch': actionCreators.setCtrlKeyAC(dispatch),
+    'exchangeLanguageDispatch': actionCreators.exchangeLanguageAC(dispatch),
   }
 })(App);
 

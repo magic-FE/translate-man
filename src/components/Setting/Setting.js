@@ -5,10 +5,10 @@
  * - data               列表设置数据
  * - switchSetting      设置回调函数
  */
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Switch from '../Switch/Switch';
 import './Setting.css';
-import Relect from '../Relect/Relect';
 import ReactTooltip from 'react-tooltip';
 import classNames from 'classnames';
 import {getUILanguage} from '../../helpers/tools';

@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Main.css';
 import {getAbsoluteURL} from '../../helpers/tools';
 import voiceImageURL from './voice.png';
@@ -80,7 +80,7 @@ class Main extends Component {
           <img src={this.props.voicePlaying ? getAbsoluteURL(voicePlayingImageURL) : getAbsoluteURL(voiceImageURL)}
                onMouseOver={this.onMouseOver.bind(this)}
                onMouseLeave={this.onMouseLeave.bind(this)}
-               alt="voice" 
+               alt="voice"
                onClick={this.props.playVoice}/>
         </div>
         <div className="__bot">

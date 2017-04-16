@@ -8,7 +8,7 @@ import {POPENV} from '../helpers/tools';
 // spcecial two way bind use redux
 export const bindDataAC = (dispatch) => {
     return (variable) => {
-        dispatch({type: actionTypes.bindData, data: variable});
+        dispatch({ type: actionTypes.bindData, data: variable });
     }
 }
 
@@ -149,4 +149,11 @@ export const switchSettingAC = (dispatch) => {
     return (index) => {
         dispatch({ type: actionTypes.switchSetting, data: index });
     }
+}
+
+// exchange slanguage and tlanguage
+export const exchangeLanguageAC = (dispatch) => {
+  return () => {
+    dispatch({ type: actionTypes.exchangeLanguage });
+  }
 }

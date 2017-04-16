@@ -20,27 +20,27 @@ const initState = {
     },
     setting: {
         data: [
-            { text: browser.i18n.getMessage('dblclick_translate'), tip: browser.i18n.getMessage('dblclick_translate_tip'), checked: true, name: "dblclickTranslate"},
+            { text: browser.i18n.getMessage('dblclick_translate'), tip: browser.i18n.getMessage('dblclick_translate_tip'), checked: true, name: "dblclickTranslate" },
             { text: browser.i18n.getMessage('select_translate'), tip: browser.i18n.getMessage('select_translate_tip'), checked: true, name: "selectTranslate" },
-            { text: browser.i18n.getMessage('ctrl_translate'), tip: browser.i18n.getMessage('ctrl_translate_tip'), checked: true, name: "ctrlTranslate"},
+            { text: browser.i18n.getMessage('ctrl_translate'), tip: browser.i18n.getMessage('ctrl_translate_tip'), checked: true, name: "ctrlTranslate" },
             { text: browser.i18n.getMessage('icon_model'), tip: browser.i18n.getMessage('icon_model_tip'), checked: false, name: "iconModel" },
-            { text: browser.i18n.getMessage('iciba_fanyi'), tip: browser.i18n.getMessage('iciba_fanyi_tip'), checked: getUILanguage() === 'zh-CN' ? true : false, name: "icibaFanyi"},
-            { text: browser.i18n.getMessage('auto_voice'), tip: browser.i18n.getMessage('auto_voice_tip'), checked: false, name: "autoVoice"},
+            { text: browser.i18n.getMessage('iciba_fanyi'), tip: browser.i18n.getMessage('iciba_fanyi_tip'), checked: getUILanguage() === 'zh-CN' ? true : false, name: "icibaFanyi" },
+            { text: browser.i18n.getMessage('auto_voice'), tip: browser.i18n.getMessage('auto_voice_tip'), checked: false, name: "autoVoice" },
         ]
     },
 }
 
 const actionMaps = {
     [actionTypes.syncUserData](state, action) {
-        return {...state, ...action.data};
+        return { ...state, ...action.data };
     },
 
     [actionTypes.clickSetting](state, action) {
-        return {...state, showSetting: !state.showSetting };
+        return { ...state, showSetting: !state.showSetting };
     },
 
     [actionTypes.showIcon](state, action) {
-        return {...state, ...action.data, iconModelFlag: true };
+        return { ...state, ...action.data, iconModelFlag: true };
     },
 
     [actionTypes.bindData](state, action) {
@@ -48,19 +48,19 @@ const actionMaps = {
             // sync browser local storage
             setUserDataAndSendMessage(action.data, action.data.HLanguage);
         }
-        return {...state, ...action.data};
+        return { ...state, ...action.data };
     },
 
     [actionTypes.searchWord](state, action) {
         switch (action.status) {
             case 'emptyText':
-                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: [] };
+                return { ...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, translateResult: [] };
             case 'fetching':
-                return {...state, iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false };
+                return { ...state, iconModelFlag: false, error: false, loading: true, voiceFirst: true, showSetting: false };
             case 'success':
-                return {...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2] || state.SLanguageAuto, translateResult: action.data, position: action.position};
+                return { ...state, iconModelFlag: false, error: false, loading: false, voiceFirst: true, showSetting: false, SLanguageAuto: action.data[2] || state.SLanguageAuto, translateResult: action.data, position: action.position };
             case 'error':
-                return {...state, iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false};
+                return { ...state, iconModelFlag: false, error: action.error, loading: false, voiceFirst: true, showSetting: false };
             default:false
                 return state;
         }
@@ -68,15 +68,15 @@ const actionMaps = {
 
     [actionTypes.playVoice](state, action) {
         if(action.status === 'playing') {
-            return {...state, voiceFirst: false, voicePlaying: true, position: null };
+            return { ...state, voiceFirst: false, voicePlaying: true, position: null };
         }
-        return {...state, voiceFirst: false, voicePlaying: false, position: null };
+        return { ...state, voiceFirst: false, voicePlaying: false, position: null };
     },
 
     [actionTypes.getSourceLanguage](state, action) {
         let nextState = state.translateResult.slice();
         nextState[2] = action.data[2];
-        return {...state, word: action.word, SLanguageAuto: action.data[2], translateResult: nextState, position: null};
+        return { ...state, word: action.word, SLanguageAuto: action.data[2], translateResult: nextState, position: null };
     },
 
     [actionTypes.switchSetting](state, action) {
@@ -92,7 +92,7 @@ const actionMaps = {
         // sync browser local storage
         setUserDataAndSendMessage(nextState, true);
 
-        return {...state, ...nextState};
+        return { ...state, ...nextState };
 
     },
 
@@ -101,7 +101,17 @@ const actionMaps = {
         // sync browser local storage
         setUserDataAndSendMessage(action.data, true);
 
-        return {...state, ...action.data};
+        return { ...state, ...action.data };
+
+    },
+
+    [actionTypes.exchangeLanguage](state, action) {
+
+      if (state.SLanguage === 'auto' && state.SLanguageAuto) {
+        return { ...state, SLanguage: state.TLanguage, TLanguage: state.SLanguageAuto };
+      }
+
+      return { ...state, SLanguage: state.TLanguage, TLanguage: state.SLanguage };
 
     },
 

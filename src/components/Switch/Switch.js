@@ -5,11 +5,12 @@
  * - checked          组件是否打开
  * - onChange         组件回调事件
  */
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Switch.css';
 
 class Switch extends Component {
-	
+
 	static defaultProps = {
 		checked: false,
 		onChange: function () {},
@@ -33,12 +34,13 @@ class Switch extends Component {
 	}
 
 	render() {
-		return(<div className="__ios-checkbox">
-					<div className="__checkbox">
-	                    <input type="checkbox" id={this.props.id || this.state.id} className="__raw-checkbox" checked={this.props.checked} onChange={this.onChange.bind(this)}/>
-	                    <label htmlFor={this.props.id || this.state.id} className="__emulate-ios-button"></label>
-	                </div>
-                </div>)
+		return(
+      <div className="__ios-checkbox">
+        <div className="__checkbox">
+            <input type="checkbox" id={this.props.id || this.state.id} className="__raw-checkbox" checked={this.props.checked} onChange={this.onChange.bind(this)}/>
+            <label htmlFor={this.props.id || this.state.id} className="__emulate-ios-button"></label>
+        </div>
+      </div>)
 	}
 }
 

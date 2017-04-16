@@ -6,7 +6,8 @@
  * - value             选择的值
  * - onChange          选择后回调函数
  */
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import './relect.css';
 import classNames from 'classnames';

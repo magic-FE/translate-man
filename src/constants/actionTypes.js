@@ -15,3 +15,5 @@ export const getSourceLanguage = 'getSourceLanguage';
 export const switchSetting = 'switchSetting';
 
 export const setCtrlKey = 'setCtrlKey';
+
+export const exchangeLanguage = 'exchangeLanguage';
