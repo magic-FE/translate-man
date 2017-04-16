@@ -25,7 +25,7 @@ npm start
 ```shell
 npm run build
 ```
-然后把 build 目录文件压缩为 zip 文件,上次到 google 插件商店。
+然后把 build 目录文件压缩为 zip 文件,上传到 google 插件商店。
 
 ## 描述
 也许是你遇到过最好的翻译插件了吧。
