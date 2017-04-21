@@ -126,7 +126,7 @@ export const searchWordAC = (dispatch) => {
                 hostLanguage = getState().HLanguage;
             } else {
                 sourceLanguage = 'auto';
-                translateLanguage = mainLanguage || getState().HLanguage;
+                translateLanguage = mainLanguage || getState().TLanguage;
                 hostLanguage = mainLanguage || getState().HLanguage;
             }
 

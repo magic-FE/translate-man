@@ -118,7 +118,7 @@ class App extends Component {
       }
 
       // issue https://github.com/magic-FE/translate-man/issues/6
-      if (SLanguageAuto === HLanguage) {
+      if (SLanguageAuto === TLanguage) {
         return <div />;
       }
 
