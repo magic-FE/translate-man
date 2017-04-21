@@ -1,24 +1,24 @@
 .__Setting {
-    display: block;
+  display: block;
 }
 
 .__Setting .__list {
-    font-size: 12px;
-    color: #e8f5ff;
-    padding: 10px;
-    height: 16px;
-    background-color: #2290e8;
-    vertical-align: middle;
-    border-top: 1px solid rgb(9, 136, 238);
+  font-size: 12px;
+  color: #e8f5ff;
+  padding: 10px;
+  height: 16px;
+  background-color: #2290e8;
+  vertical-align: middle;
+  border-top: 1px solid rgb(9, 136, 238);
 }
 
 .__Setting .__list.hide {
-    display: none;
+  display: none;
 }
 
 .__Setting .__ios-checkbox {
-    vertical-align: middle;
-    float: right;
+  vertical-align: middle;
+  float: right;
 }
 
 .__Setting .__ctrl-key {

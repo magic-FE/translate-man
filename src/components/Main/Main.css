@@ -1,52 +1,55 @@
 .__main {
-    display: block;
-    padding: 10px;
-    color: #1f1f1f;
-    background-color: #fdfefe;
-    text-shadow: 0 1px 1px #ffffff;
+  display: block;
+  padding: 10px;
+  color: #1f1f1f;
+  background-color: #fdfefe;
+  text-shadow: 0 1px 1px #ffffff;
 }
 
 .__main .__keyword {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow : hidden;
-    text-overflow: ellipsis;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 .__main .__mid {
-    display: block;
-    margin: 2px 0 10px;
+  display: block;
+  margin: 2px 0 10px;
 }
 
 .__main .__mid span {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .__main .__mid img {
-    cursor: pointer;
-    vertical-align: middle;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 .__main .__phonetic {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .__main .__bot .__li {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 5px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 5px 0;
 }
 
 .__main .__bot .__li .__prop {
-    color: #958d79;
-    min-width: 25px;
-    margin-right: 5px;
+  color: #958d79;
+  min-width: 25px;
+  margin-right: 5px;
 }
 
 .__main .__bot .__translation {
-    flex: 1;
+  flex: 1;
 }

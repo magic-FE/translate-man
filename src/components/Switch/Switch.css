@@ -1,70 +1,70 @@
 .__ios-checkbox {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  position: relative;
 }
 
 .__ios-checkbox .__checkbox {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .__ios-checkbox .__emulate-ios-button {
-    display: block;
-    width: 2rem;
-    height: 1rem;
-    background: #ccc;
-    border-radius: 5rem;
-    cursor: pointer;
-    position: relative;
-    transition: all .3s ease;
+  display: block;
+  width: 2rem;
+  height: 1rem;
+  background: #ccc;
+  border-radius: 5rem;
+  cursor: pointer;
+  position: relative;
+  transition: all .3s ease;
 }
 
 .__ios-checkbox .__emulate-ios-button:after {
-    content: '';
-    display: block;
-    width: .9rem;
-    height: .9rem;
-    border-radius: 100%;
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-    position: absolute;
-    left: .05rem;
-    top: .05rem;
-    transform: translateZ(0);
-    transition: all .3s ease;
+  content: '';
+  display: block;
+  width: .9rem;
+  height: .9rem;
+  border-radius: 100%;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+  position: absolute;
+  left: .05rem;
+  top: .05rem;
+  transform: translateZ(0);
+  transition: all .3s ease;
 }
 
 .__ios-checkbox .__emulate-ios-button:active:after {
-    width: 1.1rem;
+  width: 1.1rem;
 }
 
 .__ios-checkbox .__raw-checkbox {
-    display: none;
+  display: none;
 }
 
 .__ios-checkbox .__raw-checkbox:checked+label {
-    background: #34bf49;
+  background: #34bf49;
 }
 
 
 /* 这里是伪元素偏移,初始是0.9+0.05 ,所以这里1.05rem */
 
 .__ios-checkbox .__raw-checkbox:checked+label:after {
-    left: 1.05rem;
+  left: 1.05rem;
 }
 
 .__ios-checkbox .__raw-checkbox:checked+label:active:after {
-    left: .5rem;
+  left: .5rem;
 }
 
 .__ios-checkbox .__raw-checkbox:disabled+label {
-    background: #d5d5d5;
-    pointer-events: none;
+  background: #d5d5d5;
+  pointer-events: none;
 }
 
 .__ios-checkbox .__raw-checkbox:disabled+label:after {
-    background: #bcbdbc;
+  background: #bcbdbc;
 }
