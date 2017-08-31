@@ -1,10 +1,10 @@
 {
     "app_name": {
-        "message": "翻訳夏（マンを翻訳）",
+        "message": "翻訳マン（Translate Man）",
         "description": "插件的名称"
     },
     "app_description": {
-        "message": "ゾーン型単語翻訳、言語を自動的に識別し、翻訳された意味は、ユーザーフレンドリーなインターフェイス、国内のユーザーは、Googleの翻訳インターフェースを使用して最適化するために、具体的にするために、数百の言語をサポートしています",
+        "message": "選択翻訳、ホーバー翻訳、言語自動識別、百種類以上の言語対応、Google翻訳API利用、使いやいUI",
         "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
     },
     "search_placeholder": {
@@ -12,59 +12,59 @@
         "description": "输入文字"
     },
     "translating_text": {
-        "message": "翻訳...",
+        "message": "翻訳中...",
         "description": "正在翻译"
     },
     "error_text": {
-        "message": "ああ,若干の問題:<br/>1.ネットワークをチェック<br/>2.再試行します<br/>3.作者に連絡してください: 844033231@qq.com<br/>エラー原因:<br/>",
+        "message": "あら,エラーがあったそうです:<br/>1.ネットワークをチェック<br/>2.再試行します<br/>3.作者に連絡してください: 844033231@qq.com<br/>エラー原因:<br/>",
         "description": "啊呀,出了点小问题:<br/>1.检查是否有网络<br/>2.重新试下<br/>3.联系作者: 844033231@qq.com<br/>错误原因:<br/>"
     },
     "my_main_language": {
-        "message": "私の主な言語",
+        "message": "私のメイン言語",
         "description": "我的主语言"
     },
     "current_choice": {
-        "message": "現在選択言語:",
+        "message": "選択中の言語:",
         "description": "当前选择语言:"
     },
     "dblclick_translate": {
-        "message": "翻訳をダブルクリックします",
+        "message": "ダブルクリックで翻訳",
         "description": "双击单词翻译"
     },
     "dblclick_translate_tip": {
-        "message": "テキストのページをダブルクリックすると、選択したテキストを翻訳することができます",
+        "message": "ダブルクリックされた文字列を翻訳",
         "description": "页面中双击文字,即可翻译选中文本"
     },
     "select_translate": {
-        "message": "指定された単語は自動的に翻訳された後、",
+        "message": "選んだ単語を翻訳",
         "description": "划词后自动翻译"
     },
     "select_translate_tip": {
-        "message": "指定されたワードマウス後は、自動的に選択されたテキストを翻訳することができます",
+        "message": "マウスで選んだ文字列を翻訳",
         "description": "鼠标划词后,即可自动翻译选中文本"
     },
     "ctrl_translate": {
-        "message": "あなたのマウスを押すCTRLキー単語翻訳を指します",
+        "message": "マウスで指しながら、Ctrlキーを押下すると、指している単語を翻訳",
         "description": "鼠标指向单词 按下ctrl键翻译"
     },
     "ctrl_translate_tip": {
-        "message": "ウルトラポータブルモード!(強くお勧めします)<br/>* 任意の単語の上にマウス、プレスCTRLは、単語を翻訳します <br/>* 限り、選択したテキスト内のページがあるので、プレスCTRLは、選択したテキストを翻訳します<br/>* Ctrlキーを押しながら、どこに移動するには、マウスを保持し、どこに翻訳",
+        "message": "超楽ちんモード!(強くお勧めします)<br/>* 任意の単語にマウスを置き、Ctrlを押せば、その単語が翻訳されます <br/>* ページに選択されている文字列さえがあれば、Ctrlを押すとそれが翻訳されます。<br/>* Ctrlが押している限り、マウスの移動しているところの文字列がリアルタイムに翻訳される。",
         "description": "超便捷模式"
     },
     "icon_model": {
-        "message": "アイコンモード（表示は、翻訳のアイコンをオン）",
+        "message": "アイコンモード（Onにすると、翻訳のアイコンが表示される）",
         "description": "图标模式(开启后显示翻译图标)"
     },
     "icon_model_tip": {
-        "message": "結果は直接爆弾ボックスがポップアップ翻訳、しかしポップアイコンはありません",
+        "message": "翻訳結果を直接表示せずに、小アイコンをポップアップ",
         "description": "不直接弹出小图标"
     },
     "iciba_fanyi": {
-        "message": "優先順位Kingsoftの翻訳",
+        "message": "Kingsoftを優先利用",
         "description": "优先金山翻译"
     },
     "iciba_fanyi_tip": {
-        "message": "Kingsoftの翻訳は、国内のユーザーに優先オープンをお勧めします）<br/> *最初、何の結果は自動的にGoogleによって翻訳されていないKingsoftの変換を試してみて、翻訳速度を向上させる:(",
+        "message": "Kingsoftを優先利用：(中国内ではおすすめです)<br/> *先にKingSoftへ翻訳を問い合わせ、失敗した場合にGoogleへ問い合わせすることで、翻訳速度を向上させる。",
         "description": "推荐国内用户开启,先采用金山翻译,无结果会自动用谷歌翻译,提高翻译速度"
     },
     "auto_voice": {
@@ -72,11 +72,11 @@
         "description": "自动发音"
     },
     "auto_voice_tip": {
-        "message": "自動翻訳の発音の後",
+        "message": "翻訳の後に自動発音",
         "description": "翻译后自动发音"
     },
     "icon_hover_tips": {
-        "message": "翻訳]をクリックします",
+        "message": "クリックで翻訳",
         "description": "点击翻译"
     },
     "languages": {
