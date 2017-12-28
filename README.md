@@ -2,7 +2,9 @@
 
 # 翻译侠(translate man)
 
-插件地址: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
+chrome 插件地址: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
+
+firefox 插件地址: [https://addons.mozilla.org/zh-CN/firefox/addon/%E7%BF%BB%E8%AF%91%E4%BE%A0-translate-man/](https://addons.mozilla.org/zh-CN/firefox/addon/%E7%BF%BB%E8%AF%91%E4%BE%A0-translate-man/)
 
 这是一款浏览器插件（采用 webExtension 开发）,兼容 chrome 和 firefox ，实现上百种语言的翻译,调用谷歌和金山翻译接口，注重用户体验和速度（国内用户调用谷歌翻译不用翻墙）。
 
