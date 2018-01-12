@@ -15,10 +15,9 @@ function bindContentScriptEvent(dispatch, getState) {
     let pageY = 0;
     let oldWord = '';
     let oldWordTimeHandler = null;
-    let searchTimeHandler = null;
     let isMouseDown = false;
+    let isOnlyKeyDownCtrlKey = false;
     let mainLanguage = '';
-    let isSelectWord = false;
     let selectStartTimer = null;
     let ctrlKey = 'Control';
     let userOption = {};
@@ -58,6 +57,14 @@ function bindContentScriptEvent(dispatch, getState) {
     // only key down ctrl event
     window.addEventListener('keydown', function(e) {
         if (userOption.ctrlTranslate && e.key === ctrlKey) {
+          isOnlyKeyDownCtrlKey = true
+        } else {
+          isOnlyKeyDownCtrlKey = false
+        }
+    }, false);
+
+    window.addEventListener('keyup', function(e) {
+        if (userOption.ctrlTranslate && isOnlyKeyDownCtrlKey) {
             // 如果选择了文字,按下ctrl即翻译选中文本,否则翻译鼠标指向的单词
             let selection = window.getSelection().toString();
             let word;
@@ -69,10 +76,7 @@ function bindContentScriptEvent(dispatch, getState) {
             if (!word) {
                 word = getWordFromPoint(mouseX, mouseY, containerWrap);
             }
-
-            searchTimeHandler = setTimeout(function() {
-                search(word);
-            }, 250);
+            search(word);
         } else {
             hidePlane();
         }
@@ -109,7 +113,7 @@ function bindContentScriptEvent(dispatch, getState) {
     containerWrap.addEventListener('mouseup', function(e) { e.stopPropagation(); }, false);
     containerWrap.addEventListener('dblclick', function(e) { e.stopPropagation(); }, false);
     containerWrap.addEventListener('keydown', function(e) { e.stopPropagation(); }, false);
-
+    containerWrap.addEventListener('keyup', function(e) { e.stopPropagation(); }, false);
 
     function search(word) {
         if (word === '' || !word.match(/\S/) || word === oldWord) {
@@ -133,7 +137,6 @@ function bindContentScriptEvent(dispatch, getState) {
     function hidePlane() {
         containerWrap.style.display = 'none';
         oldWord = '';
-        clearTimeout(searchTimeHandler); // 清除搜索延迟
     }
 }
 
