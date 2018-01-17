@@ -126,15 +126,6 @@ function bindContentScriptEvent(dispatch, getState) {
             oldWord = '';
         }, 3000);
 
-        if (window.ga) {
-          window.ga('send', {
-            hitType: 'event',
-            eventCategory: 'Tranlates',
-            eventAction: 'webpage translate',
-            eventValue: 1,
-          });
-        }
-
         if (userOption.iconModel) {
             showIconAC(dispatch)(word, {pageX: pageX, pageY: pageY}, userOption.icibaFanyi, mainLanguage, userOption.autoVoice);
             return false;
@@ -147,19 +138,6 @@ function bindContentScriptEvent(dispatch, getState) {
         containerWrap.style.display = 'none';
         oldWord = '';
     }
-
-    // 谷歌分析
-    /* eslint-disable */
-    try {
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga')
-
-      window.ga('create', 'UA-85615715-2', 'auto')
-      window.ga('send', 'pageview')
-    } catch(e) {}
-    /* eslint-enable */
 }
 
 export default bindContentScriptEvent;
