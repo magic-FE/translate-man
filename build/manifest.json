@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "minimum_chrome_version": "42",
     "name": "__MSG_app_name__",
-    "version": "2.5.5",
+    "version": "2.6.0",
     "author": "marchen",
     "description": "__MSG_app_description__",
     "default_locale": "en",
@@ -21,6 +21,15 @@
         "default_title": "__MSG_app_name__",
         "default_popup": "index.html"
     },
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+Q",
+          "mac": "MacCtrl+Shift+Q"
+        },
+        "description": "Opens index.html"
+      }
+    },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*", "file://*/*"],
         "css": ["static/css/main.css"],
@@ -33,6 +42,7 @@
     "permissions": [
         "tabs",
         "storage",
+        "clipboardRead",
         "http://fy.iciba.com/",
         "https://translate.google.com/",
         "https://translate.google.cn/"

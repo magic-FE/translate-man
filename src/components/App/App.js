@@ -27,6 +27,7 @@ class App extends Component {
   componentDidMount() {
     if(POPENV) {
       this.refs.searchInput.focus();
+      document.execCommand('paste');
       const {searchWordDispatch} = this.props;
       let locked = false;
       document.addEventListener('keydown', (event) => {

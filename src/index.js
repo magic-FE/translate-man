@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import App from './components/App/App';
 import configureStore from './store/configureStore';
 import {syncUserDataAC} from './actionCreators';
-import {makeBrowser, POPENV} from './helpers/tools';
+import {POPENV} from './helpers/tools';
 
 // 模拟用户升级
 // browser.storage.local.set({'userData': {setting: {data: [{hecked:false, name: "dblclickTranslate", text: "双击单词翻译", tip: "页面中双击文字,即可翻译选中文本"}]}}});
