@@ -8,7 +8,7 @@ firefox 插件地址: [https://addons.mozilla.org/zh-CN/firefox/addon/%E7%BF%BB%
 
 这是一款浏览器插件（采用 webExtension 开发）,兼容 chrome 和 firefox ，实现上百种语言的翻译,调用谷歌和金山翻译接口，注重用户体验和速度（国内用户调用谷歌翻译不用翻墙）。
 
-打开插件后，自动发送 https://translate.google.com 和 https://trnaslate.google.cn 以此来确定那个网站可以访问。
+打开插件后，自动发送 https://translate.google.com 和 https://translate.google.cn 以此来确定那个网站可以访问。
 
 在主语言或者 UI 界面是中文的情况下，选择优先金山翻译，将会采用金山翻译（提高翻译速度），其他情况会采用谷歌翻译。
 
