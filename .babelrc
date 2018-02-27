@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "external-helpers",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "syntax-dynamic-import"
+  ],
+  "comments": false
+}
