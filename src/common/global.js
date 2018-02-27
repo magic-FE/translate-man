@@ -1,0 +1,3 @@
+/* eslint-disable */
+// webextension for chrome and firefox...
+window.browser = typeof browser !== 'undefined' ? browser : chrome

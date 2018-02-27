@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const eslintFriendlyFormatter = require('eslint-friendly-formatter')
 const constants = require('./config/constants')
-const svgConfig = require('./config/svg.config')
 const postcssConfig = require('./config/postcss.config')
 
 module.exports = {
@@ -35,10 +34,6 @@ module.exports = {
       options: {
         formatter: eslintFriendlyFormatter,
       },
-    }, {
-      enforce: 'pre',
-      test: /\.svg$/,
-      loader: `svgo-loader?${JSON.stringify(svgConfig)}`,
     }, {
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -83,23 +78,17 @@ module.exports = {
       test: /\.html$/,
       loader: 'vue-html-loader?minimize=false',
     }, {
-      test: /\.svg$/,
-      exclude: [/not-sprite-svg/],
-      loader: 'svg-sprite-loader',
-    }, {
-      test: /\.svg$/,
-      include: [/not-sprite-svg/],
-      loader: 'url-loader',
+      test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+      loader: 'file-loader',
       query: {
-        limit: constants.URL_LOADER_LIMIT,
-        name: path.posix.join(constants.ASSETS_PATH, '[name].[hash:7].[ext]'),
+        name: 'static/[name].[ext]',
       },
     }, {
-      test: /\.(gif|png|jpe?g)(\?\S*)?$/,
-      loader: 'url-loader',
+      test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
+      loader: 'url',
       query: {
         limit: constants.URL_LOADER_LIMIT,
-        name: path.posix.join(constants.ASSETS_PATH, '[name].[hash:7].[ext]'),
+        name: 'static/[name].[ext]',
       },
     }]
   },

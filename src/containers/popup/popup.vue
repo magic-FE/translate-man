@@ -1,10 +1,23 @@
 <template>
-  <div>popup</div>
+  <div>
+    <Icon class="logo" name="logo"></Icon>
+    <h1>Popup Page</h1>
+  </div>
 </template>
 
 <script>
-  export default {}
+  import { Icon } from '@/components'
+
+  export default {
+    components: {
+      Icon,
+    },
+  }
 </script>
 
-<style>
+<style scoped>
+  .logo {
+    width: 128px;
+    height: 128px;
+  }
 </style>

@@ -48,6 +48,6 @@ module.exports = {
   ],
   'content_security_policy': "script-src 'self' 'unsafe-eval'; object-src 'self'",
   'web_accessible_resources': [
-    'icons/*.*',
+    'static/*.*',
   ]
 }
