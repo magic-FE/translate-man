@@ -4,7 +4,14 @@
 
 [中文](./README-CH.md)
 
-This is in dev version,please use master branch.
+This is in dev version,please use v2 branch.
+
+# design screenshot
+<img src="./design/主页.png" width="320">
+<img src="./design/设置.png" width="320">
+<img src="./design/语言选择.png" width="320">
+<img src="./design/单词本.png" width="320">
+<img src="./design/快速登录.png" width="320">
 
 chrome store: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
 
