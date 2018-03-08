@@ -1,5 +1,3 @@
-<img src="https://cdn.rawgit.com/magic-FE/translate-man/master/src/components/App/icon.svg" alt="logo" width="80" height="80">
-
 # translate man
 
 [中文](./README-CH.md)

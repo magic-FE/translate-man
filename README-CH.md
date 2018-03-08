@@ -1,5 +1,3 @@
-<img src="https://cdn.rawgit.com/magic-FE/translate-man/master/src/components/App/icon.svg" alt="logo" width="80" height="80">
-
 # 翻译侠
 
 chrome 插件地址: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
