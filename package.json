@@ -21,8 +21,10 @@
     "url": "https://github.com/magic-FE/translate-man/issues"
   },
   "dependencies": {
-    "vue": "^2.5.2",
-    "vuex": "^3.0.0"
+    "babel-helpers": "^6.24.1",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "archiver": "^2.1.0",
@@ -58,7 +60,7 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.3",
-    "vue-template-compiler": "^2.5.2",
+    "vue-template-compiler": "^2.5.13",
     "wcer": "^1.0.2",
     "webpack": "^3.8.1",
     "webpack-merge": "^4.1.0"

@@ -1,8 +1,11 @@
 import '../common/global'
 import Vue from 'vue'
-import Popup from '../containers/popup'
+import router from '../router'
+import store from '../store'
+import App from '../app.vue'
 
 new Vue({
-  el: '#app',
-  render: h => h(Popup),
-})
+  router,
+  store,
+  render: h => h(App),
+}).$mount('#app')

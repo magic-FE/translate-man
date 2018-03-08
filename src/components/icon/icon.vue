@@ -6,9 +6,23 @@
 
 <script>
   import logo from './svg/logo.svg'
+  import arrowLeft from './svg/arrowLeft.svg'
+  import arrowRightWhite from './svg/arrowRightWhite.svg'
+  import arrowRightGray from './svg/arrowRightGray.svg'
+  import setting from './svg/setting.svg'
+  import sound from './svg/sound.svg'
+  import star from './svg/star.svg'
+  import stared from './svg/stared.svg'
 
   const iconMaps = {
     logo,
+    arrowLeft,
+    arrowRightWhite,
+    arrowRightGray,
+    setting,
+    sound,
+    star,
+    stared,
   }
 
   Object.keys(iconMaps).forEach(key => {

@@ -5,5 +5,17 @@
     "transform-object-rest-spread",
     "syntax-dynamic-import"
   ],
-  "comments": false
+  "comments": false,
+  "env": {
+    "es5": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions", "safari >= 8", "android >= 4.4"],
+            "modules": false
+          }
+        }]
+      ]
+    }
+  }
 }
