@@ -2,7 +2,7 @@
   <div class="popup">
     <header class="header">
       <Icon class="logo" name="logo"></Icon>
-      <Icon class="setting" name="setting"></Icon>
+      <Icon class="setting" name="setting" @click.native="goToSetting"></Icon>
     </header>
     <div class="main">
       <InputBox class="input-box-wrap"></InputBox>
@@ -21,6 +21,12 @@
       Icon,
       InputBox,
       OutputBox,
+    },
+
+    methods: {
+      goToSetting() {
+        this.$router.push({ name: 'setting' })
+      },
     },
   }
 </script>

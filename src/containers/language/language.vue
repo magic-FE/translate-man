@@ -4,13 +4,15 @@
     <div class="language-wrap">
       <div v-for="language in languageLists.slice(0, 9)"
         :key="language.value + '_hot'" @click="chooseLanguage(language.value)"
-        class="language">
+        class="language"
+        :class="{ 'hide-auto': hideAuto &&  language.value === 'auto', 'selected': language.value === value }">
         {{language.text}}
       </div>
       <div class="line"></div>
       <div v-for="language in languageLists.slice(9)"
         :key="language.value" @click="chooseLanguage(language.value)"
-        class="language">
+        class="language"
+        :class="{ 'selected': language.value === value }">
         {{language.text}}
       </div>
     </div>
@@ -29,7 +31,13 @@
     computed: {
       ...Vuex.mapState([
         'languageLists',
-      ])
+      ]),
+      hideAuto() {
+        return !!this.$router.currentRoute.query.hideAuto
+      },
+      value() {
+        return this.$router.currentRoute.query.value
+      },
     },
 
     methods: {
@@ -55,6 +63,10 @@
     background-color: #ffffff;
   }
 
+  .hide-auto {
+    visibility: hidden;
+  }
+
   .line {
     width: 100%;
     height: 1px;
@@ -73,7 +85,8 @@
     margin-bottom: 15px;
     transition: color 0.2s;
 
-    &:hover {
+    &:hover,
+    &.selected {
       color: #0abfbc;
     }
   }
