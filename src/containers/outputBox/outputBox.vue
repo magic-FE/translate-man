@@ -42,13 +42,14 @@
 <style scoped>
   .output-box {
     color: #333333;
-    padding: 10px;
     border-radius: 4px;
-    background-color: #fff;
   }
 
   .keyword {
     font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .sound {
@@ -80,6 +81,10 @@
 
   .result-list {
     margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .lexical {

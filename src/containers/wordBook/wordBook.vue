@@ -1,11 +1,23 @@
 <template>
-  <div class="word-book">
-    work book
+  <div>
+    <NavBar name="单词本"></NavBar>
+    <div class="word-book-wrap"></div>
   </div>
 </template>
 
 <script>
-  export default {
+  import { NavBar } from '@/components'
 
+  export default {
+    components: {
+      NavBar,
+    },
   }
 </script>
+
+<style scoped>
+  .word-book-wrap {
+    margin-top: 10px;
+  }
+</style>
+

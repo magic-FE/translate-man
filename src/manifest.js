@@ -42,7 +42,7 @@ module.exports = {
   'content_scripts': [{
     'matches': ['http://*/*', 'https://*/*', 'file://*/*'],
     'css': ['css/style.css'],
-    'js': ['js/content.js'],
+    'js': ['js/popup.js'],
   }],
   'background': {
     'scripts': ['js/background.js'],

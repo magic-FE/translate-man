@@ -18,6 +18,8 @@ const $fetch = option => {
   })
 }
 
+const POPENV = !!browser.windows
+
 /**
  * Array undefined like [,,] will be parsed error
  * Add null value to undefined array
@@ -29,7 +31,133 @@ const fixArrayError = responseText => {
   return JSON.parse(text)
 }
 
+const getUILanguage = () => {
+  let language = browser.i18n.getUILanguage() || 'en'
+  if (language.slice(0, 2) === 'en') {
+    language = 'en'
+  }
+  language = language.replace(/_/g, '-')
+  return language
+}
+
+const getRangeFromPoint = (clientX, clientY) => {
+  let range
+  let node
+  let offsetRange
+  // ref:https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint
+  if (document.caretPositionFromPoint) {
+    range = document.caretPositionFromPoint(clientX, clientY)
+    node = range.offsetNode
+    offsetRange = range.offset
+  } else if (document.caretRangeFromPoint) {
+    range = document.caretRangeFromPoint(clientX, clientY)
+    node = range.startContainer
+    offsetRange = range.startOffset
+  } else {
+    return ''
+  }
+
+  return {
+    node,
+    offset: offsetRange,
+  }
+}
+
+/**
+* getWordFromPoint
+* get a word depend on the point, if the pointer has no word or space will return empty string
+* @param  {int} clientX [x pointer]
+* @param  {int} clientY [y pointer]
+* @return {string} the pointer string
+*/
+const getWordFromPoint = (clientX, clientY, exceptEle) => {
+  // refefer: http://stackoverflow.com/questions/2444430/how-to-get-a-word-under-cursor-using-javascript
+  let range = null
+  let textNode = null
+  let begin = null
+  let end = null
+  // 分割符号
+  const breakWord = /((?=[\x00-\x7e]+)[^A-Za-z-'])/
+  const hasParents = (dom, parent) => {
+    let parentNode = parent
+    let domNode = dom
+    if (!parentNode) {
+      return false
+    }
+
+    if (typeof domNode === 'string') {
+      domNode = document.querySelector(domNode)
+    }
+
+    if (typeof parentNode === 'string') {
+      parentNode = document.querySelector(parentNode)
+    }
+
+    const a = [domNode]
+    let i = 1
+    while ((a[0] = a[0]['parentNode']) && a[0].nodeType !== 9) {
+      if (parentNode === a[0]) {
+        a[i] = a[0]
+        i++
+      }
+    }
+    return i === 2
+  }
+
+  range = getRangeFromPoint(clientX, clientY)
+
+  console.log(range)
+
+  textNode = range.node
+  let { offset } = range
+
+  // only TEXT_NODEs
+  if (!textNode || textNode.nodeType !== Node.TEXT_NODE) {
+    return ''
+  }
+
+  // 去除父元素
+  if (hasParents(textNode, exceptEle)) {
+    return ''
+  }
+
+  const { data } = textNode
+
+  // Sometimes the offset can be at the 'length' of the data.
+  // It might be a bug with this 'experimental' feature
+  // Compensate for this below
+  if (offset >= data.length) {
+    offset = data.length - 1
+  }
+
+  // ignore break word, there are not word
+  if (data[offset].match(breakWord)) {
+    return ''
+  }
+
+  // get begin
+  for (let i = offset; i > -1; i--) {
+    if (i === 0 || data[i - 1].match(breakWord)) {
+      begin = i
+      break
+    }
+  }
+
+  for (let j = offset; j < data.length + 1; j++) {
+    if (j === data.length || data[j].match(breakWord)) {
+      end = j
+      break
+    }
+  }
+
+  return data.substring(begin, end)
+}
+
 export {
   $fetch,
+  POPENV,
   fixArrayError,
+  getUILanguage,
+  getRangeFromPoint,
+  getWordFromPoint,
 }

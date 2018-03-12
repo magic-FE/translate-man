@@ -60,6 +60,8 @@
   }
 
   .output-box-wrap {
+    padding: 10px;
     margin-top: 10px;
+    background-color: #ffffff;
   }
 </style>

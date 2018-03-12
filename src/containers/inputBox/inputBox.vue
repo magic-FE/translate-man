@@ -62,7 +62,14 @@
 
     methods: {
       openLanguage(type) {
-        this.$router.push({ name: 'language', query: { type } })
+        this.$router.push({
+          name: 'language',
+          query: {
+            type,
+            value: type === 'from' ? this.fromLanguage : this.toLanguage,
+            hideAuto: type !== 'from',
+          }
+        })
       },
       inputChangeEvent(el) {
         let inputLock = false

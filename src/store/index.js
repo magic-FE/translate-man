@@ -35,7 +35,9 @@ const store = {
       webLanguage: 'zh-CN',
       doubleClick: true,
       stroke: true,
+      hover: true,
       pressKey: true,
+      presskeyCode: 17,
       autoSound: false,
     },
     // 音频对象
@@ -43,6 +45,12 @@ const store = {
   },
 
   mutations: {
+    reset(state) {
+      state.keyword = ''
+      state.tryCount = 2
+      state.translateResult = {}
+      state.completeList = []
+    },
     setKeyword(state, payload) {
       state.speed = 1
       state.keyword = payload
@@ -61,6 +69,9 @@ const store = {
     },
     setStroke(state, payload) {
       state.userSetting.stroke = payload
+    },
+    setHover(state, payload) {
+      state.userSetting.hover = payload
     },
     setPressKey(state, payload) {
       state.userSetting.pressKey = payload
@@ -95,7 +106,7 @@ const store = {
 
       fetchGoogleSearch({
         webLanguage: state.userSetting.webLanguage,
-        keyword: state.keyword.trim(),
+        keyword: state.keyword,
       })
         .then(response => {
           try {
@@ -111,23 +122,28 @@ const store = {
         })
     },
 
+    WEB_TRANSLATE_KEYWORD({ commit, dispatch }, keyWord) {
+      commit('setKeyword', keyWord)
+      return dispatch('TRANSLATE_KEYWORD')
+    },
+
     TRANSLATE_KEYWORD({ state, dispatch }) {
       state.tryCount--
       if (state.tryCount < 0) {
         return
       }
-      dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
-        state.tryCount = 2
+      return dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
         fetchGoogleTranslate({
           tk,
           host: state.googleHost,
           fromLanguage: state.fromLanguage,
           toLanguage: state.toLanguage,
           webLanguage: state.userSetting.webLanguage,
-          keyword: state.keyword.trim(),
+          keyword: state.keyword,
         })
           .then(fixArrayError)
           .then(response => {
+            state.tryCount = 2
             const result = {
               keyword: '',
               phonetic: '',
@@ -174,12 +190,12 @@ const store = {
     },
 
     GOOGLE_SOUND({ state, dispatch }) {
-      dispatch('GET_GOOGLE_TK', state.keyword.trim()).then(tk => {
+      dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
         fetchGoogleSound({
           tk,
           host: state.googleHost,
           toLanguage: state.autoFromLanguage || 'en',
-          keyword: state.keyword.trim(),
+          keyword: state.keyword,
           speed: state.speed,
         }).then(arraybuffer => {
           state.ac.decodeAudioData(arraybuffer).then(buffer => {

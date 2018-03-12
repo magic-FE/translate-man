@@ -30,6 +30,10 @@
           <Switches :value="userSetting.stroke" @input="changeStroke" theme="custom" color="green"></Switches>
         </div>
         <div class="list">
+          <div>悬停单词后翻译</div>
+          <Switches :value="userSetting.hover" @input="changeHover" theme="custom" color="green"></Switches>
+        </div>
+        <div class="list">
           <div>选中后按键翻译</div>
           <div>
             <Switches :value="userSetting.pressKey" @input="changePressKey" theme="custom" color="green"></Switches>
@@ -75,6 +79,9 @@
       },
       changeStroke(v) {
         this.$store.commit('setStroke', v)
+      },
+      changeHover(v) {
+        this.$store.commit('setHover', v)
       },
       changePressKey(v) {
         this.$store.commit('setPressKey', v)

@@ -6,7 +6,6 @@ const DIST_PATH = path.join(ROOT_PATH, 'dist')
 const ASSETS_PATH = path.join(ROOT_PATH, 'assets')
 const ENTRY_PATH = {
   popup: path.join(SRC_PATH, 'entry/popup.js'),
-  content: path.join(SRC_PATH, 'entry/content.js'),
   background: path.join(SRC_PATH, 'entry/background.js'),
 }
 const MANIFEST_FILE = path.join(SRC_PATH, 'manifest.js')
