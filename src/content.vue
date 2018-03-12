@@ -91,9 +91,12 @@
           this.hide()
         }
         this.hoverTimeHandler = setTimeout(() => {
+          if (this.userSetting.hover && this.translateResult.keyword) {
+            return
+          }
           const word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
           this.translate(word, true)
-        }, 1000)
+        }, this.userSetting.hoverTime)
       },
       mouseDown() {
         this.selectStartTimer = new Date().getTime()

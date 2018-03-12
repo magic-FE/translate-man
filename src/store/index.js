@@ -36,6 +36,7 @@ const store = {
       doubleClick: true,
       stroke: true,
       hover: true,
+      hoverTime: 1000,
       pressKey: true,
       presskeyCode: 17,
       autoSound: false,
