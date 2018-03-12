@@ -1,6 +1,7 @@
 <template>
   <div class="app"
     ref="app"
+    v-show="translateResult.keyword"
     @dblclick.stop
     @mousemove.stop
     @mousedown.stop
@@ -26,13 +27,16 @@
         pageX: 0,
         pageY: 0,
         isPressKey: false,
+        isHoverTranslate: false,
         selectStartTimer: null,
+        hoverTimeHandler: null,
       }
     },
 
     computed: {
       ...Vuex.mapState([
         'userSetting',
+        'translateResult',
       ]),
     },
 
@@ -43,11 +47,14 @@
       document.addEventListener('mouseup', this.mouseUp)
       window.addEventListener('keydown', this.keyDown)
       window.addEventListener('keyup', this.keyUp)
+      window.addEventListener('scroll', this.scrollEvent)
     },
 
     methods: {
       hide() {
-        this.$store.commit('reset')
+        if (this.translateResult.keyword) {
+          this.$store.commit('reset')
+        }
       },
       resizePosition() {
         const containerWrap = this.$refs.app
@@ -66,11 +73,27 @@
           containerWrap.style.top = `${this.pageY + 15}px`
         }
       },
+      doubleClick() {
+        if (this.userSetting.doubleClick) {
+          const word = window.getSelection().toString()
+          if (word) {
+            this.translate(word)
+          }
+        }
+      },
       mouseMove(e) {
         this.mouseX = e.clientX
         this.mouseY = e.clientY
         this.pageX = e.pageX
         this.pageY = e.pageY
+        clearTimeout(this.hoverTimeHandler)
+        if (this.isHoverTranslate) {
+          this.hide()
+        }
+        this.hoverTimeHandler = setTimeout(() => {
+          const word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
+          this.translate(word, true)
+        }, 1000)
       },
       mouseDown() {
         this.selectStartTimer = new Date().getTime()
@@ -85,7 +108,6 @@
         }
       },
       keyDown(e) {
-        console.log(e)
         if (this.userSetting.pressKey && e.keyCode === this.userSetting.presskeyCode) {
           this.isPressKey = true
         } else {
@@ -99,21 +121,21 @@
           if (!word) {
             word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
           }
-          console.log(word)
           this.translate(word)
         } else {
           this.hide()
         }
       },
-      doubleClick() {
-        if (this.userSetting.doubleClick) {
-          const word = window.getSelection().toString()
-          if (word) {
-            this.translate(word)
-          }
+      scrollEvent() {
+        if (this.isHoverTranslate) {
+          this.hide()
         }
       },
-      translate(word) {
+      translate(word, isHover = false) {
+        this.isHoverTranslate = isHover
+        if (word === '' || !word.match(/\S/)) {
+          return
+        }
         this.$store.dispatch('WEB_TRANSLATE_KEYWORD', word).then(() => {
           this.$nextTick(() => {
             this.resizePosition()
@@ -129,13 +151,14 @@
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 9999;
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
     min-width: 0;
     max-width: 320px;
-    padding: 4px 8px;
+    padding: 5px 10px;
     border-radius: 4px;
     border: 1px solid #eeeeee;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.98);
   }
 </style>
 

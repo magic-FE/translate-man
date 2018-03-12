@@ -6,12 +6,13 @@
     </header>
     <div class="main">
       <InputBox class="input-box-wrap"></InputBox>
-      <OutputBox class="output-box-wrap"></OutputBox>
+      <OutputBox v-if="translateResult.keyword" class="output-box-wrap"></OutputBox>
     </div>
   </div>
 </template>
 
 <script>
+  import Vuex from 'vuex'
   import { Icon } from '@/components'
   import InputBox from '../inputBox'
   import OutputBox from '../outputBox'
@@ -21,6 +22,12 @@
       Icon,
       InputBox,
       OutputBox,
+    },
+
+    computed: {
+      ...Vuex.mapState([
+        'translateResult',
+      ])
     },
 
     methods: {

@@ -106,8 +106,6 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
 
   range = getRangeFromPoint(clientX, clientY)
 
-  console.log(range)
-
   textNode = range.node
   let { offset } = range
 

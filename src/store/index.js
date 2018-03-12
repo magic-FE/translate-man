@@ -28,7 +28,7 @@ const store = {
     // 翻译结果
     translateResult: {},
     // 失败尝试次数
-    tryCount: 2,
+    tryCount: 1,
     // 播放速度
     speed: 1,
     userSetting: {
@@ -47,13 +47,15 @@ const store = {
   mutations: {
     reset(state) {
       state.keyword = ''
-      state.tryCount = 2
+      state.tryCount = 1
       state.translateResult = {}
       state.completeList = []
     },
     setKeyword(state, payload) {
       state.speed = 1
-      state.keyword = payload
+      if (payload) {
+        state.keyword = payload.trim()
+      }
     },
     setFromLanguage(state, payload) {
       state.fromLanguage = payload
@@ -114,7 +116,6 @@ const store = {
             state.completeList = lists.map(v => v[0])
           } catch (e) {
             state.completeList = []
-            console.log(e)
           }
         })
         .catch(() => {
@@ -128,64 +129,67 @@ const store = {
     },
 
     TRANSLATE_KEYWORD({ state, dispatch }) {
-      state.tryCount--
-      if (state.tryCount < 0) {
-        return
-      }
-      return dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
-        fetchGoogleTranslate({
-          tk,
-          host: state.googleHost,
-          fromLanguage: state.fromLanguage,
-          toLanguage: state.toLanguage,
-          webLanguage: state.userSetting.webLanguage,
-          keyword: state.keyword,
-        })
-          .then(fixArrayError)
-          .then(response => {
-            state.tryCount = 2
-            const result = {
-              keyword: '',
-              phonetic: '',
-              translateList: [],
-            }
-            let keyword = ''
-            let simple = ''
-            if (state.userSetting.isAutoSound) {
-              dispatch('GOOGLE_SOUND')
-            }
-            if (response[0]) {
-              if (response[2]) {
-                state.autoFromLanguage = response[2]
+      return new Promise((resolve, reject) => {
+        if (state.tryCount < 0) {
+          return reject()
+        }
+        state.tryCount--
+        dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
+          fetchGoogleTranslate({
+            tk,
+            host: state.googleHost,
+            fromLanguage: state.fromLanguage,
+            toLanguage: state.toLanguage,
+            webLanguage: state.userSetting.webLanguage,
+            keyword: state.keyword,
+          })
+            .then(fixArrayError)
+            .then(response => {
+              state.tryCount = 1
+              const result = {
+                keyword: '',
+                phonetic: '',
+                translateList: [],
               }
-              for (let i = 0, len = response[0].length; i < len; i++) {
-                if (i === len - 1 && i > 0) {
-                  if (response[0][i] && response[0][i][3]) {
-                    result.phonetic = response[0][i][3]
-                  }
-                } else {
-                  // 如果没有单词翻译 采用简单翻译
-                  if (response[1]) {
-                    result.translateList = response[1]
-                  } else if (response[0][i] && response[0][i][0]) {
-                    simple += response[0][i][0]
-                  }
-                  if (response[0][i] && response[0][i][1]) {
-                    keyword += response[0][i][1]
+              let keyword = ''
+              let simple = ''
+              if (state.userSetting.isAutoSound) {
+                dispatch('GOOGLE_SOUND')
+              }
+              if (response[0]) {
+                if (response[2]) {
+                  state.autoFromLanguage = response[2]
+                }
+                for (let i = 0, len = response[0].length; i < len; i++) {
+                  if (i === len - 1 && i > 0) {
+                    if (response[0][i] && response[0][i][3]) {
+                      result.phonetic = response[0][i][3]
+                    }
+                  } else {
+                    // 如果没有单词翻译 采用简单翻译
+                    if (response[1]) {
+                      result.translateList = response[1]
+                    } else if (response[0][i] && response[0][i][0]) {
+                      simple += response[0][i][0]
+                    }
+                    if (response[0][i] && response[0][i][1]) {
+                      keyword += response[0][i][1]
+                    }
                   }
                 }
+                if (simple) {
+                  result.translateList = [['', [simple]]]
+                }
+                result.keyword = keyword
+                state.translateResult = result
               }
-              if (simple) {
-                result.translateList = [['', [simple]]]
-              }
-              result.keyword = keyword
-              state.translateResult = result
-            }
-          })
-          .catch(() => {
-            state.googleTKK = ''
-            dispatch('TRANSLATE_KEYWORD')
-          })
+              resolve()
+            })
+            .catch(() => {
+              state.googleTKK = ''
+              dispatch('TRANSLATE_KEYWORD')
+            })
+        })
       })
     },
 
@@ -206,7 +210,6 @@ const store = {
           })
         })
         state.speed = state.speed === 1 ? 0.24 : 1
-        console.log(state.speed)
       })
     },
 

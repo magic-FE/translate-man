@@ -1,5 +1,5 @@
 <template>
-  <div class="output-box" v-if="translateResult.keyword">
+  <div class="output-box">
     <div class="keyword">{{ translateResult.keyword }}</div>
     <div class="sound">
       <Icon class="sound-icon" name="sound" @mouseover.native="playGoogleSound"></Icon>
