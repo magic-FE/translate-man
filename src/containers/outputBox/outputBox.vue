@@ -55,7 +55,7 @@
   .sound {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 2px;
 
     .sound-icon {
       cursor: pointer;
@@ -70,7 +70,7 @@
   }
 
   .result {
-    margin-top: 10px;
+    margin-top: 5px;
     font-size: 14px;
   }
 

@@ -168,7 +168,7 @@
     padding: 5px 10px;
     border-radius: 4px;
     box-shadow: rgba(143, 143, 143, 0.72) 0px 0px 2px, rgba(174, 174, 174, 0.298) 0px 1px 1px;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255, 255, 255, 0.99);
   }
 </style>
 
