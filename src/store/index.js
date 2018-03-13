@@ -172,10 +172,10 @@ const store = {
 
     WEB_TRANSLATE_KEYWORD({ commit, dispatch }, keyWord) {
       commit('setKeyword', keyWord)
-      return dispatch('TRANSLATE_KEYWORD')
+      return dispatch('TRANSLATE_KEYWORD', true)
     },
 
-    TRANSLATE_KEYWORD({ state, commit, dispatch }) {
+    TRANSLATE_KEYWORD({ state, commit, dispatch }, isWeb) {
       if (!state.keyword) {
         commit('reset')
         return Promise.reject()
@@ -190,7 +190,7 @@ const store = {
             tk,
             host: state.googleHost,
             fromLanguage: state.fromLanguage,
-            toLanguage: state.toLanguage,
+            toLanguage: isWeb ? state.userSetting.webLanguage : state.toLanguage,
             webLanguage: state.userSetting.webLanguage,
             keyword: state.keyword,
           })

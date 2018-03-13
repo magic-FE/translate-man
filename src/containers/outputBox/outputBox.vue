@@ -77,7 +77,7 @@
   .result-list {
     display: flex;
     flex-flow: row nowrap;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 5px;
 
     &:last-child {
