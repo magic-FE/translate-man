@@ -1,86 +1,82 @@
 {
-    "app_name": {
-        "message": "Translate Man",
-        "description": "插件的名称"
-    },
-    "app_description": {
-        "message": "Mouse pointer translation, selected translation, support any languages, google translate api, human interface, love it",
-        "description": "插件的简介描述"
-    },
-    "search_placeholder": {
-        "message": "Enter text",
-        "description": "搜索框placeholder文字,提示输入单词或者句子"
-    },
-    "translating_text": {
-        "message": "Translating...",
-        "description": "正在翻译"
-    },
-    "error_text": {
-        "message": "Oops,something error:<br/>1.Check if have network<br/>2.try again<br/>3.Contact the author: 844033231@qq.com<br/>Error reason:<br/>",
-        "description": "啊呀,出了点小问题:<br/>1.检查是否有网络<br/>2.重新试下<br/>3.联系作者: 844033231@qq.com<br/>错误原因:<br/>"
-    },
-    "my_main_language": {
-        "message": "My main language",
-        "description": "我的主语言"
-    },
-    "current_choice": {
-        "message": "Current select language:",
-        "description": "当前选择的语言"
-    },
-    "dblclick_translate": {
-        "message": "Double click to translate",
-        "description": "双击单词翻译"
-    },
-    "dblclick_translate_tip": {
-        "message": "Translate the selected text when double-click text",
-        "description": "页面中双击文字,即可翻译选中文本"
-    },
-    "select_translate": {
-        "message": "Auto translate after stroke",
-        "description": "划词后自动翻译"
-    },
-    "select_translate_tip": {
-        "message": "Translate the selected text when mouse stroke word or sentence",
-        "description": "鼠标划词后,即可自动翻译选中文本"
-    },
-    "ctrl_translate": {
-        "message": "Pointer and press Ctrl to translate",
-        "description": "鼠标指向单词 按下ctrl键翻译"
-    },
-    "ctrl_translate_tip": {
-        "message": "Super convenient mode!(Strongly recommend)<br/>* pointer mouse up any word, press CRTL key to translate text <br/>* Press the CTRL translate text as long as page have selected text<br/>* hold CTRL key, then move mouse to translate pointer word",
-        "description": "超便捷模式"
-    },
-    "icon_model": {
-        "message": "Icon mode (display icon)",
-        "description": "图标模式(开启后显示翻译图标)"
-    },
-    "icon_model_tip": {
-        "message": "Do not directly pop up the results of the pop-up box, but the pop-up small icon",
-        "description": "不直接弹出小图标"
-    },
-    "iciba_fanyi": {
-        "message": "Priority iciba translation",
-        "description": "优先金山翻译"
-    },
-    "iciba_fanyi_tip": {
-        "message": "(use iciba first)If you are in China, it is recommended to open, otherwise close",
-        "description": "优先金山翻译"
-    },
-    "auto_voice": {
-        "message": "Automatic pronunciation",
-        "description": "自动发音"
-    },
-    "auto_voice_tip": {
-        "message": "Automatic pronunciation after translate",
-        "description": "翻译后自动发音"
-    },
-    "icon_hover_tips": {
-        "message": "Click translate",
-        "description": "点击翻译"
-    },
-    "languages": {
-        "message": "[{ \"text\": \"Detect language\", \"value\": \"auto\" },{ \"text\": \"English\", \"value\": \"en\" },{ \"text\": \"Chinese\", \"value\": \"zh-CN\" },{ \"text\": \"Japanese\", \"value\": \"ja\" },{ \"text\": \"Korean\", \"value\": \"ko\" },{ \"text\": \"French\", \"value\": \"fr\" },{ \"text\": \"German\", \"value\": \"de\" },{ \"text\": \"Italian\", \"value\": \"it\" },{ \"text\": \"Basque\", \"value\": \"eu\" },{ \"text\": \"Afrikaans\", \"value\": \"af\" },{ \"text\": \"Albanian\", \"value\": \"sq\" },{ \"text\": \"Amharic\", \"value\": \"am\" },{ \"text\": \"Arabic\", \"value\": \"ar\" },{ \"text\": \"Armenian\", \"value\": \"hy\" },{ \"text\": \"Azerbaijani\", \"value\": \"az\" },{ \"text\": \"Basque\", \"value\": \"eu\" },{ \"text\": \"Belarusian\", \"value\": \"be\" },{ \"text\": \"Bengali\", \"value\": \"bn\" },{ \"text\": \"Bosnian\", \"value\": \"bs\" },{ \"text\": \"Bulgarian\", \"value\": \"bg\" },{ \"text\": \"Catalan\", \"value\": \"ca\" },{ \"text\": \"Cebuano\", \"value\": \"ceb\" },{ \"text\": \"Chichewa\", \"value\": \"ny\" },{ \"text\": \"Chinese\", \"value\": \"zh-CN\" },{ \"text\": \"Corsican\", \"value\": \"co\" },{ \"text\": \"Croatian\", \"value\": \"hr\" },{ \"text\": \"Czech\", \"value\": \"cs\" },{ \"text\": \"Danish\", \"value\": \"da\" },{ \"text\": \"Dutch\", \"value\": \"nl\" },{ \"text\": \"English\", \"value\": \"en\" },{ \"text\": \"Esperanto\", \"value\": \"eo\" },{ \"text\": \"Estonian\", \"value\": \"et\" },{ \"text\": \"Filipino\", \"value\": \"tl\" },{ \"text\": \"Finnish\", \"value\": \"fi\" },{ \"text\": \"French\", \"value\": \"fr\" },{ \"text\": \"Frisian\", \"value\": \"fy\" },{ \"text\": \"Galician\", \"value\": \"gl\" },{ \"text\": \"Georgian\", \"value\": \"ka\" },{ \"text\": \"German\", \"value\": \"de\" },{ \"text\": \"Greek\", \"value\": \"el\" },{ \"text\": \"Gujarati\", \"value\": \"gu\" },{ \"text\": \"Haitian\", \"value\": \"ht\" },{ \"text\": \"Hausa\", \"value\": \"ha\" },{ \"text\": \"Hawaiian\", \"value\": \"haw\" },{ \"text\": \"Hebrew\", \"value\": \"iw\" },{ \"text\": \"Hindi\", \"value\": \"hi\" },{ \"text\": \"Hmong\", \"value\": \"hmn\" },{ \"text\": \"Hungarian\", \"value\": \"hu\" },{ \"text\": \"Icelandic\", \"value\": \"is\" },{ \"text\": \"Igbo\", \"value\": \"ig\" },{ \"text\": \"Indonesian\", \"value\": \"id\" },{ \"text\": \"Irish\", \"value\": \"ga\" },{ \"text\": \"Italian\", \"value\": \"it\" },{ \"text\": \"Japanese\", \"value\": \"ja\" },{ \"text\": \"Javanese\", \"value\": \"jw\" },{ \"text\": \"Kannada\", \"value\": \"kn\" },{ \"text\": \"Kazakh\", \"value\": \"kk\" },{ \"text\": \"Khmer\", \"value\": \"km\" },{ \"text\": \"Korean\", \"value\": \"ko\" },{ \"text\": \"Kurdish Kurmanji\", \"value\": \"ku\" },{ \"text\": \"Kyrgyz\", \"value\": \"ky\" },{ \"text\": \"Lao\", \"value\": \"lo\" },{ \"text\": \"Latin\", \"value\": \"la\" },{ \"text\": \"Latvian\", \"value\": \"lv\" },{ \"text\": \"Lithuanian\", \"value\": \"lt\" },{ \"text\": \"Luxembourgish\", \"value\": \"lb\" },{ \"text\": \"Macedonian\", \"value\": \"mk\" },{ \"text\": \"Malagasy\", \"value\": \"mg\" },{ \"text\": \"Malay\", \"value\": \"ms\" },{ \"text\": \"Malayalam\", \"value\": \"ml\" },{ \"text\": \"Maltese\", \"value\": \"mt\" },{ \"text\": \"Maori\", \"value\": \"mi\" },{ \"text\": \"Marathi\", \"value\": \"mr\" },{ \"text\": \"Mongolian\", \"value\": \"mn\" },{ \"text\": \"Myanmar Burmese\", \"value\": \"my\" },{ \"text\": \"Nepali\", \"value\": \"ne\" },{ \"text\": \"Norwegian\", \"value\": \"no\" },{ \"text\": \"Pashto\", \"value\": \"ps\" },{ \"text\": \"Persian\", \"value\": \"fa\" },{ \"text\": \"Polish\", \"value\": \"pl\" },{ \"text\": \"Portuguese\", \"value\": \"pt\" },{ \"text\": \"Punjabi\", \"value\": \"pa\" },{ \"text\": \"Romanian\", \"value\": \"ro\" },{ \"text\": \"Russian\", \"value\": \"ru\" },{ \"text\": \"Samoan\", \"value\": \"sm\" },{ \"text\": \"Scots Gaelic\", \"value\": \"gd\" },{ \"text\": \"Serbian\", \"value\": \"sr\" },{ \"text\": \"Sesotho\", \"value\": \"st\" },{ \"text\": \"Shona\", \"value\": \"sn\" },{ \"text\": \"Sindhi\", \"value\": \"sd\" },{ \"text\": \"Sinhala\", \"value\": \"si\" },{ \"text\": \"Slovak\", \"value\": \"sk\" },{ \"text\": \"Slovenian\", \"value\": \"sl\" },{ \"text\": \"Somali\", \"value\": \"so\" },{ \"text\": \"Spanish\", \"value\": \"es\" },{ \"text\": \"Sundanese\", \"value\": \"su\" },{ \"text\": \"Swahili\", \"value\": \"sw\" },{ \"text\": \"Swedish\", \"value\": \"sv\" },{ \"text\": \"Tajik\", \"value\": \"tg\" },{ \"text\": \"Tamil\", \"value\": \"ta\" },{ \"text\": \"Telugu\", \"value\": \"te\" },{ \"text\": \"Thai\", \"value\": \"th\" },{ \"text\": \"Turkish\", \"value\": \"tr\" },{ \"text\": \"Ukrainian\", \"value\": \"uk\" },{ \"text\": \"Urdu\", \"value\": \"ur\" },{ \"text\": \"Uzbek\", \"value\": \"uz\" },{ \"text\": \"Vietnamese\", \"value\": \"vi\" },{ \"text\": \"Welsh\", \"value\": \"cy\" },{ \"text\": \"Xhosa\", \"value\": \"xh\" },{ \"text\": \"Yiddish\", \"value\": \"yi\" },{ \"text\": \"Yoruba\", \"value\": \"yo\" },{ \"text\": \"Zulu\", \"value\": \"zu\" }]",
-        "description": "语言种类"
-    }
+  "app_name": {
+    "message": "Translate Man",
+    "description": "插件的名称"
+  },
+  "app_description": {
+    "message": "Mouse pointer translation, selected translation, support any languages, google translate api, human interface, love it",
+    "description": "插件的简介描述"
+  },
+  "setting": {
+    "message": "setting",
+    "description": "设置"
+  },
+  "language": {
+    "message": "language",
+    "description": "语言"
+  },
+  "search_placeholder": {
+    "message": "Enter words or sentences",
+    "description": "输入单词或句子"
+  },
+  "translating_text": {
+    "message": "Translating...",
+    "description": "正在翻译"
+  },
+  "error_text": {
+    "message": "Oops,something error:<br/>1.Check if have network<br/>2.try again<br/>3.Contact the author: 844033231@qq.com<br/>Error reason:<br/>",
+    "description": "啊呀,出了点小问题:<br/>1.检查是否有网络<br/>2.重新试下<br/>3.联系作者: 844033231@qq.com<br/>错误原因:<br/>"
+  },
+  "web_language": {
+    "message": "Web pages translated as",
+    "description": "网页翻译为"
+  },
+  "web_language_tip": {
+    "message": "Very important! Best to set your mother tongue",
+    "description": "很重要！最好设置为你的母语"
+  },
+  "dblclick_translate": {
+    "message": "Double click to translate",
+    "description": "双击单词翻译"
+  },
+  "dblclick_translate_tip": {
+    "message": "Translate the selected text when double-click text",
+    "description": "页面中双击文字,即可翻译选中文本"
+  },
+  "storke_translate": {
+    "message": "Auto translate after stroke",
+    "description": "划词后自动翻译"
+  },
+  "storke_translate_tip": {
+    "message": "Translate the selected text when mouse stroke word or sentence",
+    "description": "鼠标划词后,即可自动翻译选中文本"
+  },
+  "press_key_translate": {
+    "message": "Pointer and press to translate",
+    "description": "鼠标指向单词按键翻译"
+  },
+  "press_key_translate_tip": {
+    "message": "Super convenient mode!(Strongly recommend) *pointer mouse up any word, press CRTL key to translate text *Press the CTRL translate text as long as page have selected text",
+    "description": "超便捷模式"
+  },
+  "hover_translate": {
+    "message": "Over words to translate",
+    "description": "鼠标悬停到单词上翻译"
+  },
+  "hover_translate_tip": {
+    "message": "Move the mouse over the word and wait a few seconds for automatic translation, up to 10s",
+    "description": "将鼠标移动到单词上，等待几秒后自动翻译，最大 10s"
+  },
+  "auto_sound_translate": {
+    "message": "Automatic pronunciation",
+    "description": "自动发音"
+  },
+  "auto_sound_translate_tip": {
+    "message": "Automatic pronunciation after translate",
+    "description": "翻译后自动发音"
+  },
+  "languages": {
+    "message": "[{ \"text\": \"Detect language\", \"value\": \"auto\" },{ \"text\": \"English\", \"value\": \"en\" },{ \"text\": \"Chinese\", \"value\": \"zh-CN\" },{ \"text\": \"Japanese\", \"value\": \"ja\" },{ \"text\": \"Korean\", \"value\": \"ko\" },{ \"text\": \"French\", \"value\": \"fr\" },{ \"text\": \"German\", \"value\": \"de\" },{ \"text\": \"Italian\", \"value\": \"it\" },{ \"text\": \"Basque\", \"value\": \"eu\" },{ \"text\": \"Afrikaans\", \"value\": \"af\" },{ \"text\": \"Albanian\", \"value\": \"sq\" },{ \"text\": \"Amharic\", \"value\": \"am\" },{ \"text\": \"Arabic\", \"value\": \"ar\" },{ \"text\": \"Armenian\", \"value\": \"hy\" },{ \"text\": \"Azerbaijani\", \"value\": \"az\" },{ \"text\": \"Basque\", \"value\": \"eu\" },{ \"text\": \"Belarusian\", \"value\": \"be\" },{ \"text\": \"Bengali\", \"value\": \"bn\" },{ \"text\": \"Bosnian\", \"value\": \"bs\" },{ \"text\": \"Bulgarian\", \"value\": \"bg\" },{ \"text\": \"Catalan\", \"value\": \"ca\" },{ \"text\": \"Cebuano\", \"value\": \"ceb\" },{ \"text\": \"Chichewa\", \"value\": \"ny\" },{ \"text\": \"Chinese\", \"value\": \"zh-CN\" },{ \"text\": \"Corsican\", \"value\": \"co\" },{ \"text\": \"Croatian\", \"value\": \"hr\" },{ \"text\": \"Czech\", \"value\": \"cs\" },{ \"text\": \"Danish\", \"value\": \"da\" },{ \"text\": \"Dutch\", \"value\": \"nl\" },{ \"text\": \"English\", \"value\": \"en\" },{ \"text\": \"Esperanto\", \"value\": \"eo\" },{ \"text\": \"Estonian\", \"value\": \"et\" },{ \"text\": \"Filipino\", \"value\": \"tl\" },{ \"text\": \"Finnish\", \"value\": \"fi\" },{ \"text\": \"French\", \"value\": \"fr\" },{ \"text\": \"Frisian\", \"value\": \"fy\" },{ \"text\": \"Galician\", \"value\": \"gl\" },{ \"text\": \"Georgian\", \"value\": \"ka\" },{ \"text\": \"German\", \"value\": \"de\" },{ \"text\": \"Greek\", \"value\": \"el\" },{ \"text\": \"Gujarati\", \"value\": \"gu\" },{ \"text\": \"Haitian\", \"value\": \"ht\" },{ \"text\": \"Hausa\", \"value\": \"ha\" },{ \"text\": \"Hawaiian\", \"value\": \"haw\" },{ \"text\": \"Hebrew\", \"value\": \"iw\" },{ \"text\": \"Hindi\", \"value\": \"hi\" },{ \"text\": \"Hmong\", \"value\": \"hmn\" },{ \"text\": \"Hungarian\", \"value\": \"hu\" },{ \"text\": \"Icelandic\", \"value\": \"is\" },{ \"text\": \"Igbo\", \"value\": \"ig\" },{ \"text\": \"Indonesian\", \"value\": \"id\" },{ \"text\": \"Irish\", \"value\": \"ga\" },{ \"text\": \"Italian\", \"value\": \"it\" },{ \"text\": \"Japanese\", \"value\": \"ja\" },{ \"text\": \"Javanese\", \"value\": \"jw\" },{ \"text\": \"Kannada\", \"value\": \"kn\" },{ \"text\": \"Kazakh\", \"value\": \"kk\" },{ \"text\": \"Khmer\", \"value\": \"km\" },{ \"text\": \"Korean\", \"value\": \"ko\" },{ \"text\": \"Kurdish Kurmanji\", \"value\": \"ku\" },{ \"text\": \"Kyrgyz\", \"value\": \"ky\" },{ \"text\": \"Lao\", \"value\": \"lo\" },{ \"text\": \"Latin\", \"value\": \"la\" },{ \"text\": \"Latvian\", \"value\": \"lv\" },{ \"text\": \"Lithuanian\", \"value\": \"lt\" },{ \"text\": \"Luxembourgish\", \"value\": \"lb\" },{ \"text\": \"Macedonian\", \"value\": \"mk\" },{ \"text\": \"Malagasy\", \"value\": \"mg\" },{ \"text\": \"Malay\", \"value\": \"ms\" },{ \"text\": \"Malayalam\", \"value\": \"ml\" },{ \"text\": \"Maltese\", \"value\": \"mt\" },{ \"text\": \"Maori\", \"value\": \"mi\" },{ \"text\": \"Marathi\", \"value\": \"mr\" },{ \"text\": \"Mongolian\", \"value\": \"mn\" },{ \"text\": \"Myanmar Burmese\", \"value\": \"my\" },{ \"text\": \"Nepali\", \"value\": \"ne\" },{ \"text\": \"Norwegian\", \"value\": \"no\" },{ \"text\": \"Pashto\", \"value\": \"ps\" },{ \"text\": \"Persian\", \"value\": \"fa\" },{ \"text\": \"Polish\", \"value\": \"pl\" },{ \"text\": \"Portuguese\", \"value\": \"pt\" },{ \"text\": \"Punjabi\", \"value\": \"pa\" },{ \"text\": \"Romanian\", \"value\": \"ro\" },{ \"text\": \"Russian\", \"value\": \"ru\" },{ \"text\": \"Samoan\", \"value\": \"sm\" },{ \"text\": \"Scots Gaelic\", \"value\": \"gd\" },{ \"text\": \"Serbian\", \"value\": \"sr\" },{ \"text\": \"Sesotho\", \"value\": \"st\" },{ \"text\": \"Shona\", \"value\": \"sn\" },{ \"text\": \"Sindhi\", \"value\": \"sd\" },{ \"text\": \"Sinhala\", \"value\": \"si\" },{ \"text\": \"Slovak\", \"value\": \"sk\" },{ \"text\": \"Slovenian\", \"value\": \"sl\" },{ \"text\": \"Somali\", \"value\": \"so\" },{ \"text\": \"Spanish\", \"value\": \"es\" },{ \"text\": \"Sundanese\", \"value\": \"su\" },{ \"text\": \"Swahili\", \"value\": \"sw\" },{ \"text\": \"Swedish\", \"value\": \"sv\" },{ \"text\": \"Tajik\", \"value\": \"tg\" },{ \"text\": \"Tamil\", \"value\": \"ta\" },{ \"text\": \"Telugu\", \"value\": \"te\" },{ \"text\": \"Thai\", \"value\": \"th\" },{ \"text\": \"Turkish\", \"value\": \"tr\" },{ \"text\": \"Ukrainian\", \"value\": \"uk\" },{ \"text\": \"Urdu\", \"value\": \"ur\" },{ \"text\": \"Uzbek\", \"value\": \"uz\" },{ \"text\": \"Vietnamese\", \"value\": \"vi\" },{ \"text\": \"Welsh\", \"value\": \"cy\" },{ \"text\": \"Xhosa\", \"value\": \"xh\" },{ \"text\": \"Yiddish\", \"value\": \"yi\" },{ \"text\": \"Yoruba\", \"value\": \"yo\" },{ \"text\": \"Zulu\", \"value\": \"zu\" }]",
+    "description": "语言种类"
+  }
 }

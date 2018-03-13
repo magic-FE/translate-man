@@ -11,8 +11,17 @@ const app = document.createElement('div')
 app.setAttribute('id', idName)
 document.body.appendChild(app)
 
-new Vue({
-  router,
-  store,
-  render: h => h(POPENV ? App : Content),
-}).$mount(`#${idName}`)
+store.dispatch('SYNC_USER_SETTING')
+
+if (POPENV) {
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount(`#${idName}`)
+} else {
+  new Vue({
+    store,
+    render: h => h(Content),
+  }).$mount(`#${idName}`)
+}

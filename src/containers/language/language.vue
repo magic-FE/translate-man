@@ -1,18 +1,16 @@
 <template>
   <div>
-    <NavBar name="语言"></NavBar>
-    <div class="language-wrap">
+    <NavBar :name="pageName"></NavBar>
+    <div :class="$style['language-wrap']">
       <div v-for="language in languageLists.slice(0, 9)"
         :key="language.value + '_hot'" @click="chooseLanguage(language.value)"
-        class="language"
-        :class="{ 'hide-auto': hideAuto &&  language.value === 'auto', 'selected': language.value === value }">
+        :class="[$style.language, { [$style['hide-auto']]: hideAuto &&  language.value === 'auto', [$style['selected']]: language.value === value }]">
         {{language.text}}
       </div>
-      <div class="line"></div>
+      <div :class="$style.line"></div>
       <div v-for="language in languageLists.slice(9)"
         :key="language.value" @click="chooseLanguage(language.value)"
-        class="language"
-        :class="{ 'selected': language.value === value }">
+        :class="[$style.language, { [$style['selected']]: language.value === value }]">
         {{language.text}}
       </div>
     </div>
@@ -26,6 +24,12 @@
   export default {
     components: {
       NavBar,
+    },
+
+    data() {
+      return {
+        pageName: browser.i18n.getMessage('language'),
+      }
     },
 
     computed: {
@@ -46,13 +50,14 @@
           value,
           type: this.$router.currentRoute.query.type,
         })
+        this.$store.dispatch('TRANSLATE_KEYWORD')
         this.$router.back()
       },
     }
   }
 </script>
 
-<style scoped>
+<style module>
   .language-wrap {
     display: flex;
     flex-flow: row wrap;

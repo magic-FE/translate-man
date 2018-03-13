@@ -18,6 +18,15 @@ const $fetch = option => {
   })
 }
 
+const saveAndSendMessage = value => {
+  browser.storage.local.set(value)
+  browser.tabs.query({}, tabs => {
+    tabs.forEach(tab => {
+      browser.tabs.sendMessage(tab.id, { type: 'reload' })
+    })
+  })
+}
+
 const POPENV = !!browser.windows
 
 /**
@@ -153,6 +162,7 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
 
 export {
   $fetch,
+  saveAndSendMessage,
   POPENV,
   fixArrayError,
   getUILanguage,

@@ -1,12 +1,12 @@
 <template>
-  <div class="popup">
-    <header class="header">
-      <Icon class="logo" name="logo"></Icon>
-      <Icon class="setting" name="setting" @click.native="goToSetting"></Icon>
+  <div :class="$style.popup">
+    <header :class="$style.header">
+      <Icon :class="$style.logo" name="logo"></Icon>
+      <Icon :class="$style.setting" name="setting" @click.native="goToSetting"></Icon>
     </header>
-    <div class="main">
-      <InputBox class="input-box-wrap"></InputBox>
-      <OutputBox v-if="translateResult.keyword" class="output-box-wrap"></OutputBox>
+    <div :class="$style.main">
+      <InputBox :class="$style['input-box-wrap']"></InputBox>
+      <OutputBox v-if="translateResult.keyword" :class="$style['output-box-wrap']"></OutputBox>
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .header {
     display: flex;
     justify-content: center;

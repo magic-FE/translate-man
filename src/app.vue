@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div :class="$style.app">
     <keep-alive>
         <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
@@ -11,7 +11,7 @@
   export default {}
 </script>
 
-<style scoped>
+<style module>
   .app {
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
     box-sizing: border-box;

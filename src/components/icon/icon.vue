@@ -1,6 +1,6 @@
 <template>
   <div>
-     <img class="icon" :src="iconMaps[name]">
+     <img :class="$style.icon" :src="iconMaps[name]">
   </div>
 </template>
 
@@ -44,7 +44,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .icon {
     display: block;
     width: 100%;

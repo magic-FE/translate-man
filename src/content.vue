@@ -1,5 +1,5 @@
 <template>
-  <div class="app"
+  <div :class="$style.app"
     ref="app"
     v-show="translateResult.keyword"
     @dblclick.stop
@@ -41,6 +41,7 @@
     },
 
     mounted() {
+      browser.runtime.onMessage.addListener(this.onMessage)
       document.addEventListener('dblclick', this.doubleClick)
       document.addEventListener('mousemove', this.mouseMove)
       document.addEventListener('mousedown', this.mouseDown)
@@ -51,6 +52,11 @@
     },
 
     methods: {
+      onMessage(request) {
+        if (request.type === 'reload') {
+          this.$store.dispatch('SYNC_USER_SETTING')
+        }
+      },
       hide() {
         if (this.translateResult.keyword) {
           this.$store.commit('reset')
@@ -91,12 +97,12 @@
           this.hide()
         }
         this.hoverTimeHandler = setTimeout(() => {
-          if (this.userSetting.hover && this.translateResult.keyword) {
+          if (!this.userSetting.hover || this.translateResult.keyword) {
             return
           }
           const word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
           this.translate(word, true)
-        }, this.userSetting.hoverTime)
+        }, this.userSetting.hoverTime * 1000)
       },
       mouseDown() {
         this.selectStartTimer = new Date().getTime()
@@ -111,7 +117,7 @@
         }
       },
       keyDown(e) {
-        if (this.userSetting.pressKey && e.keyCode === this.userSetting.presskeyCode) {
+        if (this.userSetting.pressKey && e.key === this.userSetting.pressKeyString) {
           this.isPressKey = true
         } else {
           this.isPressKey = false
@@ -149,18 +155,19 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .app {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 9999;
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+    text-shadow: rgb(255, 255, 255) 0px 1px 1px;
     min-width: 0;
     max-width: 320px;
     padding: 5px 10px;
     border-radius: 4px;
-    border: 1px solid #eeeeee;
+    box-shadow: rgba(143, 143, 143, 0.72) 0px 0px 2px, rgba(174, 174, 174, 0.298) 0px 1px 1px;
     background-color: rgba(255, 255, 255, 0.98);
   }
 </style>

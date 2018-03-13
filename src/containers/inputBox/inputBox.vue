@@ -1,25 +1,25 @@
 <template>
-  <div class="input-box">
-    <div class="languages">
-      <div class="from" @click="openLanguage('from')">
+  <div :class="$style['input-box']">
+    <div :class="$style.languages">
+      <div :class="$style.from" @click="openLanguage('from')">
         <LanguageText :value="fromLanguage"></LanguageText>&nbsp;
         <template v-if="fromLanguage === 'auto' && autoFromLanguage">
           (<LanguageText :value="autoFromLanguage"></LanguageText>)
         </template>
       </div>
-      <Icon class="arrow-right" name="arrowRightWhite"></Icon>
-      <div class="to" @click="openLanguage('to')">
+      <Icon :class="$style['arrow-right']" name="arrowRightWhite"></Icon>
+      <div :class="$style.to" @click="openLanguage('to')">
         <LanguageText :value="toLanguage"></LanguageText>
       </div>
     </div>
-    <div class="textarea-wrap">
+    <div :class="$style['textarea-wrap']">
       <textarea v-if="showTextarea"
-        placeholder="输入单词或句子"
+        :placeholder="placeholder"
         autofocus
         :value="keyword"
         ref="textareaInput">
       </textarea>
-      <complete-list class="complete-list-wrap"></complete-list>
+      <complete-list :class="$style['complete-list-wrap']"></complete-list>
     </div>
   </div>
 </template>
@@ -38,6 +38,7 @@
     data() {
       return {
         showTextarea: false,
+        placeholder: browser.i18n.getMessage('search_placeholder'),
       }
     },
 
@@ -91,7 +92,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .input-box {
     border-radius: 4px;
 	  background-color: rgba(255, 255, 255, 0.19);
@@ -104,7 +105,7 @@
     margin: 0 10px;
     padding: 5px 0;
     color: #ffffff;
-    font-size: 12px;
+    font-size: 14px;
     border-bottom: 1px solid rgba(39, 181, 178, 0.46);
     transition: color 0.2s;
 
@@ -145,11 +146,11 @@
       background-color: transparent;
 
       &::-webkit-input-placeholder {
-        color: #277977;
+        color: #1b8c89;
       }
 
       &::-moz-placeholder {
-        color: #277977;
+        color: #1b8c89;
       }
     }
   }

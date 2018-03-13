@@ -1,16 +1,16 @@
 <template>
-  <div class="output-box">
-    <div class="keyword">{{ translateResult.keyword }}</div>
-    <div class="sound">
-      <Icon class="sound-icon" name="sound" @mouseover.native="playGoogleSound"></Icon>
-      <div v-if="translateResult.phonetic" class="phonetic">[{{ translateResult.phonetic }}]</div>
+  <div :class="$style['output-box']">
+    <div :class="$style.keyword">{{ translateResult.keyword }}</div>
+    <div :class="$style.sound">
+      <div v-if="translateResult.phonetic" :class="$style.phonetic">[{{ translateResult.phonetic }}]</div>
+      <Icon :class="$style['sound-icon']" name="sound" @mouseover.native="playGoogleSound"></Icon>
     </div>
-    <div class="result">
+    <div :class="$style.result">
       <div v-for="(item, index) in translateResult.translateList"
         :key="index"
-        class="result-list">
-        <span v-if="item[0]" class="lexical">{{ item[0] }}</span>
-        <span class="text">{{ item[1].join('; ') }}</span>
+        :class="$style['result-list']">
+        <span v-if="item[0]" :class="$style.lexical">{{ item[0] }}</span>
+        <span :class="$style.text">{{ item[1].join('; ') }}</span>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .output-box {
     color: #333333;
     border-radius: 4px;
@@ -55,23 +55,18 @@
   .sound {
     display: flex;
     align-items: center;
-    margin-top: 5px;
+    margin-top: 10px;
 
     .sound-icon {
       cursor: pointer;
       width: 14px;
-      margin-right: 7px;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 
   .phonetic {
-    font-size: 12px;
+    color: #666666;
+    font-size: 14px;
+    margin-right: 7px;
   }
 
   .result {
@@ -80,7 +75,10 @@
   }
 
   .result-list {
-    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-bottom: 5px;
 
     &:last-child {
       margin-bottom: 0;
@@ -88,8 +86,12 @@
   }
 
   .lexical {
-    color: #666666;
+    color: #888683;
     margin-right: 5px;
+  }
+
+  .text {
+    flex: 1;
   }
 </style>
 

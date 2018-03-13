@@ -1,9 +1,8 @@
 <template>
-  <div class="complete-list" v-if="show && completeList.length">
+  <div :class="$style['complete-list']" v-if="show && completeList.length">
     <div v-for="(text, index) in completeList"
       :key="index"
-      class="list"
-      :class="{ 'selected': selectedIndex === index }"
+      :class="[$style.list, { [$style.selected]: selectedIndex === index }]"
       @click="selectKeyword(index)">
       {{text}}
     </div>
@@ -106,7 +105,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .complete-list {
     font-size: 14px;
     color: #333333;

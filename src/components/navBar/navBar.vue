@@ -1,6 +1,6 @@
 <template>
-  <div class="nav-bar" @click="back">
-    <Icon class="back-icon" name="arrowLeft"></Icon>
+  <div :class="$style['nav-bar']" @click="back">
+    <Icon :class="$style['back-icon']" name="arrowLeft"></Icon>
     <div>{{name}}</div>
   </div>
 </template>
@@ -27,7 +27,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .nav-bar {
     cursor: pointer;
     display: flex;

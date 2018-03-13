@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar name="单词本"></NavBar>
-    <div class="word-book-wrap"></div>
+    <div :class="$style['word-book-wrap']"></div>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
   }
 </script>
 
-<style scoped>
+<style module>
   .word-book-wrap {
     margin-top: 10px;
   }
