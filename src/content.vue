@@ -164,7 +164,7 @@
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
     text-shadow: rgb(255, 255, 255) 0px 1px 1px;
     min-width: 0;
-    max-width: 320px;
+    max-width: 280px;
     padding: 5px 10px;
     border-radius: 4px;
     box-shadow: rgba(143, 143, 143, 0.72) 0px 0px 2px, rgba(174, 174, 174, 0.298) 0px 1px 1px;
