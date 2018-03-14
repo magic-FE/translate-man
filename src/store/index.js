@@ -170,12 +170,15 @@ const store = {
         })
     },
 
-    WEB_TRANSLATE_KEYWORD({ commit, dispatch }, keyWord) {
+    WEB_TRANSLATE_KEYWORD({ state, commit, dispatch }, keyWord) {
       commit('setKeyword', keyWord)
-      return dispatch('TRANSLATE_KEYWORD', true)
+      return dispatch('TRANSLATE_KEYWORD', {
+        fromLanguage: 'auto',
+        toLanguage: state.userSetting.webLanguage,
+      })
     },
 
-    TRANSLATE_KEYWORD({ state, commit, dispatch }, isWeb) {
+    TRANSLATE_KEYWORD({ state, commit, dispatch }, { fromLanguage, toLanguage, stop } = {}) {
       if (!state.keyword) {
         commit('reset')
         return Promise.reject()
@@ -189,8 +192,8 @@ const store = {
           fetchGoogleTranslate({
             tk,
             host: state.googleHost,
-            fromLanguage: state.fromLanguage,
-            toLanguage: isWeb ? state.userSetting.webLanguage : state.toLanguage,
+            fromLanguage: fromLanguage || state.fromLanguage,
+            toLanguage: toLanguage || state.toLanguage,
             webLanguage: state.userSetting.webLanguage,
             keyword: state.keyword,
           })
@@ -206,20 +209,23 @@ const store = {
               let simple = ''
               if (response[2]) {
                 // 如果检测语言和目标一致 智能转换
-                if (response[2] === state.toLanguage) {
+                if (!fromLanguage && response[2] === state.toLanguage) {
                   if (response[2] !== state.userSetting.webLanguage) {
                     commit('setToLanguage', state.userSetting.webLanguage)
-                    dispatch('TRANSLATE_KEYWORD')
-                    return
+                    return dispatch('TRANSLATE_KEYWORD').then(resolve, reject)
                   } else if (state.autoFromLanguage && response[2] !== state.autoFromLanguage) {
                     commit('setToLanguage', state.autoFromLanguage)
-                    dispatch('TRANSLATE_KEYWORD')
-                    return
+                    return dispatch('TRANSLATE_KEYWORD').then(resolve, reject)
                   } else if (response[2] !== 'en') {
                     commit('setToLanguage', 'en')
-                    dispatch('TRANSLATE_KEYWORD')
-                    return
+                    return dispatch('TRANSLATE_KEYWORD').then(resolve, reject)
                   }
+                } else if (!stop && fromLanguage && response[2] !== 'en' && response[2] === state.userSetting.webLanguage) {
+                  return dispatch('TRANSLATE_KEYWORD', {
+                    fromLanguage: 'auto',
+                    toLanguage: 'en',
+                    stop: true,
+                  }).then(resolve, reject)
                 }
                 state.autoFromLanguage = response[2]
               }
