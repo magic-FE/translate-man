@@ -3,7 +3,7 @@
     <div :class="$style.keyword">{{ translateResult.keyword }}</div>
     <div :class="$style.sound">
       <div v-if="translateResult.phonetic" :class="$style.phonetic">[{{ translateResult.phonetic }}]</div>
-      <Icon :class="$style['sound-icon']" name="sound" @mouseover.native="playGoogleSound"></Icon>
+      <Icon :class="$style['sound-icon']" :name="isHoverSound ? 'soundHover' : 'sound'" @mouseover.native="playGoogleSound" @mouseout.native="stopGoogleSound"></Icon>
     </div>
     <div :class="$style.result">
       <div v-for="(item, index) in translateResult.translateList"
@@ -25,6 +25,12 @@
       Icon,
     },
 
+    data() {
+      return {
+        isHoverSound: false,
+      }
+    },
+
     computed: {
       ...Vuex.mapState([
         'translateResult',
@@ -33,8 +39,12 @@
 
     methods: {
       playGoogleSound() {
+        this.isHoverSound = true
         this.$store.dispatch('GOOGLE_SOUND')
-      }
+      },
+      stopGoogleSound() {
+        this.isHoverSound = false
+      },
     },
   }
 </script>
@@ -60,6 +70,7 @@
     .sound-icon {
       cursor: pointer;
       width: 14px;
+      flex-shrink: 0;
     }
   }
 
@@ -67,6 +78,9 @@
     color: #666666;
     font-size: 14px;
     margin-right: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .result {

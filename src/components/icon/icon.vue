@@ -11,6 +11,7 @@
   import arrowRightGray from './svg/arrowRightGray.svg'
   import setting from './svg/setting.svg'
   import sound from './svg/sound.svg'
+  import soundHover from './svg/soundHover.svg'
   import star from './svg/star.svg'
   import stared from './svg/stared.svg'
 
@@ -21,6 +22,7 @@
     arrowRightGray,
     setting,
     sound,
+    soundHover,
     star,
     stared,
   }
