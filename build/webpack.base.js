@@ -1,5 +1,4 @@
 const path = require('path')
-const ChromeReloadPlugin = require('wcer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -107,10 +106,6 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: constants.ASSETS_PATH,
     }]),
-    new ChromeReloadPlugin({
-      port: 9090,
-      manifest: constants.MANIFEST_FILE,
-    }),
   ],
 
   performance: {

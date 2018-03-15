@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js --hide-modules",
-    "build": "webpack --config ./build/webpack.prod.js -p --progress  --hide-modules --colors",
+    "build": "webpack --config ./build/webpack.prod.js --progress  --hide-modules --colors",
     "archiver": "node ./build/archiver.js",
     "deploy": "npm run build && npm run archiver",
     "lint": "eslint --ext .js,.vue src"
@@ -21,7 +21,6 @@
     "url": "https://github.com/magic-FE/translate-man/issues"
   },
   "dependencies": {
-    "babel-helpers": "^6.24.1",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vue-switches": "^2.0.1",
@@ -57,6 +56,7 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.1",
     "postcss-nested": "^3.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.3",
     "url-loader": "^0.6.2",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^13.3.0",

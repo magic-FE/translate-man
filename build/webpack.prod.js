@@ -3,12 +3,14 @@ const merge = require('webpack-merge')
 const baseWebpack = require('./webpack.base')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyjsES6Plugin = require('uglifyjs-webpack-plugin')
+const constants = require('./config/constants')
+
+process.env.NODE_ENV = 'production'
 
 module.exports = merge(baseWebpack, {
-  devtool: '#cheap-module-eval-source-map',
-
   plugins: [
-    new CleanWebpackPlugin(['dist/*.*']),
+    new CleanWebpackPlugin([constants.DIST_PATH], { root: constants.ROOT_PATH }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
@@ -17,6 +19,9 @@ module.exports = merge(baseWebpack, {
       cssProcessorOptions: {
         safe: true,
       },
+    }),
+    new UglifyjsES6Plugin({
+      sourceMap: false,
     }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
