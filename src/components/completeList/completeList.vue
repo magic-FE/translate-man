@@ -76,7 +76,7 @@
         if (this.selectedIndex !== null) {
           this.$store.commit('setKeyword', this.completeList[this.selectedIndex])
         }
-        this.$store.dispatch('TRANSLATE_KEYWORD')
+        this.$store.dispatch('TRANSLATE_KEYWORD').catch(() => {})
         setTimeout(() => {
           this.show = false
         }, 0)

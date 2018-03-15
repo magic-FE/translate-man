@@ -4,7 +4,7 @@ const $fetch = option => {
   }
   return new Promise((resolve, reject) => {
     browser.runtime.sendMessage(option, response => {
-      if (response.error) {
+      if (response && response.error) {
         reject(response.error)
       } else {
         resolve(response)

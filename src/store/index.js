@@ -172,6 +172,7 @@ const store = {
 
     WEB_TRANSLATE_KEYWORD({ state, commit, dispatch }, keyWord) {
       commit('setKeyword', keyWord)
+      state.tryCount = 1
       return dispatch('TRANSLATE_KEYWORD', {
         fromLanguage: 'auto',
         toLanguage: state.userSetting.webLanguage,
@@ -260,9 +261,9 @@ const store = {
             })
             .catch(() => {
               commit('setGoogleTKK', '')
-              dispatch('TRANSLATE_KEYWORD')
+              dispatch('TRANSLATE_KEYWORD').catch(() => {})
             })
-        })
+        }).catch(() => {})
       })
     },
 
@@ -283,7 +284,7 @@ const store = {
           })
         })
         state.speed = state.speed === 1 ? 0.24 : 1
-      })
+      }).catch(() => {})
     },
 
     GET_GOOGLE_TK({ state, commit, dispatch }, keyword) {
@@ -292,6 +293,9 @@ const store = {
       }
       return dispatch('GET_GOOGLE_HTML').then(({ html, host }) => {
         state.googleHost = host
+        if (!html) {
+          return
+        }
         const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
         if (code) {
           /* eslint-disable */

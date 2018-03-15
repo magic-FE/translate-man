@@ -149,7 +149,7 @@
           this.$nextTick(() => {
             this.resizePosition()
           })
-        })
+        }).catch(() => {})
       },
     },
   }

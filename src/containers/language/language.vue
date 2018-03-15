@@ -50,7 +50,7 @@
           value,
           type: this.$router.currentRoute.query.type,
         })
-        this.$store.dispatch('TRANSLATE_KEYWORD')
+        this.$store.dispatch('TRANSLATE_KEYWORD').catch(() => {})
         this.$router.back()
       },
     }

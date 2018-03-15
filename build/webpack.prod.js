@@ -10,7 +10,10 @@ process.env.NODE_ENV = 'production'
 
 module.exports = merge(baseWebpack, {
   plugins: [
-    new CleanWebpackPlugin([constants.DIST_PATH], { root: constants.ROOT_PATH }),
+    new CleanWebpackPlugin([constants.DIST_PATH], {
+      root: constants.ROOT_PATH,
+      exclude: ['manifest.json'],
+    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
@@ -24,12 +27,5 @@ module.exports = merge(baseWebpack, {
       sourceMap: false,
     }),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
-    })
   ]
 })

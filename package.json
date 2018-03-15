@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --config ./build/webpack.dev.js --hide-modules",
-    "build": "webpack --config ./build/webpack.prod.js --progress  --hide-modules --colors",
+    "wcer": "webpack --config ./build/wcer.config.js --hide-modules",
+    "build": "npm run wcer && webpack --config ./build/webpack.prod.js --progress  --hide-modules --colors",
     "archiver": "node ./build/archiver.js",
     "deploy": "npm run build && npm run archiver",
     "lint": "eslint --ext .js,.vue src"
