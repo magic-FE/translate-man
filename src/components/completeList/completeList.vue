@@ -18,6 +18,7 @@
         show: true,
         selectedIndex: null,
         searchHandler: null,
+        autoTranslateTimeHandler: null,
       }
     },
 
@@ -50,6 +51,11 @@
           this.changeKeywordDown()
         } else if (e.keyCode === 38) {
           this.changeKeywordUp()
+        } else {
+          clearTimeout(this.autoTranslateTimeHandler)
+          this.autoTranslateTimeHandler = setTimeout(() => {
+            this.translate()
+          }, 500)
         }
       },
       changeKeywordDown() {
@@ -76,10 +82,13 @@
         if (this.selectedIndex !== null) {
           this.$store.commit('setKeyword', this.completeList[this.selectedIndex])
         }
-        this.$store.dispatch('TRANSLATE_KEYWORD').catch(() => {})
+        this.translate()
         setTimeout(() => {
           this.show = false
         }, 0)
+      },
+      translate() {
+        this.$store.dispatch('TRANSLATE_KEYWORD').catch(() => {})
       },
       autoComplete() {
         clearTimeout(this.searchHandler)
