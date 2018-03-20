@@ -56,6 +56,7 @@
       setTimeout(() => {
         this.showTextarea = true
         this.$nextTick(() => {
+          this.$refs.textareaInput.focus()
           this.inputChangeEvent(this.$refs.textareaInput)
         })
       }, 100)
