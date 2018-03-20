@@ -11,7 +11,7 @@
   export default {}
 </script>
 
-<style module>
+<style lang="postcss" module>
   .app {
     font-family: 'Helvetica Neue', Tahoma, Arial, PingFangSC-Regular, 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
     box-sizing: border-box;

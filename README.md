@@ -2,15 +2,6 @@
 
 [中文](./README-CH.md)
 
-This is in dev version,please use v2 branch.
-
-# design screenshot
-<img src="./design/主页.png" width="320">
-<img src="./design/设置.png" width="320">
-<img src="./design/语言选择.png" width="320">
-<img src="./design/单词本.png" width="320">
-<img src="./design/快速登录.png" width="320">
-
 chrome store: [https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion](https://chrome.google.com/webstore/detail/translate-man/fapgabkkfcaejckbfmfcdgnfefbmlion)
 
 firefox store: [https://addons.mozilla.org/zh-CN/firefox/addon/%E7%BF%BB%E8%AF%91%E4%BE%A0-translate-man/](https://addons.mozilla.org/zh-CN/firefox/addon/%E7%BF%BB%E8%AF%91%E4%BE%A0-translate-man/)
@@ -25,6 +16,11 @@ Support the mouse to take words, zoned word translation, multi-lingual, user-fri
 4. User-friendly mode of operation, double-click translation, page word, all support
 5. Completely free, support Google voice
 6. Continuous development, if you feel good, remember a five-star rating
+
+# design screenshot
+<img src="./design/主页.png" width="320">
+<img src="./design/设置.png" width="320">
+<img src="./design/语言选择.png" width="320">
 
 ## dev
 ```shell

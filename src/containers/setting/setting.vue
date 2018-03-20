@@ -49,6 +49,12 @@
           <Switches :value="userSetting.autoSound" @click.native="changeAutoSound" theme="custom" color="green"></Switches>
         </div>
       </div>
+      <div :class="$style['about-setting']">
+        <div :class="$style.list" style="cursor: pointer;" @click="goToAbout">
+          <div>{{ about }}</div>
+          <Icon :class="$style['about-icon']" name="arrowRightGray"></Icon>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +76,7 @@
       return {
         doubleClick: true,
         pageName: browser.i18n.getMessage('setting'),
+        about: browser.i18n.getMessage('about'),
         webLanguageText: browser.i18n.getMessage('web_language'),
         webLanguageTip: browser.i18n.getMessage('web_language_tip'),
         doubleClickText: browser.i18n.getMessage('dblclick_translate'),
@@ -122,6 +129,9 @@
       goToWordBook() {
         this.$router.replace({ name: 'wordbook' })
       },
+      goToAbout() {
+        this.$router.replace({ name: 'about' })
+      },
       openLanguage() {
         this.$router.push({
           name: 'language',
@@ -163,7 +173,7 @@
 </style>
 
 
-<style module>
+<style lang="postcss" module>
   .setting-wrap {
     margin-top: 10px;
     padding: 15px 0;
@@ -176,6 +186,11 @@
   }
 
   .user-setting {
+    background-color: #ffffff;
+  }
+
+  .about-setting {
+    margin-top: 10px;
     background-color: #ffffff;
   }
 
@@ -206,6 +221,10 @@
   }
 
   .word-book-icon {
+    width: 16px;
+  }
+
+  .about-icon {
     width: 16px;
   }
 

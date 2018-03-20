@@ -114,7 +114,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .complete-list {
     font-size: 14px;
     color: #333333;

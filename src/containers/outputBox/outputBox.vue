@@ -49,7 +49,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .output-box {
     color: #333333;
     border-radius: 4px;

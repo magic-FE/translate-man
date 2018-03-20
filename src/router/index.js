@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { Popup, Language, Login, Setting, WordBook } from '../containers'
+import { Popup, Language, Login, Setting, WordBook, About } from '../containers'
 
 Vue.use(VueRouter)
 
@@ -36,6 +36,12 @@ export default new VueRouter({
       name: 'wordbook',
       path: '/wordbook',
       component: WordBook,
+    },
+    // 关于
+    {
+      name: 'about',
+      path: '/about',
+      component: About,
     },
   ],
 })

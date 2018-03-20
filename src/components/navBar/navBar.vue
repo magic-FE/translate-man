@@ -27,7 +27,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .nav-bar {
     cursor: pointer;
     display: flex;

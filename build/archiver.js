@@ -28,6 +28,6 @@ archive.on('error', err => {
 archive.pipe(output)
 
 // append files from a sub-directory, putting its contents at the root of archive
-archive.directory('../dist/', false)
+archive.directory(path.join(__dirname, '../dist'), false)
 
 archive.finalize()

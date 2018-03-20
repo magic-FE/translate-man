@@ -92,7 +92,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .input-box {
     border-radius: 4px;
 	  background-color: rgba(255, 255, 255, 0.19);

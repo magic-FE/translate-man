@@ -57,7 +57,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .language-wrap {
     display: flex;
     flex-flow: row wrap;

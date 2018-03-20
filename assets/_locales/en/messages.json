@@ -8,12 +8,20 @@
     "description": "插件的简介描述"
   },
   "setting": {
-    "message": "setting",
+    "message": "Setting",
     "description": "设置"
   },
   "language": {
-    "message": "language",
+    "message": "Language",
     "description": "语言"
+  },
+  "about": {
+    "message": "About",
+    "description": "关于"
+  },
+  "about_description": {
+    "message": "Wow, this has been discovered by you. If you think this tool is helpful to you, why not let me get some money to buy cat food, and the stray cat downstairs is waiting for me('')ﾉ",
+    "description": "哇，这都被你发现啦，如果你觉得本工具对你有帮助，何不让我拿点钱去买猫粮，楼下的流浪猫在等我('')ﾉ"
   },
   "search_placeholder": {
     "message": "Enter words or sentences",

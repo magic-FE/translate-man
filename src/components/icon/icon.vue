@@ -14,6 +14,9 @@
   import soundHover from './svg/soundHover.svg'
   import star from './svg/star.svg'
   import stared from './svg/stared.svg'
+  import github from './svg/github.svg'
+  import wechat from './img/wechat.png'
+  import alipay from './img/alipay.png'
 
   const iconMaps = {
     logo,
@@ -25,6 +28,9 @@
     soundHover,
     star,
     stared,
+    github,
+    wechat,
+    alipay,
   }
 
   Object.keys(iconMaps).forEach(key => {
@@ -46,7 +52,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .icon {
     display: block;
     width: 100%;

@@ -15,7 +15,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .word-book-wrap {
     margin-top: 10px;
   }

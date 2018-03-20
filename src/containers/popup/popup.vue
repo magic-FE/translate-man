@@ -38,7 +38,7 @@
   }
 </script>
 
-<style module>
+<style lang="postcss" module>
   .header {
     display: flex;
     justify-content: center;

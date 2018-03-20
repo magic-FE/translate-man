@@ -15,6 +15,14 @@
     "message": "语言",
     "description": "语言"
   },
+  "about": {
+    "message": "关于",
+    "description": "关于"
+  },
+  "about_description": {
+    "message": "哇，这都被你发现啦，如果你觉得本工具对你有帮助，何不让我拿点钱去买猫粮，楼下的流浪猫在等我('')ﾉ",
+    "description": "哇，这都被你发现啦，如果你觉得本工具对你有帮助，何不让我拿点钱去买猫粮，楼下的流浪猫在等我('')ﾉ"
+  },
   "search_placeholder": {
     "message": "输入单词或句子",
     "description": "输入单词或句子"
