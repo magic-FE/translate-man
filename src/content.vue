@@ -106,6 +106,7 @@
       },
       mouseDown() {
         this.selectStartTimer = new Date().getTime()
+        this.isPressKey = false
         this.hide()
       },
       mouseUp() {
