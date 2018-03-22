@@ -70,6 +70,7 @@
     .sound-icon {
       cursor: pointer;
       width: 14px;
+      height: 14px;
       flex-shrink: 0;
     }
   }
