@@ -7,6 +7,18 @@
     "message": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面",
     "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
   },
+  "definition": {
+    "message": "定义",
+    "description": "定义"
+  },
+  "synonym": {
+    "message": "同义词",
+    "description": "同义词"
+  },
+  "example": {
+    "message": "示例",
+    "description": "示例"
+  },
   "setting": {
     "message": "设置",
     "description": "设置"

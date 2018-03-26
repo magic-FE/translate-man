@@ -7,6 +7,18 @@
     "message": "選択翻訳、ホーバー翻訳、言語自動識別、百種類以上の言語対応、Google翻訳API利用、使いやいUI",
     "description": "划词翻译,即指即译,自动识别语言,支持上百种语言,专为国内用户优化,采用谷歌翻译接口,人性化界面"
   },
+  "definition": {
+    "message": "定義",
+    "description": "定义"
+  },
+  "synonym": {
+    "message": "同義語",
+    "description": "同义词"
+  },
+  "example": {
+    "message": "例",
+    "description": "示例"
+  },
   "setting": {
     "message": "設定",
     "description": "设置"

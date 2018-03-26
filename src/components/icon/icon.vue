@@ -15,6 +15,7 @@
   import star from './svg/star.svg'
   import stared from './svg/stared.svg'
   import github from './svg/github.svg'
+  import drowDown from './svg/drowDown.svg'
   import wechat from './img/wechat.png'
   import alipay from './img/alipay.png'
 
@@ -29,6 +30,7 @@
     star,
     stared,
     github,
+    drowDown,
     wechat,
     alipay,
   }

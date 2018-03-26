@@ -7,6 +7,18 @@
     "message": "Mouse pointer translation, selected translation, support any languages, google translate api, human interface, love it",
     "description": "插件的简介描述"
   },
+  "definition": {
+    "message": "Definition",
+    "description": "定义"
+  },
+  "synonym": {
+    "message": "Synonym",
+    "description": "同义词"
+  },
+  "example": {
+    "message": "Example",
+    "description": "示例"
+  },
   "setting": {
     "message": "Setting",
     "description": "设置"

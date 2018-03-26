@@ -1,6 +1,12 @@
 <template>
   <div :class="$style['output-box']">
-    <div :class="$style.keyword">{{ translateResult.keyword }}</div>
+    <div :class="$style['keyword-wrap']">
+      <span :class="$style.keyword">{{ translateResult.keyword }}</span>
+      <Icon v-if="isShowDropDown"
+        :class="[$style['drow-down-icon'], { [$style.show]: isShowMore }]"
+        @click.native="showMore"
+        name="drowDown"></Icon>
+    </div>
     <div :class="$style.sound">
       <div v-if="translateResult.phonetic" :class="$style.phonetic">[{{ translateResult.phonetic }}]</div>
       <Icon :class="$style['sound-icon']" :name="isHoverSound ? 'soundHover' : 'sound'" @mouseover.native="playGoogleSound" @mouseout.native="stopGoogleSound"></Icon>
@@ -13,6 +19,26 @@
         <span :class="$style.text">{{ item[1].join('; ') }}</span>
       </div>
     </div>
+    <transition name="fade">
+      <div :class="$style.more" v-show="isShowMore">
+        <div :class="$style['sub-title']" v-if="translateResult.definition.length">{{ definition }}</div>
+        <div v-for="(item, index) in translateResult.definition"
+          :key="`d_${index}`"
+          :class="$style['result-list']">
+          <span :class="$style.lexical">{{ item[0] }}</span>
+          <span :class="$style.text">{{ item[1] && item[1][0] && item[1][0][0] }}</span>
+        </div>
+        <div :class="$style['sub-title']" v-if="translateResult.synonym.length">{{ synonym }}</div>
+        <div v-for="(item, index) in translateResult.synonym"
+          :key="`s_${index}`"
+          :class="$style['result-list']">
+          <span :class="$style.lexical">{{ item[0] }}</span>
+          <span :class="$style.text">{{ item[1] && item[1][0] && item[1][0][0].join('; ') }}</span>
+        </div>
+        <div :class="$style['sub-title']" v-if="translateResult.example">{{ example }}</div>
+        <div v-html="translateResult.example"></div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -28,13 +54,22 @@
     data() {
       return {
         isHoverSound: false,
+        definition: browser.i18n.getMessage('definition'),
+        synonym: browser.i18n.getMessage('synonym'),
+        example: browser.i18n.getMessage('example'),
       }
     },
 
     computed: {
       ...Vuex.mapState([
         'translateResult',
-      ])
+        'isShowMore',
+      ]),
+      isShowDropDown() {
+        return this.translateResult.definition.length ||
+          this.translateResult.synonym.length ||
+          this.translateResult.example
+      },
     },
 
     methods: {
@@ -44,6 +79,9 @@
       },
       stopGoogleSound() {
         this.isHoverSound = false
+      },
+      showMore() {
+        this.$store.commit('setIsShowMore', !this.isShowMore)
       },
     },
   }
@@ -55,11 +93,31 @@
     border-radius: 4px;
   }
 
+  .keyword-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .keyword {
+    flex: 1;
     font-size: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+
+  .drow-down-icon {
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    transition: transform 0.2s;
+
+    &.show {
+      transform: rotate(180deg);
+    }
   }
 
   .sound {
@@ -94,6 +152,7 @@
     flex-flow: row nowrap;
     align-items: flex-start;
     margin-bottom: 5px;
+    line-height: 1.4;
 
     &:last-child {
       margin-bottom: 0;
@@ -101,6 +160,7 @@
   }
 
   .lexical {
+    white-space: nowrap;
     color: #888683;
     margin-right: 5px;
   }
@@ -108,5 +168,26 @@
   .text {
     flex: 1;
   }
+
+  .sub-title {
+    font-size: 14px;
+    margin: 10px 0 5px;
+  }
+
+  .more {
+    font-size: 12px;
+    margin-top: 10px;
+  }
 </style>
+
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .2s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>
+
+
 

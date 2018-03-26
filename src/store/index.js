@@ -26,7 +26,16 @@ const store = {
     // 单词自动匹配
     completeList: [],
     // 翻译结果
-    translateResult: {},
+    translateResult: {
+      keyword: '',
+      phonetic: '',
+      translateList: [],
+      definition: [],
+      synonym: [],
+      example: '',
+    },
+    // 是否展示更多
+    isShowMore: false,
     // 失败尝试次数
     tryCount: 1,
     // 播放速度
@@ -49,13 +58,22 @@ const store = {
     reset(state) {
       state.keyword = ''
       state.tryCount = 1
-      state.translateResult = {}
+      state.translateResult = {
+        keyword: '',
+        phonetic: '',
+        translateList: [],
+        definition: [],
+        synonym: [],
+        example: '',
+      }
+      state.isShowMore = false
       state.completeList = []
     },
     setKeyword(state, payload) {
       state.speed = 1
+      state.isShowMore = false
       const newKeyword = payload || ''
-      state.keyword = newKeyword.trim()
+      state.keyword = newKeyword.trim().replace(/\s/g, ' ')
     },
     setGoogleTKK(state, payload) {
       state.googleTKK = payload
@@ -64,6 +82,9 @@ const store = {
         value: payload,
         expire: Date.now() + 86400000,
       } })
+    },
+    setIsShowMore(state, payload) {
+      state.isShowMore = payload
     },
     setFromLanguage(state, payload) {
       state.fromLanguage = payload
@@ -205,6 +226,9 @@ const store = {
                 keyword: '',
                 phonetic: '',
                 translateList: [],
+                definition: [],
+                synonym: [],
+                example: '',
               }
               let keyword = ''
               let simple = ''
@@ -253,6 +277,18 @@ const store = {
                 }
                 if (simple) {
                   result.translateList = [['', [simple]]]
+                }
+                // 定义
+                if (response[12]) {
+                  result.definition = response[12]
+                }
+                // 同义词
+                if (response[11]) {
+                  result.synonym = response[11]
+                }
+                // 示例
+                if (response[13]) {
+                  result.example = response[13][0] && response[13][0][0] && response[13][0][0][0]
                 }
                 result.keyword = keyword
                 state.translateResult = result
