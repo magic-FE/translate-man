@@ -44,6 +44,7 @@
         this.closeList()
       },
       changeKeyword(e) {
+        clearTimeout(this.autoTranslateTimeHandler)
         if (e.keyCode === 13) {
           e.preventDefault()
           this.closeList()
@@ -52,7 +53,6 @@
         } else if (e.keyCode === 38) {
           this.changeKeywordUp()
         } else {
-          clearTimeout(this.autoTranslateTimeHandler)
           this.autoTranslateTimeHandler = setTimeout(() => {
             this.translate()
           }, 500)
