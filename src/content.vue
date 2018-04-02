@@ -5,7 +5,8 @@
     @dblclick.stop
     @mousemove.stop
     @mousedown.stop
-    @mouseup.stop>
+    @mouseup.stop
+    @mouseover="outputBoxMouseOver">
     <OutputBox></OutputBox>
   </div>
 </template>
@@ -30,6 +31,7 @@
         isHoverTranslate: false,
         selectStartTimer: null,
         hoverTimeHandler: null,
+        hideTimer: null,
       }
     },
 
@@ -49,6 +51,12 @@
       window.addEventListener('keydown', this.keyDown)
       window.addEventListener('keyup', this.keyUp)
       window.addEventListener('scroll', this.scrollEvent)
+    },
+
+    destroyed() {
+      clearTimeout(this.selectStartTimer)
+      clearTimeout(this.hoverTimeHandler)
+      clearTimeout(this.hideTimer)
     },
 
     methods: {
@@ -79,6 +87,9 @@
           containerWrap.style.top = `${this.pageY + 15}px`
         }
       },
+      outputBoxMouseOver() {
+        clearTimeout(this.hideTimer)
+      },
       doubleClick() {
         if (this.userSetting.doubleClick) {
           const word = window.getSelection().toString()
@@ -94,7 +105,10 @@
         this.pageY = e.pageY
         clearTimeout(this.hoverTimeHandler)
         if (this.isHoverTranslate) {
-          this.hide()
+          clearTimeout(this.hideTimer)
+          this.hideTimer = setTimeout(() => {
+            this.hide()
+          }, 200)
         }
         this.hoverTimeHandler = setTimeout(() => {
           if (!this.userSetting.hover || this.translateResult.keyword) {

@@ -9,19 +9,23 @@ import { POPENV } from '../utils'
 const idName = 'translate-man-app'
 const app = document.createElement('div')
 app.setAttribute('id', idName)
-document.body.appendChild(app)
 
 store.dispatch('SYNC_USER_SETTING')
 
 if (POPENV) {
+  document.body.appendChild(app)
   new Vue({
     router,
     store,
     render: h => h(App),
   }).$mount(`#${idName}`)
 } else {
-  new Vue({
-    store,
-    render: h => h(Content),
-  }).$mount(`#${idName}`)
+  // 异步安装
+  setTimeout(() => {
+    document.body.appendChild(app)
+    new Vue({
+      store,
+      render: h => h(Content),
+    }).$mount(`#${idName}`)
+  }, 0)
 }

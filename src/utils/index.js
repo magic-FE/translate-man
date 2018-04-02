@@ -53,16 +53,20 @@ const getRangeFromPoint = (clientX, clientY) => {
   let range
   let node
   let offsetRange
-  // ref:https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint
-  if (document.caretPositionFromPoint) {
-    range = document.caretPositionFromPoint(clientX, clientY)
-    node = range.offsetNode
-    offsetRange = range.offset
-  } else if (document.caretRangeFromPoint) {
-    range = document.caretRangeFromPoint(clientX, clientY)
-    node = range.startContainer
-    offsetRange = range.startOffset
-  } else {
+  try {
+    // ref:https://developer.mozilla.org/en-US/docs/Web/API/Document/caretPositionFromPoint
+    if (document.caretPositionFromPoint) {
+      range = document.caretPositionFromPoint(clientX, clientY)
+      node = range.offsetNode
+      offsetRange = range.offset
+    } else if (document.caretRangeFromPoint) {
+      range = document.caretRangeFromPoint(clientX, clientY)
+      node = range.startContainer
+      offsetRange = range.startOffset
+    } else {
+      return ''
+    }
+  } catch (e) {
     return ''
   }
 
@@ -135,6 +139,11 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
   // Compensate for this below
   if (offset >= data.length) {
     offset = data.length - 1
+  }
+
+  // ignore last word
+  if (offset === data.length - 1) {
+    return ''
   }
 
   // ignore break word, there are not word

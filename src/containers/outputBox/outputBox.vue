@@ -160,9 +160,12 @@
   }
 
   .lexical {
+    max-width: 60px;
     white-space: nowrap;
     color: #888683;
     margin-right: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .text {
