@@ -6,6 +6,7 @@ import App from '../app.vue'
 import Content from '../content.vue'
 import { POPENV } from '../utils'
 
+let translateApp
 const idName = 'translate-man-app'
 const app = document.createElement('div')
 app.setAttribute('id', idName)
@@ -13,19 +14,25 @@ app.setAttribute('id', idName)
 store.dispatch('SYNC_USER_SETTING')
 
 if (POPENV) {
-  document.body.appendChild(app)
-  new Vue({
+  translateApp = new Vue({
     router,
     store,
     render: h => h(App),
-  }).$mount(`#${idName}`)
+  }).$mount(app)
+  document.body.appendChild(translateApp.$el)
 } else {
+  translateApp = new Vue({
+    store,
+    render: h => h(Content),
+  }).$mount(app)
   // 异步安装
   setTimeout(() => {
-    document.body.appendChild(app)
-    new Vue({
-      store,
-      render: h => h(Content),
-    }).$mount(`#${idName}`)
-  }, 0)
+    document.body.appendChild(translateApp.$el)
+  })
+  // 确保安装到 body 上
+  setTimeout(() => {
+    if (!document.querySelector(`#${idName}`)) {
+      document.body.appendChild(translateApp.$el)
+    }
+  }, 1500)
 }

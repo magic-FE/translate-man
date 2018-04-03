@@ -1,5 +1,6 @@
 <template>
-  <div :class="$style.app"
+  <div id="translate-man-app"
+    :class="$style.app"
     ref="app"
     v-show="translateResult.keyword"
     @dblclick.stop
