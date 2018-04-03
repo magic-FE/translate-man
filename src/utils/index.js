@@ -18,6 +18,33 @@ const $fetch = option => {
   })
 }
 
+// 获取文字真实渲染宽高
+const getRect = node => {
+  const char = '&#8203;'
+  const pre = document.createElement('mark')
+  const post = document.createElement('mark')
+  pre.style.visibility = 'hidden'
+  post.style.visibility = 'hiden'
+  pre.innerHTML = char
+  post.innerHTML = char
+  node.appendChild(post)
+  node.insertBefore(pre, node.firstChild)
+  const prePos = pre.getBoundingClientRect()
+  const postPos = post.getBoundingClientRect()
+  pre.remove()
+  post.remove()
+  if (prePos.y === postPos.y) {
+    // 单行
+    return {
+      width: postPos.x - prePos.x,
+      height: postPos.height,
+      x: prePos.x,
+      y: prePos.y
+    }
+  }
+  return node.getBoundingClientRect()
+}
+
 const saveAndSendMessage = value => {
   browser.storage.local.set(value)
   browser.tabs.query({}, tabs => {
@@ -132,6 +159,16 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
     return ''
   }
 
+  // 去除不在元素内的对象
+  let rect
+  const containerNode = textNode.parentNode
+  if (containerNode) {
+    rect = getRect(containerNode)
+    if (clientX < rect.x || clientX > rect.x + rect.width || clientY < rect.y || clientY > rect.y + rect.height) {
+      return ''
+    }
+  }
+
   const { data } = textNode
 
   // Sometimes the offset can be at the 'length' of the data.
@@ -139,11 +176,6 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
   // Compensate for this below
   if (offset >= data.length) {
     offset = data.length - 1
-  }
-
-  // ignore last word
-  if (offset === data.length - 1) {
-    return ''
   }
 
   // ignore break word, there are not word
