@@ -73,7 +73,7 @@ const store = {
       state.speed = 1
       state.isShowMore = false
       const newKeyword = payload || ''
-      state.keyword = newKeyword.trim().replace(/\s/g, ' ')
+      state.keyword = newKeyword.trim()
     },
     setGoogleTKK(state, payload) {
       state.googleTKK = payload
@@ -276,6 +276,7 @@ const store = {
                   }
                 }
                 if (simple) {
+                  simple = simple.replace(/\n/g, '<br />')
                   result.translateList = [['', [simple]]]
                 }
                 // 定义

@@ -16,7 +16,7 @@
         :key="index"
         :class="$style['result-list']">
         <span v-if="item[0]" :class="$style.lexical">{{ item[0] }}</span>
-        <span :class="$style.text">{{ item[1].join('; ') }}</span>
+        <span :class="$style.text" v-html="item[1].join('; ')"></span>
       </div>
     </div>
     <transition name="fade">
@@ -170,6 +170,7 @@
 
   .text {
     flex: 1;
+    word-break: break-all;
   }
 
   .sub-title {

@@ -181,6 +181,9 @@
     text-shadow: rgb(255, 255, 255) 0px 1px 1px;
     min-width: 0;
     max-width: 280px;
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
     line-height: normal;
     padding: 5px 10px;
     border-radius: 4px;
