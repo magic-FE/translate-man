@@ -33,6 +33,7 @@
         selectStartTimer: null,
         hoverTimeHandler: null,
         hideTimer: null,
+        moveTimer: null,
       }
     },
 
@@ -55,9 +56,17 @@
     },
 
     destroyed() {
+      document.removeEventListener('dblclick', this.doubleClick)
+      document.removeEventListener('mousemove', this.mouseMove)
+      document.removeEventListener('mousedown', this.mouseDown)
+      document.removeEventListener('mouseup', this.mouseUp)
+      window.removeEventListener('keydown', this.keyDown)
+      window.removeEventListener('keyup', this.keyUp)
+      window.removeEventListener('scroll', this.scrollEvent)
       clearTimeout(this.selectStartTimer)
       clearTimeout(this.hoverTimeHandler)
       clearTimeout(this.hideTimer)
+      clearTimeout(this.moveTimer)
     },
 
     methods: {
@@ -100,24 +109,27 @@
         }
       },
       mouseMove(e) {
-        this.mouseX = e.clientX
-        this.mouseY = e.clientY
-        this.pageX = e.pageX
-        this.pageY = e.pageY
-        clearTimeout(this.hoverTimeHandler)
-        if (this.isHoverTranslate) {
-          clearTimeout(this.hideTimer)
-          this.hideTimer = setTimeout(() => {
-            this.hide()
-          }, 200)
-        }
-        this.hoverTimeHandler = setTimeout(() => {
-          if (!this.userSetting.hover || this.translateResult.keyword) {
-            return
+        clearTimeout(this.moveTimer)
+        this.moveTimer = setTimeout(() => {
+          this.mouseX = e.clientX
+          this.mouseY = e.clientY
+          this.pageX = e.pageX
+          this.pageY = e.pageY
+          clearTimeout(this.hoverTimeHandler)
+          if (this.isHoverTranslate) {
+            clearTimeout(this.hideTimer)
+            this.hideTimer = setTimeout(() => {
+              this.hide()
+            }, 200)
           }
-          const word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
-          this.translate(word, true)
-        }, this.userSetting.hoverTime * 1000)
+          this.hoverTimeHandler = setTimeout(() => {
+            if (!this.userSetting.hover || this.translateResult.keyword) {
+              return
+            }
+            const word = getWordFromPoint(this.mouseX, this.mouseY, this.$refs.app)
+            this.translate(word, true)
+          }, this.userSetting.hoverTime * 1000)
+        }, 50)
       },
       mouseDown() {
         this.selectStartTimer = new Date().getTime()
