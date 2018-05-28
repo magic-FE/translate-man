@@ -49,6 +49,7 @@ const store = {
       hover: false,
       hoverTime: 1,
       autoSound: false,
+      audioSource: null,
     },
     // 音频对象
     ac: new (window.AudioContext || window.webkitAudioContext)()
@@ -125,6 +126,11 @@ const store = {
     setAutoSound(state, payload) {
       state.userSetting.autoSound = payload
       saveAndSendMessage({ userSetting: state.userSetting })
+    },
+    stopSound(state) {
+      if (state.audioSource) {
+        state.audioSource.stop()
+      }
     },
   },
 
@@ -304,7 +310,8 @@ const store = {
       })
     },
 
-    GOOGLE_SOUND({ state, dispatch }) {
+    GOOGLE_SOUND({ state, commit, dispatch }) {
+      commit('stopSound')
       dispatch('GET_GOOGLE_TK', state.keyword).then(tk => {
         fetchGoogleSound({
           tk,
@@ -314,10 +321,10 @@ const store = {
           speed: state.speed,
         }).then(arraybuffer => {
           state.ac.decodeAudioData(arraybuffer).then(buffer => {
-            const source = state.ac.createBufferSource()
-            source.buffer = buffer
-            source.connect(state.ac.destination)
-            source.start(0)
+            state.audioSource = state.ac.createBufferSource()
+            state.audioSource.buffer = buffer
+            state.audioSource.connect(state.ac.destination)
+            state.audioSource.start(0)
           })
         })
         state.speed = state.speed === 1 ? 0.24 : 1

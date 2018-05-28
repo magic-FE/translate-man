@@ -78,6 +78,7 @@
       hide() {
         if (this.translateResult.keyword) {
           this.$store.commit('reset')
+          this.$store.commit('stopSound')
         }
       },
       resizePosition() {
