@@ -1,0 +1,15 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# production
+dist
+translate-man.zip
+
+# dependencies
+node_modules
+
+# misc
+*.idea
+.vscode
+.DS_Store
+.env
+npm-debug.log

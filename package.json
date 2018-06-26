@@ -1,0 +1,70 @@
+{
+  "name": "translate-man",
+  "version": "3.0.12",
+  "description": "An excellent google translation plug-in, you will love it",
+  "private": true,
+  "author": "magic-fe",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack --config ./build/webpack.dev.js --hide-modules",
+    "wcer": "webpack --config ./build/wcer.config.js --hide-modules",
+    "build": "npm run wcer && webpack --config ./build/webpack.prod.js --progress  --hide-modules --colors",
+    "archiver": "node ./build/archiver.js",
+    "deploy": "npm run build && npm run archiver",
+    "lint": "eslint --ext .js,.vue src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/magic-FE/translate-man.git"
+  },
+  "homepage": "https://github.com/magic-FE/translate-man#readme",
+  "bugs": {
+    "url": "https://github.com/magic-FE/translate-man/issues"
+  },
+  "dependencies": {
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vue-switches": "^2.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "archiver": "^2.1.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.1.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.0",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.18.1",
+    "eslint-config-scm": "^1.0.12",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-html": "^4.0.2",
+    "eslint-plugin-vue": "^4.3.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "file-loader": "^1.1.5",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "postcss": "^6.0.19",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.1",
+    "postcss-nested": "^3.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.3",
+    "url-loader": "^0.6.2",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.3.0",
+    "vue-style-loader": "^3.0.3",
+    "vue-template-compiler": "^2.5.13",
+    "wcer": "^1.0.2",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.0"
+  }
+}
