@@ -50,7 +50,7 @@
         </div>
         <div :class="$style.list">
           <div :title="bgColorTip">{{ bgColorText }}</div>
-          <div @click="showChromeColorPicker">{{ userSetting.bgColor }}</div>
+          <div :class="$style.colorValue" @click="showChromeColorPicker">{{ userSetting.bgColor }}</div>
           <Chrome v-show="isShowChromeColorPicker" :class="$style.chromeColorPicker" :value="userSetting.bgColor" @input="changebgColor" />
         </div>
       </div>
@@ -113,9 +113,7 @@
         this.isShowChromeColorPicker = true
         const hidePickerEvent = e => {
           let isOutside = false
-          console.log(e)
           e.path.forEach(dom => {
-            console.log(dom.className)
             if (dom.className && dom.className.indexOf('vc-chrome') >= 0) {
               isOutside = true
             }
@@ -245,6 +243,11 @@
     &:last-child {
       border-bottom: 0;
     }
+
+    .colorValue {
+      cursor: pointer;
+      color: #999999;
+    }
   }
 
   .avatar {
@@ -280,7 +283,7 @@
   .chrome-color-picker {
     position: absolute;
     right: 0px;
-    top: 30px;
+    top: 35px;
     z-index: 1;
   }
 </style>
