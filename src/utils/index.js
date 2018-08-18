@@ -201,6 +201,18 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
   return data.substring(begin, end)
 }
 
+const xss = word => {
+  let s = word
+  s = s.replace(/&/g, '&amp;')
+  s = s.replace(/</g, '&lt;')
+  s = s.replace(/>/g, '&gt;')
+  s = s.replace(/ /g, '&nbsp;')
+  s = s.replace(/'/g, '&#39;')
+  s = s.replace(/"/g, '&quot;')
+
+  return s
+}
+
 export {
   $fetch,
   saveAndSendMessage,
@@ -209,4 +221,5 @@ export {
   getUILanguage,
   getRangeFromPoint,
   getWordFromPoint,
+  xss,
 }

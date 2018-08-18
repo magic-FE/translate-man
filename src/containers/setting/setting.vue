@@ -48,6 +48,11 @@
           <div :title="autoSoundTip">{{ autoSoundText }}</div>
           <Switches :value="userSetting.autoSound" @click.native="changeAutoSound" theme="custom" color="green"></Switches>
         </div>
+        <div :class="$style.list">
+          <div :title="bgColorTip">{{ bgColorText }}</div>
+          <div @click="showChromeColorPicker">{{ userSetting.bgColor }}</div>
+          <Chrome v-show="isShowChromeColorPicker" :class="$style.chromeColorPicker" :value="userSetting.bgColor" @input="changebgColor" />
+        </div>
       </div>
       <div :class="$style['about-setting']">
         <div :class="$style.list" style="cursor: pointer;" @click="goToAbout">
@@ -62,6 +67,7 @@
 <script>
   import Vuex from 'vuex'
   import Switches from 'vue-switches'
+  import { Chrome } from 'vue-color'
   import { Icon, NavBar, LanguageText } from '@/components'
 
   export default {
@@ -70,10 +76,12 @@
       Icon,
       LanguageText,
       Switches,
+      Chrome,
     },
 
     data() {
       return {
+        isShowChromeColorPicker: false,
         doubleClick: true,
         pageName: browser.i18n.getMessage('setting'),
         about: browser.i18n.getMessage('about'),
@@ -89,6 +97,8 @@
         hoverTip: browser.i18n.getMessage('hover_translate_tip'),
         autoSoundText: browser.i18n.getMessage('auto_sound_translate'),
         autoSoundTip: browser.i18n.getMessage('auto_sound_translate_tip'),
+        bgColorText: browser.i18n.getMessage('bg_color'),
+        bgColorTip: browser.i18n.getMessage('bg_color_tip'),
       }
     },
 
@@ -99,6 +109,24 @@
     },
 
     methods: {
+      showChromeColorPicker() {
+        this.isShowChromeColorPicker = true
+        const hidePickerEvent = e => {
+          let isOutside = false
+          console.log(e)
+          e.path.forEach(dom => {
+            console.log(dom.className)
+            if (dom.className && dom.className.indexOf('vc-chrome') >= 0) {
+              isOutside = true
+            }
+          })
+          if (!isOutside) {
+            this.isShowChromeColorPicker = false
+            document.removeEventListener('mousedown', hidePickerEvent)
+          }
+        }
+        document.addEventListener('mousedown', hidePickerEvent)
+      },
       changeDoubleClick() {
         this.$store.commit('setDoubleClick', !this.userSetting.doubleClick)
       },
@@ -125,6 +153,10 @@
       },
       changeAutoSound() {
         this.$store.commit('setAutoSound', !this.userSetting.autoSound)
+      },
+      changebgColor(value) {
+        const { hex8 } = value
+        this.$store.commit('setBgColor', hex8)
       },
       goToWordBook() {
         this.$router.replace({ name: 'wordbook' })
@@ -195,6 +227,7 @@
   }
 
   .list {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -242,6 +275,13 @@
     color: #999999;
     position: relative;
     left: -12px;
+  }
+
+  .chrome-color-picker {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+    z-index: 1;
   }
 </style>
 

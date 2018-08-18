@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fixArrayError, saveAndSendMessage, getUILanguage } from '../utils'
+import { fixArrayError, saveAndSendMessage, getUILanguage, xss } from '../utils'
 import { googleChina, googleNet } from '../services/hosts'
 import { fetchGoogleChina, fetchGoogleNet, fetchGoogleSearch, fetchGoogleTranslate, fetchGoogleSound } from '../services/api'
 import googleTK from '../services/googleTK'
@@ -50,6 +50,7 @@ const store = {
       hoverTime: 1,
       autoSound: false,
       audioSource: null,
+      bgColor: '#ffffff',
     },
     // 音频对象
     ac: new (window.AudioContext || window.webkitAudioContext)()
@@ -73,7 +74,7 @@ const store = {
     setKeyword(state, payload) {
       state.speed = 1
       state.isShowMore = false
-      const newKeyword = payload || ''
+      const newKeyword = xss(payload) || ''
       state.keyword = newKeyword.trim()
     },
     setGoogleTKK(state, payload) {
@@ -125,6 +126,10 @@ const store = {
     },
     setAutoSound(state, payload) {
       state.userSetting.autoSound = payload
+      saveAndSendMessage({ userSetting: state.userSetting })
+    },
+    setBgColor(state, payload) {
+      state.userSetting.bgColor = payload
       saveAndSendMessage({ userSetting: state.userSetting })
     },
     stopSound(state) {

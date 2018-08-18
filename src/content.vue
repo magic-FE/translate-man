@@ -1,6 +1,7 @@
 <template>
   <div id="translate-man-app"
     :class="$style.app"
+    :style="appBgColorStyle"
     ref="app"
     v-show="translateResult.keyword"
     @dblclick.stop
@@ -42,6 +43,11 @@
         'userSetting',
         'translateResult',
       ]),
+      appBgColorStyle() {
+        return {
+          'background-color': this.userSetting.bgColor,
+        }
+      },
     },
 
     mounted() {
