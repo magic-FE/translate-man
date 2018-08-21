@@ -1,7 +1,7 @@
 <template>
   <div :class="$style['output-box']">
     <div :class="$style['keyword-wrap']">
-      <span :class="$style.keyword" v-html="translateResult.keyword"></span>
+      <span :class="$style.keyword">{{translateResult.keyword}}</span>
       <Icon v-if="isShowDropDown"
         :class="[$style['drow-down-icon'], { [$style.show]: isShowMore }]"
         @click.native="showMore"

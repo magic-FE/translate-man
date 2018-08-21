@@ -74,7 +74,7 @@ const store = {
     setKeyword(state, payload) {
       state.speed = 1
       state.isShowMore = false
-      const newKeyword = xss(payload) || ''
+      const newKeyword = payload || ''
       state.keyword = newKeyword.trim()
     },
     setGoogleTKK(state, payload) {
@@ -287,6 +287,7 @@ const store = {
                   }
                 }
                 if (simple) {
+                  simple = xss(simple)
                   simple = simple.replace(/\n/g, '<br />')
                   result.translateList = [['', [simple]]]
                 }
