@@ -346,10 +346,17 @@ const store = {
         if (!html) {
           return
         }
+        // 兼容 TKK 算法（新版 translate 网站直接返回了可用的 TKK）
         const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
-        if (code) {
+        const TKKMatch = html.match(/TKK='([\d.]+)'/)
+        const TKK = TKKMatch && TKKMatch[1]
+        if (code || TKK) {
           /* eslint-disable */
-          eval('window.' + code[0])
+          if (code) {
+            eval('window.' + code[0])
+          } else if (TKK) {
+            window.TKK = TKK
+          }
           /* eslint-enable */
           if (typeof window.TKK !== 'undefined') {
             commit('setGoogleTKK', window.TKK)
