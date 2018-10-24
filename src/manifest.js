@@ -43,6 +43,7 @@ module.exports = {
     'matches': ['http://*/*', 'https://*/*', 'file://*/*'],
     'css': ['css/style.css'],
     'js': ['js/popup.js'],
+    'all_frames': true
   }],
   'background': {
     'scripts': ['js/background.js'],
