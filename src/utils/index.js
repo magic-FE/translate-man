@@ -117,6 +117,7 @@ const getWordFromPoint = (clientX, clientY, exceptEle) => {
   let begin = null
   let end = null
   // 分割符号
+  // eslint-disable-next-line no-control-regex
   const breakWord = /((?=[\x00-\x7e]+)[^A-Za-z-'])/
   const hasParents = (dom, parent) => {
     let parentNode = parent
