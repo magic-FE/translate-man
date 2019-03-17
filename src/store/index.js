@@ -348,7 +348,7 @@ const store = {
         }
         // 兼容 TKK 算法（新版 translate 网站直接返回了可用的 TKK）
         const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
-        const TKKMatch = html.match(/TKK='([\d.]+)'/)
+        const TKKMatch = html.match(/tkk:'([\d.]+)'/)
         const TKK = TKKMatch && TKKMatch[1]
         if (code || TKK) {
           /* eslint-disable */
