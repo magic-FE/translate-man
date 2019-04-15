@@ -3,7 +3,7 @@
     :class="$style.app"
     :style="appBgColorStyle"
     ref="app"
-    v-show="translateResult.keyword"
+    v-if="translateResult.keyword"
     @dblclick.stop
     @mousemove.stop
     @mousedown.stop
