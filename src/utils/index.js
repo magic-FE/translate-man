@@ -46,7 +46,8 @@ const getRect = node => {
 }
 
 const saveAndSendMessage = value => {
-  browser.storage.local.set(value)
+  // observable to object
+  browser.storage.local.set(JSON.parse(JSON.stringify(value)))
   browser.tabs.query({}, tabs => {
     tabs.forEach(tab => {
       browser.tabs.sendMessage(tab.id, { type: 'reload' })
