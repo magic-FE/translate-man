@@ -52,8 +52,6 @@ const store = {
       audioSource: null,
       bgColor: '#ffffff',
     },
-    // 音频对象
-    ac: new (window.AudioContext || window.webkitAudioContext)()
   },
 
   mutations: {
@@ -326,10 +324,11 @@ const store = {
           keyword: state.keyword,
           speed: state.speed,
         }).then(arraybuffer => {
-          state.ac.decodeAudioData(arraybuffer).then(buffer => {
-            state.audioSource = state.ac.createBufferSource()
+          const ac = new (window.AudioContext || window.webkitAudioContext)()
+          ac.decodeAudioData(arraybuffer).then(buffer => {
+            state.audioSource = ac.createBufferSource()
             state.audioSource.buffer = buffer
-            state.audioSource.connect(state.ac.destination)
+            state.audioSource.connect(ac.destination)
             state.audioSource.start(0)
           })
         })
