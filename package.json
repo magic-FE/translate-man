@@ -42,7 +42,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",
-    "eslint": "^4.18.1",
+    "eslint": "^4.18.2",
     "eslint-config-scm": "^1.0.12",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^2.0.0",
