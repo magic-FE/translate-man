@@ -40,7 +40,7 @@ module.exports = {
     }
   },
   'content_scripts': [{
-    'matches': ['http://*/*', 'https://*/*', 'file://*/*'],
+    'matches': ['<all_urls>'],
     'css': ['css/style.css'],
     'js': ['js/popup.js'],
     'all_frames': true
