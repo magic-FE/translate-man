@@ -5,7 +5,6 @@ import store from '../store'
 import App from '../app.vue'
 import Content from '../content.vue'
 import { POPENV } from '../utils'
-import '../utils/union'
 
 let translateApp
 const idName = 'translate-man-app'

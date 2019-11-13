@@ -16,7 +16,7 @@ const checkStatus = response => {
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const { url, type = 'text', params = {} } = request
 
-  if (url) {
+  if (url && !request.action) {
     fetch(url, params)
       .then(checkStatus)
       .then(response => {
@@ -43,8 +43,8 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
       .catch(error => {
         sendResponse({ error })
       })
-    return true
   }
+  return true
 })
 
 // when update available
