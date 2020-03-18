@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.icon">
      <img :class="$style.icon" :src="iconMaps[name]">
   </div>
 </template>
@@ -59,6 +59,7 @@
     display: block;
     width: 100%;
     height: 100%;
+    border: none !important;
   }
 </style>
 
