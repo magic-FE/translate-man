@@ -40,6 +40,8 @@ const store = {
     tryCount: 1,
     // 播放速度
     speed: 1,
+    // 新接口方案，忽略 tk
+    noNeedTk: true,
     userSetting: {
       webLanguage: getUILanguage(),
       doubleClick: true,
@@ -337,6 +339,9 @@ const store = {
     },
 
     GET_GOOGLE_TK({ state, commit, dispatch }, keyword) {
+      if (state.noNeedTk) {
+        return Promise.resolve()
+      }
       if (state.googleTKK) {
         return Promise.resolve(googleTK(keyword))
       }
@@ -348,7 +353,7 @@ const store = {
         // 兼容 TKK 算法（新版 translate 网站直接返回了可用的 TKK）
         const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
         const TKKMatch = html.match(/tkk:'([\d.]+)'/)
-        const TKK = TKKMatch && TKKMatch[1]
+        const TKK = TKKMatch && TKKMatch[1] || '435819.1958473774'
         if (code || TKK) {
           /* eslint-disable */
           if (code) {
