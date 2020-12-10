@@ -40,8 +40,6 @@ const store = {
     tryCount: 1,
     // 播放速度
     speed: 1,
-    // 新接口方案，忽略 tk
-    noNeedTk: true,
     userSetting: {
       webLanguage: getUILanguage(),
       doubleClick: true,
@@ -339,36 +337,41 @@ const store = {
     },
 
     GET_GOOGLE_TK({ state, commit, dispatch }, keyword) {
-      if (state.noNeedTk) {
-        return Promise.resolve()
-      }
       if (state.googleTKK) {
         return Promise.resolve(googleTK(keyword))
       }
-      return dispatch('GET_GOOGLE_HTML').then(({ html, host }) => {
-        state.googleHost = host
-        if (!html) {
-          return
-        }
-        // 兼容 TKK 算法（新版 translate 网站直接返回了可用的 TKK）
-        const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
-        const TKKMatch = html.match(/tkk:'([\d.]+)'/)
-        const TKK = TKKMatch && TKKMatch[1] || '435819.1958473774'
-        if (code || TKK) {
-          /* eslint-disable */
-          if (code) {
-            eval('window.' + code[0])
-          } else if (TKK) {
-            window.TKK = TKK
-          }
-          /* eslint-enable */
-          if (typeof window.TKK !== 'undefined') {
-            commit('setGoogleTKK', window.TKK)
-            const tk = googleTK(keyword)
-            return tk
-          }
-        }
-      })
+      const defualtTKKs = ['435819.1958473774', '434674.96463358']
+      window.TKK = defualtTKKs[Math.floor(Math.random() * defualtTKKs.length)]
+      /* eslint-enable */
+      if (typeof window.TKK !== 'undefined') {
+        commit('setGoogleTKK', window.TKK)
+        const tk = googleTK(keyword)
+        return tk
+      }
+      // return dispatch('GET_GOOGLE_HTML').then(({ html, host }) => {
+      //   state.googleHost = host
+      //   if (!html) {
+      //     return
+      //   }
+      //   // 兼容 TKK 算法（新版 translate 网站直接返回了可用的 TKK）
+      //   const code = html.match(/TKK=(.*?)\(\)\)'\);/g)
+      //   const TKKMatch = html.match(/tkk:'([\d.]+)'/)
+      //   const TKK = TKKMatch && TKKMatch[1] || '435819.1958473774'
+      //   if (code || TKK) {
+      //     /* eslint-disable */
+      //     if (code) {
+      //       eval('window.' + code[0])
+      //     } else if (TKK) {
+      //       window.TKK = TKK
+      //     }
+      //     /* eslint-enable */
+      //     if (typeof window.TKK !== 'undefined') {
+      //       commit('setGoogleTKK', window.TKK)
+      //       const tk = googleTK(keyword)
+      //       return tk
+      //     }
+      //   }
+      // })
     },
   },
 }
